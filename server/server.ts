@@ -1,12 +1,11 @@
-const express = require('express');
+import express, { Application } from 'express';
 const mongoose = require("mongoose");
-const cors= require('cors');
-const app = express();
-
+const cors = require('cors');
+const app: Application = express();
 
 app.use(cors({ 
-  credentials: true,
-}));
+  credentials: true
+})); 
 
 require("dotenv").config();
 
@@ -17,6 +16,7 @@ mongoose.connect("mongodb://localhost/just_a_like", {
 })
 .then(() => console.log("Connected to MongoDB..."))
 .catch(() => console.error("Could not connect to MongoDB..."));
+
 
 const projectRoutes = require('./routes/project');
 
