@@ -22,14 +22,20 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    experties: {
-        type: Array,
-        required: true
-    },
-    interests: {
-        type: Array,
-        required: true
-    },
+    experties: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Expertise",
+            required: false,
+          },
+    ],
+    interests: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Interest",
+            required: false,
+        },
+    ],
     level: {
         type: String,
         default: '4',
