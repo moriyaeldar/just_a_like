@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 const catchAsync = require("../utillities/catchAsync");
+const dbService = require('../startup/db');
 
 /*************************************************************
  ** All Routes taken from "requirments" doc. *****************
@@ -13,7 +14,14 @@ const catchAsync = require("../utillities/catchAsync");
  * can get all tasks
  * */
 module.exports.index = catchAsync(async (req: Request, res: Response) => {
-  res.json("All tasks");
+  const collection = await dbService.getCollection('Task');
+  const tasks = await collection.aggregate().toArray();
+  console.log(`[TASK-GET] - send ${tasks.length} tasks`);
+
+  // res.json("All tasks : " + tasks);
+  res.send(tasks)
+
+
 });
 
 /**
@@ -22,7 +30,9 @@ module.exports.index = catchAsync(async (req: Request, res: Response) => {
  * to create new task
  * */
 module.exports.createTask = catchAsync(async (req: Request, res: Response) => {
-  res.json("Create task");
+  const newTask = req.body;
+  // const result = await client.db("just_a_like").collection("Task").insertOne(newTask);
+  res.json("Created task: " + newTask );
 });
 
 /**
@@ -30,7 +40,7 @@ module.exports.createTask = catchAsync(async (req: Request, res: Response) => {
  * Require user level 1 (-Admin)
  * to delete existing task
  *
- * params:
+ * @param:
  * tid - task id
  * */
 module.exports.deleteTask = catchAsync(async (req: Request, res: Response) => {
@@ -45,7 +55,7 @@ module.exports.deleteTask = catchAsync(async (req: Request, res: Response) => {
  * Level 3 - can update task only if he is associated with the project.
  * Level 1 - can update any task in any project.
  *
- * params:
+ * @param:
  * pid - project id
  * tid - task id
  * */
@@ -62,7 +72,7 @@ module.exports.updateTask = catchAsync(async (req: Request, res: Response) => {
  * Level 2 - get he's associated tasks in associated project.
  * Level 1 - get all the tasks in the project.
  *
- * params:
+ * @param:
  * pid - project id
  * tid - task id
  * */
