@@ -8,8 +8,8 @@ const projectSchema = new Schema({
     required: true,
     default: "New Project",
   },
-  //admin should be at level 3
-  admin: [
+  //admin should be at level 2
+  taskManager: [
     {
       type: Schema.Types.ObjectId,
       ref: "User",
