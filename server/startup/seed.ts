@@ -23,7 +23,7 @@ module.exports = async function seedDB() {
         name: faker.name.firstName(),
         description: faker.lorem.words(),
         status: faker.datatype.number(100),
-        users: [faker.datatype.number(), faker.datatype.number(),faker.datatype.number()],
+        users: [faker.datatype.number().toString(), faker.datatype.number().toString(),faker.datatype.number().toString()],
         startDate: Date.now(),
         finishDate: Date.now(),
       };
