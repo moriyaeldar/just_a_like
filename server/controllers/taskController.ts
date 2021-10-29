@@ -89,7 +89,7 @@ module.exports.updateTask = catchAsync(async (req: Request, res: Response) => {
 });
 
 /**
- * Get Associated tasks:
+ * Get all Associated tasks for user:
  * Require user level 3-1
  * to get associated tasks.
  *
@@ -98,11 +98,20 @@ module.exports.updateTask = catchAsync(async (req: Request, res: Response) => {
  * Level 1 - get all the tasks in the project.
  *
  * @param:
- * pid - project id
- * tid - task id
+ * uid - user id
  * */
 module.exports.getAssociatedTasks = catchAsync(
   async (req: Request, res: Response) => {
-    res.json("Get associated tasks");
+    try {
+      //TODO: Add permission control
+      const uid = req.params.uid
+      const collection = await dbService.getCollection("Task");
+      const result = await collection.find(
+        {users: uid}, {$where: uid }).toArray();
+      console.log(`[TASK-ASSOCIATE] - send tasks for user_id: ${uid} , ${result.length} matched the query criteria`);
+      res.send(result);
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
