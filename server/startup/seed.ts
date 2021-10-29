@@ -1,7 +1,5 @@
-/* mySeedScript.js */
 // require the necessary libraries
 const faker = require("faker");
-// import taskSchema from '../models/task.model'
 const MongoClient = require("mongodb").MongoClient;
 
 module.exports = async function seedDB() {
@@ -9,7 +7,7 @@ module.exports = async function seedDB() {
   const uri = "mongodb://localhost/just_a_like";
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
-    // useUnifiedTopology: true,
+    useUnifiedTopology: true,
   });
   try {
     await client.connect();
@@ -25,17 +23,11 @@ module.exports = async function seedDB() {
         name: faker.name.firstName(),
         description: faker.lorem.words(),
         status: faker.datatype.number(100),
-        users: ["123", "3345", "63456346"],
+        users: [faker.datatype.number(), faker.datatype.number(),faker.datatype.number()],
         startDate: Date.now(),
         finishDate: faker.date.future(),
       };
-      // for (let j = 0; j < randomIntFromInterval(1, 6); j++) {
-      //     let newEvent = {
-      //         timestamp_event: faker.date.past(),
-      //         weight: randomIntFromInterval(14,16),
-      //     }
-      //     newTask.events.push(newEvent);
-      // }
+
       tasks.push(newTask);
     }
     collection.insertMany(tasks);

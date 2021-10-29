@@ -2,9 +2,9 @@ import express, { Application } from "express";
 const app: Application = express();
 
 require("dotenv").config();
-require("./startup/db")();
+// require("./startup/db")();
 require("./startup/routes")(app);
-require("./startup/seed")();
+// require("./startup/seed")();
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
