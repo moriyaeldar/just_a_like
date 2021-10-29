@@ -55,8 +55,19 @@ module.exports.createTask = catchAsync(async (req: Request, res: Response) => {
  * tid - task id
  * */
 module.exports.deleteTask = catchAsync(async (req: Request, res: Response) => {
-  res.json("Delete task");
-});
+  try {
+    //TODO: Add permission control
+    const tid = req.params.tid;
+    const ObjectID = require("mongodb").ObjectID;
+    const collection = await dbService.getCollection("Task");
+    const result = await collection.deleteOne(
+      { _id: ObjectID(tid) }
+    );
+    console.log(`[TASK-REMOVE] - removed task_id: ${tid}`);
+    res.send("task removed." + result);
+  } catch (error) {
+    console.log(error);
+  }});
 
 /**
  * Update tasks:
