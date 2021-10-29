@@ -25,7 +25,7 @@ module.exports = async function seedDB() {
         status: faker.datatype.number(100),
         users: [faker.datatype.number(), faker.datatype.number(),faker.datatype.number()],
         startDate: Date.now(),
-        finishDate: faker.date.future(),
+        finishDate: Date.now(),
       };
 
       tasks.push(newTask);
