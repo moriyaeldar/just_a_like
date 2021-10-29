@@ -1,7 +1,9 @@
 import {Response, Request} from 'express';
-import passport from 'passport';
+const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user.model');
 const catchAsync = require('../utillities/catchAsync');
+
+const client = new OAuth2Client(process.env.GOOGLE_AUTH_CLIENT_ID)
 
 require('../auth');
 
@@ -14,5 +16,5 @@ module.exports.index = catchAsync(async (req: Request, res: Response) => {
 });
 
 module.exports.create = catchAsync(async (req: Request, res: Response) => {
-    passport.authenticate('google')
+
 })
