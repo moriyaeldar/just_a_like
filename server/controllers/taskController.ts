@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 const catchAsync = require("../utillities/catchAsync");
-const dbService = require('../startup/db');
+const dbService = require("../startup/db");
 
 /*************************************************************
  ** All Routes taken from "requirments" doc. *****************
@@ -14,14 +14,15 @@ const dbService = require('../startup/db');
  * can get all tasks
  * */
 module.exports.index = catchAsync(async (req: Request, res: Response) => {
-  const collection = await dbService.getCollection('Task');
-  const tasks = await collection.aggregate().toArray();
-  console.log(`[TASK-GET] - send ${tasks.length} tasks`);
-
-  // res.json("All tasks : " + tasks);
-  res.send(tasks)
-
-
+  try {
+    const collection = await dbService.getCollection("Task");
+    const tasks = await collection.aggregate().toArray();
+    console.log(`[TASK-GET] - send ${tasks.length} tasks`);
+    // res.json("All tasks : " + tasks);
+    res.send(tasks);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 /**
@@ -31,8 +32,18 @@ module.exports.index = catchAsync(async (req: Request, res: Response) => {
  * */
 module.exports.createTask = catchAsync(async (req: Request, res: Response) => {
   const newTask = req.body;
-  // const result = await client.db("just_a_like").collection("Task").insertOne(newTask);
-  res.json("Created task: " + newTask );
+  const pid = req.params;
+
+  try {
+    //TODO: Add permission control
+    const collection = await dbService.getCollection("Task");
+    await collection.insertOne(newTask);
+  } catch (error) {
+    console.log(error);
+  }
+  console.log(`[TASK-CREATE]: Created task for project ${pid}`);
+
+  res.send("Created task: " + newTask);
 });
 
 /**
