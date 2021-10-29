@@ -67,11 +67,25 @@ module.exports.deleteTask = catchAsync(async (req: Request, res: Response) => {
  * Level 1 - can update any task in any project.
  *
  * @param:
- * pid - project id
  * tid - task id
  * */
 module.exports.updateTask = catchAsync(async (req: Request, res: Response) => {
-  res.json("Update task");
+  try {
+    //TODO: Add permission control
+    const tid = req.params.tid;
+    const ObjectID = require("mongodb").ObjectID;
+    const updatedTask = req.body;
+    const collection = await dbService.getCollection("Task");
+    const result = await collection.updateOne(
+      { _id: ObjectID(tid) },
+      { $set: updatedTask }
+    );
+    console.log(`[TASK-UPDATE] - update task_id: ${tid}, ${result.matchedCount} matched the query criteria`);
+    console.log(`[TASK-UPDATE] - ${result.modifiedCount} docs were updated`);
+    res.send("task updated.");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 /**
