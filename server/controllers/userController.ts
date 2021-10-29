@@ -1,5 +1,6 @@
 import {Response, Request} from 'express';
 const { OAuth2Client } = require('google-auth-library');
+const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 const catchAsync = require('../utillities/catchAsync');
 
@@ -15,6 +16,13 @@ module.exports.index = catchAsync(async (req: Request, res: Response) => {
     res.json(users);
 });
 
-module.exports.create = catchAsync(async (req: Request, res: Response) => {
+module.exports.googlelAuth = catchAsync(async (req: Request, res: Response) => {
+    // Recive token from client (google provide this token) 
+    const {tokenId} = req.body;
 
+    // Check token validity
+    client.verifyToken({tokenId, audience: process.env.GOOGLE_AUTH_CLIENT_ID})
+    .then((response: any) =>{
+        const {email_verfied, naem, email} = response.payload;
+    })
 })
