@@ -1,7 +1,10 @@
 import {Response, Request} from 'express';
-import passport from 'passport';
+const { OAuth2Client } = require('google-auth-library');
+const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 const catchAsync = require('../utillities/catchAsync');
+
+const client = new OAuth2Client(process.env.GOOGLE_AUTH_CLIENT_ID)
 
 require('../auth');
 
@@ -13,6 +16,13 @@ module.exports.index = catchAsync(async (req: Request, res: Response) => {
     res.json(users);
 });
 
-module.exports.create = catchAsync(async (req: Request, res: Response) => {
-    passport.authenticate('google')
+module.exports.googlelAuth = catchAsync(async (req: Request, res: Response) => {
+    // Recive token from client (google provide this token) 
+    const {tokenId} = req.body;
+
+    // Check token validity
+    client.verifyToken({tokenId, audience: process.env.GOOGLE_AUTH_CLIENT_ID})
+    .then((response: any) =>{
+        const {email_verfied, naem, email} = response.payload;
+    })
 })
