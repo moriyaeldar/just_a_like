@@ -1,6 +1,7 @@
 // require the necessary libraries
 const faker = require("faker");
 const MongoClient = require("mongodb").MongoClient;
+const mongoose = require('mongoose');
 
 module.exports = async function seedDB() {
   // Connection URL
@@ -23,7 +24,7 @@ module.exports = async function seedDB() {
         name: faker.name.firstName(),
         description: faker.lorem.words(),
         status: faker.datatype.number(100),
-        users: [faker.datatype.number().toString(), faker.datatype.number().toString(),faker.datatype.number().toString()],
+        users: [mongoose.Types.ObjectId(), mongoose.Types.ObjectId(), mongoose.Types.ObjectId()],
         startDate: Date.now(),
         finishDate: Date.now(),
       };
@@ -37,3 +38,4 @@ module.exports = async function seedDB() {
     console.log(err);
   }
 };
+
