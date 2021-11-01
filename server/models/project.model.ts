@@ -55,5 +55,5 @@ function validateProject(project: any){
   return schema.validate(project);
 }
 
-module.exports.Project = model("Project", projectSchema);
+module.exports = model("Project", projectSchema);
 module.exports.validateProject = validateProject;

@@ -15,25 +15,16 @@ const { User } = require('../models/user.model'); //Must to be ---validateUser--
  * can get all projects
  * */
 module.exports.getAllProjects = catchAsync(async (req: Request, res: Response) => {
-  try{
     const projects = await Project.find().sort('name');
     res.json(projects);
-  }
-  catch(ex) {
-
-  }
 });
 
 module.exports.getSpecificProject = catchAsync(async (req: Request, res: Response) => {
-  try{
     const project = await Project.findById(req.params.id);
 
     if(!project) return res.status(404).json("The project with the given does not exist.");
     
     res.json(project);
-  }
-  catch(ex) {
-  }  
 });
 
 /**
@@ -42,7 +33,6 @@ module.exports.getSpecificProject = catchAsync(async (req: Request, res: Respons
  * to create new project
  * */
 module.exports.createProject = catchAsync(async (req: Request, res: Response) => {
-    try{
       /**
        * ---Validation of project and users---
        let {error} = validateProject(req.body);
@@ -69,10 +59,6 @@ module.exports.createProject = catchAsync(async (req: Request, res: Response) =>
       await project.save();
 
       res.json(project);
-    }
-    catch(ex) {
-      
-    }
   }
 );
 
