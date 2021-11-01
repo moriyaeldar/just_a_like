@@ -7,7 +7,7 @@ require("./startup/routes")(app);
 const seeds = require("./startup/seed");
 
 //Uncomment to seed db
-// seeds.seedTasks();
+seeds.seedTasks();
 // seeds.seedUsers();
 
 const port = process.env.PORT || 8000;

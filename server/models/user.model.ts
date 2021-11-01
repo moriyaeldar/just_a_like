@@ -10,6 +10,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    username: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true
@@ -27,7 +31,7 @@ const userSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "Expertise",
             required: false,
-          },
+        },
     ],
     interests: [
         {

@@ -47,7 +47,7 @@ async function seedUsers() {
       linkedin_url: faker.internet.email(),
       experties: ["617fcc43e6aad249c573c757"],
       interests: ["617fcc43e6aad249c573c758"],
-      level: 4,
+      level: '4',
     };
 
     users.push(newUser);
