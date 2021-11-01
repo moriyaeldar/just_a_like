@@ -54,8 +54,10 @@ module.exports.deleteTask = catchAsync(async (req: Request, res: Response) => {
   const result = await Task.findByIdAndDelete(tid);
   console.log(`[TASK-REMOVE] - removed task_id: ${tid}`);
   console.log(result);
-  if (result) res.send("Deleted task: " + tid);
-  res.status(500).send("Task not found: " + tid);
+  if (result){ res.send("Deleted task: " + tid);}
+  else{
+    res.send("Task not in DB: " + tid);
+  }
 });
 
 /**
