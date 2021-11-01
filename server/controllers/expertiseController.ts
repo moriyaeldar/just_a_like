@@ -2,39 +2,46 @@ import {Response, Request} from 'express';
 const catchAsync = require('../utillities/catchAsync');
 const Expertise = require('../models/expertise.model');
 
+/**
+ * Get all expertise:
+ * Any user from level 1-4
+ * can get all expertises
+ * */
 module.exports.index = catchAsync(async (req: Request, res: Response) => {
     // Find all expertise
-    const expertises = Expertise.find();
-    console.log(expertises);
+    const expertises = await Expertise.find();
+    console.log(`[EXPERTISE-GET] - send ${expertises.length} expertise`);
 
     // Send Expertise to client
-    res.json(expertises);
+    res.send(expertises);
 });
 
-module.exports.show = catchAsync(async (req: Request, res: Response) => {
-    // Find expertise
-    const expertise = Expertise.findById(req.params.id);
-    if(!expertise._id) {
-        res.status(404).json('Expertise not found');
-    }
-    // Send Expertise to client
-    res.json(expertise);
+/**
+ * Create expertise:
+ * Any user from level 1-4
+ * can create expertises
+ * */
+module.exports.create = catchAsync(async (req: Request, res: Response) => {
+    const { name } = req.body;
+    
+    // Create new expertise
+    const expertise = await new Expertise({name});
+
+    // Save expertise in Database
+    expertise.save();
+
+    console.log(`[EXPERTISE-CREATE]: Created expertise`);
+  
+    res.send(expertise);
 });
 
-// module.exports.index = catchAsync(async (req: Request, res: Response) => {
-//     // Find all expertise
-//     const expertises = Expertise.find();
-
-//     // Send Expertise to client
-//     res.json(expertises);
-// });
-
-// module.exports.index = catchAsync(async (req: Request, res: Response) => {
-//     // Find all expertise
-//     const expertises = Expertise.find();
-
-//     // Send Expertise to client
-//     res.json(expertises);
-// });
+module.exports.delete = catchAsync(async (req: Request, res: Response) => {
+    // Find expertise and delete
+    let result = await Expertise.findByIdAndDelete(req.params.id);
+    console.log(result);
+    
+    // Send result to client
+    res.send(result);
+});
 
 
