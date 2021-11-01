@@ -37,7 +37,6 @@ const projectSchema = new Schema({
     ref: "Team",
   },
 });
-
 /**
  * 
  * @param validateProject 
