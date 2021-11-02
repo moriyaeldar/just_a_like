@@ -1,4 +1,7 @@
 import '../styles/sidebar.css'
+import { IconContext } from 'react-icons'
+import { AiOutlineHome, AiOutlineCheckCircle, AiOutlineBell, AiOutlineRise, AiOutlineFileSearch } from 'react-icons/ai'
+import { GiConvergenceTarget } from 'react-icons/gi'
 
 const Sidebar = () => {
     return (
@@ -7,12 +10,36 @@ const Sidebar = () => {
                 <h3>LOGO PLACEHOLDER</h3>
             </div>
             <div className="buttons-container">
-                <button>Home</button>
-                <button>My Tasks</button>
-                <button>Inbox</button>
-                <button>Reporting</button>
-                <button>Portfolios</button>
-                <button>Goals</button>
+            <button>
+                <IconContext.Provider value={{ className: "icon" }}>
+                     <AiOutlineHome /> Home
+                </IconContext.Provider>
+            </button>
+                <button>
+                    <IconContext.Provider value={{ className: "icon" }}>
+                        <AiOutlineCheckCircle /> My Tasks
+                    </IconContext.Provider>
+                </button>
+                <button>
+                    <IconContext.Provider value={{ className: "icon" }}>
+                        <AiOutlineBell /> Inbox
+                    </IconContext.Provider>
+                </button>
+                <button>
+                    <IconContext.Provider value={{ className: "icon" }}>
+                        <AiOutlineRise /> Reporting
+                    </IconContext.Provider>
+                </button>
+                <button>
+                    <IconContext.Provider value={{ className: "icon" }}>
+                        <AiOutlineFileSearch /> Portfolios                    
+                    </IconContext.Provider>
+                </button>
+                <button>
+                    <IconContext.Provider value={{ className: "icon" }}>
+                        <GiConvergenceTarget /> Goals                    
+                    </IconContext.Provider>
+                </button>
             </div>
             <div className="favorites-container">
                 <h4>Favorites</h4>
