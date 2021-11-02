@@ -1,8 +1,8 @@
 import React from 'react';
 import './styles/app.css';
 import { Switch, Route} from 'react-router-dom';
-import Auth from './containers/Auth/Auth';
-import Project from './components/Project';
+import Auth from './users/components/Auth';
+import Project from './projects/components/Project';
 
 function App() {
   return (

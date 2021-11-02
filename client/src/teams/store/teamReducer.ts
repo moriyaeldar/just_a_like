@@ -43,7 +43,7 @@
 // }
 
 import { combineReducers } from 'redux'
-import { Action } from '../actions/teamActions'
+import { Action } from './teamActions'
 // States' definition
 export interface AccessToken {
   isFetching: boolean

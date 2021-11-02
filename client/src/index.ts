@@ -1,6 +1,6 @@
 
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import session, { State as SessionState } from '../store/reducers/teamReducer'
+import session, { State as SessionState } from './teams/store/teamReducer'
 import thunk from 'redux-thunk'
 export interface RootState {
   session: SessionState
