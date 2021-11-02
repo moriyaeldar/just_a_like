@@ -1,9 +1,10 @@
-import '../styles/sidebar.css'
-import { IconContext } from 'react-icons'
-import { AiOutlineHome, AiOutlineCheckCircle, AiOutlineBell, AiOutlineRise, AiOutlineFileSearch } from 'react-icons/ai'
-import { GiConvergenceTarget } from 'react-icons/gi'
+import { FC } from 'react';
+import '../../styles/sidebar.css';
+import { IconContext } from 'react-icons';
+import { AiOutlineHome, AiOutlineCheckCircle, AiOutlineBell, AiOutlineRise, AiOutlineFileSearch } from 'react-icons/ai';
+import { GiConvergenceTarget } from 'react-icons/gi';
 
-const Sidebar = () => {
+const Sidebar:FC = () => {
     return (
         <div className="sidebar-container">
             <div className="logo-container">
@@ -67,4 +68,4 @@ const Sidebar = () => {
     )
 }
 
-export default Sidebar
+export default Sidebar;
