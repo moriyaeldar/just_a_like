@@ -1,0 +1,30 @@
+.sidebar-container {
+    width: 25%;
+    background-color: rgb(40, 40, 40);
+}
+
+.sidebar-container h4 {
+    color: rgb(100, 100, 100);
+    padding-left: 5%;
+}
+
+.sidebar-container > div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    padding: 1rem 0 1rem 0;
+}
+
+.sidebar-container button {
+    width: 100%;
+    border: none;
+    background-color: inherit;
+    color: white;
+    padding: 5px 0 5px 0;
+}
+
+.sidebar-container button:hover {
+    background-color: rgb(70, 70, 70);
+    cursor: pointer;
+}
