@@ -120,7 +120,7 @@ module.exports.updateProject = catchAsync(
           team: req.body.team
          }
        );
-
+        
        if(!project) return res.status(404).send('The project with given id not found.');
 
        res.send(project);
