@@ -1,5 +1,5 @@
 import '../styles/project.css';
-import Task from './Task'
+import Task from '../../tasks/components/Task'
 
 const Project = () => {
     return (

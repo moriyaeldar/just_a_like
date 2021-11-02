@@ -4,7 +4,11 @@ const app: Application = express();
 require("dotenv").config();
 require("./startup/db")();
 require("./startup/routes")(app);
-require("./startup/seed")();
+const seeds = require("./startup/seed");
+
+//Uncomment to seed db
+seeds.seedTasks();
+// seeds.seedUsers();
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
