@@ -1,12 +1,12 @@
-import React from 'react';
-import './styles/app.css';
 import { Switch, Route} from 'react-router-dom';
 import Auth from './users/components/Auth';
 import Project from './projects/components/Project';
+import Sidebar from './components/Sidebar';
 
 function App() {
   return (
     <div>
+        <Sidebar />
         <Switch/>
         <Route exact path='/' component={Project}/>
         <Route exact path='/auth' component={Auth}/>

@@ -1,5 +1,3 @@
-import '../styles/task.css';
-
 const Task = () => {
     return (
         <div className="task-container">
