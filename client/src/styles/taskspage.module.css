@@ -1,0 +1,5 @@
+.taskstatus {
+  color: red;
+  display: flex;
+  flex-direction: row;
+}
