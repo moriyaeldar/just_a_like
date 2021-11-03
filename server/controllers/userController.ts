@@ -1,4 +1,5 @@
 import {Response, Request} from 'express';
+const fetch = require('node-fetch');
 const {OAuth2Client} = require('google-auth-library');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
@@ -20,10 +21,10 @@ module.exports.googleLogin = catchAsync(async (req: Request, res: Response) => {
     
     // Check token validity
     client.verifyIdToken({idToken: tokenId, audience: process.env.GOOGLE_AUTH_CLIENT_ID})
-    .then((response: any) =>{
+    .then(async (response: any) =>{
         const {email_verfied, name, email, imageUrl} = response.payload;
         if(email_verfied) {
-            const user = User.find({email: email});
+            const user = await User.find({email: email});
             if(!user){
                 res.status(400).send('User not exist');
             }else {
@@ -71,6 +72,32 @@ module.exports.googleRegister = catchAsync(async (req: Request, res: Response) =
         }     
     })
 });
+
+module.exports.facebookLogin = catchAsync(async (req: Request, res: Response) => {
+    // Recive token and userID from client (facebook provide this)
+    const {accessToken, userID} = req.body;
+
+    let urlGraphFacebook = `https://graph.facebook.com/v12.0/${userID}/?fields=id,first_name,last_name,email&access_token=${accessToken}`;
+    let data; 
+    fetch(urlGraphFacebook, {method: 'GET'})
+    .then((response: any) => response.json())
+    .then(async (response: any) => {
+        console.log(response);
+        const { email } = response ?? '';
+        const user = await User.find({email: email});
+        if(!user){
+            res.status(400).send('User not exist');
+        }else {
+            const token  = jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '7d'});
+            res.send({
+                token: token,
+                user: user
+            })
+        }  
+    });
+
+    
+})
 
 module.exports.delete = catchAsync(async (req: Request, res: Response) => {
     const result = await User.findByIdAndDelete(req.params.id);
