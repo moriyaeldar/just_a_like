@@ -1,4 +1,4 @@
-import Task from "../../tasks/pages/TasksPage";
+import Task from "../../tasks/pages/Tasks";
 
 const Project = () => {
   return (
