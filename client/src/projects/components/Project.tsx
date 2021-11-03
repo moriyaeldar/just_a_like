@@ -1,8 +1,9 @@
-import Task from "../../tasks/pages/Tasks";
+import Task from "../../tasks/components/TaskCard";
 
 const Project = () => {
   return (
     <div className="project-container">
+      <h1>Project Page</h1>
       <div className="todo-container">
         <h4>To Do</h4>
         <Task />
