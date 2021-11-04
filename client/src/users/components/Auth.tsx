@@ -13,7 +13,7 @@ const Auth:FC = () => {
     }
     
     return (
-        <div>
+        <div className="login-page">
             <h1>Google Login</h1>
             <GoogleLogin
             clientId={process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID ?? ''}

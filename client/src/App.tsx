@@ -1,7 +1,7 @@
 import { Switch, Route} from 'react-router-dom';
 import Auth from './users/components/Auth';
 import Project from './projects/components/Project';
-import Sidebar from './components/Sidebar';
+import Sidebar from './general/Sidebar';
 
 function App() {
   return (

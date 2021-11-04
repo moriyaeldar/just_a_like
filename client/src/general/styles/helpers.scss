@@ -1,0 +1,258 @@
+/* Breakpoint mixins */
+/* Media  Mixins */
+
+.fs12 {
+  font-size: 0.75rem;
+}
+
+.fs14 {
+  font-size: 0.875rem;
+}
+
+.fs18 {
+  font-size: 1.125rem;
+}
+
+.fs20 {
+  font-size: 1.25rem;
+}
+
+.fs24 {
+  font-size: 1.5rem;
+}
+
+.fs28 {
+  font-size: 1.75rem;
+}
+
+.fs30 {
+  font-size: 1.875rem;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flex > *.full {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.flex.column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.flex.justify-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.flex.align-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.square-ratio {
+  position: relative;
+  overflow: hidden;
+}
+
+.square-ratio::before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 100%;
+}
+
+.square-ratio > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.square-ratio > img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.video-ratio {
+  position: relative;
+  overflow: hidden;
+}
+
+.video-ratio::before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.video-ratio > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.video-ratio > img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.portrait-ratio {
+  position: relative;
+  overflow: hidden;
+}
+
+.portrait-ratio::before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 177.77778%;
+}
+
+.portrait-ratio > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.portrait-ratio > img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.main-container {
+  display: -ms-grid;
+  display: grid;
+  -webkit-column-gap: 1.6rem;
+          column-gap: 1.6rem;
+  -ms-grid-columns: 0px 1fr 0px;
+      grid-template-columns: 0px 1fr 0px;
+}
+
+.main-container > * {
+  -ms-grid-column: 2;
+  grid-column: 2;
+}
+
+.main-container > .full {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 460px) {
+  .main-container {
+    -ms-grid-columns: 1fr minmax(auto, 460px) 1fr;
+        grid-template-columns: 1fr minmax(auto, 460px) 1fr;
+  }
+}
+
+@media (min-width: 720px) {
+  .main-container {
+    -ms-grid-columns: 1fr minmax(auto, 720px) 1fr;
+        grid-template-columns: 1fr minmax(auto, 720px) 1fr;
+  }
+}
+
+@media (min-width: 960px) {
+  .main-container {
+    -ms-grid-columns: 1fr minmax(auto, 960px) 1fr;
+        grid-template-columns: 1fr minmax(auto, 960px) 1fr;
+  }
+}
+
+.card-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  grid-auto-flow: dense;
+}
+
+.card-grid > * {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-grid > *::before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 100%;
+}
+
+.card-grid > * > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.card-grid > * > img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+::-moz-selection {
+  background-color: #ce2e6c;
+  color: #fff;
+}
+
+::selection {
+  background-color: #ce2e6c;
+  color: #fff;
+}
+
+html {
+  font-family: montserrat, sans-serif;
+  line-height: 1.75;
+  color: #092F32;
+}
+
+body {
+  margin: 0;
+  background-image: url(../../images/cats-pattern-background_1425-90.jpg);
+  background-size: 40%;
+  background-attachment: fixed;
+}
+
+img {
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  font-family: caveat, serif;
+  text-transform: uppercase;
+  margin: 0 0 2rem;
+}
+
+p {
+  margin: 0 0 2rem;
+  max-width: 46ch;
+}
+/*# sourceMappingURL=styles.css.map */

@@ -3,8 +3,8 @@ import Axios from 'axios';
 
 const BASE_URL =
   process.env.NODE_ENV === 'production'
-    ? '/api/team/'
-    : 'http://localhost:3030/api/team/';
+    ? '/team/'
+    : 'http://localhost:3030/team/';
 
 const axios = Axios.create({
   withCredentials: true,
@@ -23,7 +23,7 @@ export const teamService = {
 async function query(filterBy = {}) {
   
   return axios
-    .get('http://localhost:3030/api/team', { params: filterBy })
+    .get('http://localhost:8000/team', { params: filterBy })
     .then((res) => res.data);
 }
 
@@ -31,23 +31,23 @@ async function query(filterBy = {}) {
 
 function getById(teamId:string) {
   return axios
-    .get(`http://localhost:3030/api/team/${teamId}`)
+    .get(`http://localhost:8000/team/${teamId}`)
     .then((res) => res.data);
 }
 function remove(teamId:string) {
-  return axios.delete(`http://localhost:3030/api/team/${teamId}`);
+  return axios.delete(`http://localhost:8000/team/${teamId}`);
   
 }
 async function save(team:any) {
   if (team._id) {
     
     return axios
-      .put('http://localhost:3030/api/team', team)
+      .put('http://localhost:8000/team', team)
       .then((res) => res.data);
   } else {
 
     return axios
-      .post('http://localhost:3030/api/team', team)
+      .post('http://localhost:8000/team', team)
       .then((res) => res.data);
   }
 }

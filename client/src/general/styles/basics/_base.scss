@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: $clr1;
+    color: #fff;
+}
+
+html {
+    font-family: montserrat, sans-serif;
+    line-height: 1.75;
+    color: $clr2;
+}
+
+body {
+    margin: 0;
+    background-size: 40%;
+    background-attachment: fixed;
+}
+
+img {
+    width: 100%;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: 400;
+    font-family: caveat, serif;
+    text-transform: uppercase;
+    margin: 0 0 2rem;
+}
+
+
+
+p {
+    margin: 0 0 2rem;
+    max-width: 46ch;
+}
