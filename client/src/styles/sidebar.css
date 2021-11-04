@@ -1,0 +1,43 @@
+.sidebar-container {
+  width: 15rem;
+  background-color: rgb(40, 40, 40);
+}
+
+.sidebar-container h3 {
+  color: rgb(100, 100, 100);
+  text-align: center;
+}
+
+.sidebar-container h4 {
+  color: rgb(100, 100, 100);
+  padding-left: 5%;
+}
+
+.icon {
+  font-size: 1rem;
+  color: rgb(100, 100, 100);
+  margin-right: 5px;
+}
+
+.sidebar-container > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 1px solid gray;
+  padding: 1rem 0 1rem 0;
+}
+
+.sidebar-container button {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  border: none;
+  background-color: inherit;
+  color: white;
+  padding: 5px 0 5px 1rem;
+}
+
+.sidebar-container button:hover {
+  background-color: rgb(70, 70, 70);
+  cursor: pointer;
+}

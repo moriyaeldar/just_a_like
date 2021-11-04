@@ -1,0 +1,25 @@
+.navbartasks {
+  list-style-type: none;
+}
+
+.downarrow :hover {
+  text-shadow: black;
+  cursor: pointer;
+  box-sizing: border-box;
+  flex-direction: row;
+}
+.ul {
+  list-style-type: none;
+}
+li {
+  margin: 5px;
+  color: red;
+}
+.list {
+  flex-direction: row;
+}
+p {
+  display: inline;
+  margin: 20px;
+  float: left;
+}
