@@ -10,8 +10,8 @@ module.exports = function(app: Application) {
     app.use(express.urlencoded({ extended: true }));
     app.use(cors({credentials: true,}));
 
-    app.use("/project", projectRoutes);
-    app.use("/task", taskRoutes);
-    app.use('/expertise', expertiseRoutes);
-    app.use('/user', userRoutes);
+    app.use("/api/project", projectRoutes);
+    app.use("/api/task", taskRoutes);
+    app.use('/api/expertise', expertiseRoutes);
+    app.use('/api/user', userRoutes);
 }

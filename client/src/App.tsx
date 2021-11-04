@@ -3,6 +3,7 @@ import Auth from "./users/components/Auth";
 import Project from "./projects/components/Project";
 import TasksPage from "./tasks/pages/Tasks";
 import Layout from "./hoc/Layout/Layout";
+import AllProjects from './projects/pages/AllProjects';
 import "./App.css";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Route exact path="/" component={Project} />
       <Route exact path="/auth" component={Auth} />
       <Route exact path="/tasks" component={TasksPage} />
+      <Route exact path="/projects" component={AllProjects} />
     </Layout>
   );
 }

@@ -1,5 +1,6 @@
+import { FC } from 'react';
 
-const OneProject = () => {
+const OneProject:FC = () => {
     return ( 
         <>
         <p>One Project</p>

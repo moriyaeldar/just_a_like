@@ -1,6 +1,6 @@
 import { FC } from "react";
 import "../../styles/layout.css";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Sidebar from "../../general/Sidebar/Sidebar";
 
 interface Props {
   children: React.ReactNode;

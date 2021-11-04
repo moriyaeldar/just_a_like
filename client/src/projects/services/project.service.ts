@@ -13,24 +13,18 @@ const axios = Axios.create({
 const STORAGE_KEY = 'projectDB';
 const STORAGE_KEY_LOGGEDIN = 'loggedinUser';
 
-export const projectService = {
-  query,
-  getById,
-  save,
-  remove,
-};
 async function query(filterBy = {}) {
   return axios
-    .get('http://localhost:8000/api/project', { params: filterBy })
-    .then((res) => res.data);
+  .get('http://localhost:8000/api/project', { params: filterBy })
+  .then((res) => res.data);
 }
 
 
 function getById(projectId:string) {
   return axios
-    .get(`http://localhost:8000/api/project/${projectId}`)
-    .then((res) => res.data);
-
+  .get(`http://localhost:8000/api/project/${projectId}`)
+  .then((res) => res.data);
+  
 }
 function remove(projectId:string) {
   return axios.delete(`http://localhost:8000/api/project/${projectId}`);
@@ -39,21 +33,27 @@ function remove(projectId:string) {
 async function save(project:any) {
   if (project._id) {
     return axios
-      .put('http://localhost:8000/api/project', project)
+      .put(`http://localhost:8000/api/project${project._id}`, project)
       .then((res) => res.data);
-  } else {
+    } else {
     const user = await userService.getLoggedinUser();
     project.host = { fullname: user.fullname, _id: user._id, imgUrl: user.imgUrl };
-   
+    
     return axios
-      .post('http://localhost:8000/api/project', project)
-      .then((res) => res.data);
+    .post('http://localhost:8000/api/project', project)
+    .then((res) => res.data);
   }
 }
 
+export const projectService = {
+  query,
+  getById,
+  save,
+  remove,
+};
 
 // function login(credentials) {
-//   return storageService.query(STORAGE_KEY).then((users) => {
+  //   return storageService.query(STORAGE_KEY).then((users) => {
 //     const user = users.find(
 //       (user) =>
 //         user.username === credentials.username &&

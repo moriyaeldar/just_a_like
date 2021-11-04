@@ -1,12 +1,13 @@
-import projectService from '../services/projectService';
 import { useState } from 'react';
 import { AxiosResponse } from 'axios';
+import { FC } from 'react';
+import { projectService } from './../services/projectService';
 
-const AllProjects = () => {
+const AllProjects:FC = () => {
   const [projects, setProjects] = useState();
 
-  const handleClick = () => {
-      const allprojects = projectService.getAll();
+  const handleClick = async () => {
+      const allprojects = await projectService.getAllProjects();
       console.log(allprojects);
     }
 

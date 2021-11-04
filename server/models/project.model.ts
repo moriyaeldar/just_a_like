@@ -56,4 +56,4 @@ function validateProject(project: any){
 }
 
 module.exports = model('Project', projectSchema);
-module.exports.validateProject = validateProject;
+  // module.exports.validateProject = validateProject;
