@@ -1,19 +1,25 @@
-import { userService } from '../services/user.service.js'
+// import { userService } from '../services/user.service.js'
 interface Action {
   type:string
   user: any
   users:Array<object>
   userId:string
+  expertises:Array<object>
 }
-const loggedUser = userService.getLoggedinUser();
+// const loggedUser = userService.getLoggedinUser();
 
 const initialState = {
-  user: loggedUser ? loggedUser : null,
-  users:Array({})
+  // user: loggedUser ? loggedUser : null,
+  user: {} ?? null,
+  users:Array({}),
+  expertises: Array({})
 }
 export function userReducer(state = initialState, action:Action) {
   var newState = state;
   switch (action.type) {
+    case 'FETCH_EXPERTISE':
+      newState = { ...state, expertises: action.expertises };
+      break;
     case 'SET_USER':
       newState = { ...state, user: action.user };
       break;

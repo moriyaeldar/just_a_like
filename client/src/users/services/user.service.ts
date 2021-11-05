@@ -1,13 +1,13 @@
 import Axios from 'axios';
 
-
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser';
 export const userService = {
   login,
   logout,
   signup,
   getLoggedinUser,
-  update
+  update,
+  getExpertise
 };
 const axios = Axios.create({
   withCredentials: true,
@@ -17,8 +17,15 @@ const STORAGE_KEY_LOGGEDIN = 'loggedinUser';
 const BASE_USER_URL =
   process.env.NODE_ENV === 'production'
     ? '/api/auth/'
-    : 'http://localhost:8000/api/auth/';
+    : 'http://localhost:8000/expertise/';
 
+
+async function getExpertise () {
+  const response = await Axios.get(BASE_USER_URL);
+  console.log(response);
+  
+  return response.data;
+}
 
 
 

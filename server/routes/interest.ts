@@ -1,10 +1,9 @@
 import { Router } from "express";
 const router = Router();
-const userController = require('../controllers/userController');
+const interestController = require('../controllers/interestController');
 
-// router.get('/', projectController.index);
-// router.post('/', projectController.createProject);
-
-// This is a test
+router.get('/', interestController.index);
+router.post('/', interestController.create);
+router.delete('/:id', interestController.create);
 
 module.exports = router;
