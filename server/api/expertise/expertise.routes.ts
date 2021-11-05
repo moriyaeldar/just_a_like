@@ -1,6 +1,6 @@
 import { Router } from "express";
 const router = Router();
-const expertiseController = require('../controllers/expertiseController');
+const expertiseController = require('./expertiseController');
 
 router.get('/', expertiseController.index);
 // router.get('/:id', expertiseController.show);

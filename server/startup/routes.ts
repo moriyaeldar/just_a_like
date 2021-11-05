@@ -1,9 +1,10 @@
 import express, { Application } from "express";
 const cors = require("cors");
-const projectRoutes = require("../routes/project");
-const taskRoutes = require("../routes/task");
-const expertiseRoutes = require('../routes/expertise');
-const userRoutes = require('../routes/user');
+const projectRoutes = require("../api/project/project.routes");
+const taskRoutes = require("../api/task/task.routes");
+const expertiseRoutes = require('../api/expertise/expertise.routes');
+const interestRoutes = require('../api/interest/interest.routes');
+const userRoutes = require('../api/user/user.routes');
 
 module.exports = function(app: Application) {
     app.use(express.json());
@@ -13,5 +14,6 @@ module.exports = function(app: Application) {
     app.use("/api/project", projectRoutes);
     app.use("/api/task", taskRoutes);
     app.use('/api/expertise', expertiseRoutes);
+    app.use('/api/interest', interestRoutes);
     app.use('/api/user', userRoutes);
 }

@@ -1,6 +1,6 @@
 import {Response, Request} from 'express';
-const catchAsync = require('../utillities/catchAsync');
-const Expertise = require('../models/expertise.model');
+const catchAsync = require('../../utillities/catchAsync');
+const Expertise = require('../../models/expertise.model');
 
 /**
  * Get all expertise:

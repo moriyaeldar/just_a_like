@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
-const catchAsync = require("../utillities/catchAsync");
-const Task = require("../models/task.model");
+const catchAsync = require("../../utillities/catchAsync");
+const Task = require("../../models/task.model");
 
 /*************************************************************
  ** All Routes taken from "requirments" doc. *****************

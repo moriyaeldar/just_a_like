@@ -1,6 +1,6 @@
 import {Response, Request} from 'express';
-const catchAsync = require('../utillities/catchAsync');
-const Interest = require('../models/interest.model');
+const catchAsync = require('../../utillities/catchAsync');
+const Interest = require('../../models/interest.model');
 
 /**
  * Get all interests:

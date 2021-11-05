@@ -1,9 +1,9 @@
 import {Response, Request} from 'express';
+const User = require('../../models/user.model');
+const catchAsync = require('../../utillities/catchAsync');
 const fetch = require('node-fetch');
 const {OAuth2Client} = require('google-auth-library');
 const jwt = require('jsonwebtoken');
-const User = require('../models/user.model');
-const catchAsync = require('../utillities/catchAsync');
 
 const client = new OAuth2Client(process.env.GOOGLE_AUTH_CLIENT_ID);
 

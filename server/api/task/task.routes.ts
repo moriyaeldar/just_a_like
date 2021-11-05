@@ -1,6 +1,6 @@
 import { Router } from "express";
 const router = Router();
-const taskController = require("../controllers/taskController");
+const taskController = require("./taskController");
 
 router.get("/", taskController.allTasks);
 router.post("/", taskController.createTask);

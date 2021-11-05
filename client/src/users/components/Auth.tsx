@@ -1,13 +1,11 @@
-import { FC } from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import { fetchExpertise } from '../store/user.actions';
+import { FC, useState } from 'react';
+import '../styles/auth.css';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import axios from 'axios';
 
 const Auth:FC = () => {
-    const dispatch = useDispatch();
-    const { expertises } = useSelector((state: any) => state.userModule)
+    const [login, setLogin] = useState(true);
 
     const googleAuthSuccess = (response:any) => {
         console.log(response);
@@ -21,10 +19,6 @@ const Auth:FC = () => {
     const facebookAuthSuccess = (response:any) => {
         console.log(response);
         axios.post('http://localhost:8000/user/facebook-login', { accessToken: response.accessToken, userID: response.userID })
-    }
-
-    const fetchAllExpertise = () => {
-        dispatch(fetchExpertise());
     }
     
     return (
@@ -40,12 +34,6 @@ const Auth:FC = () => {
             appId={process.env.REACT_APP_FACEBOOK_AUTH_APP_ID ?? ''}
             autoLoad={false}
             callback={facebookAuthSuccess}/>
-            <button onClick={fetchAllExpertise}>fetch</button>
-            {
-               expertises.map((exp: any) => (
-                    <p key={exp._id}>{exp.name}</p>
-                ))
-            }
         </div>
     )
 }
