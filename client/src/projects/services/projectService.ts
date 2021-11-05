@@ -1,8 +1,13 @@
 import axios from 'axios';
 import React from 'react';
-
+const BASE_URL =
+  process.env.NODE_ENV === 'production'
+    ? '/api/project/'
+    : 'http://localhost:8000/api/project/';
+    
 const client = axios.create({
-    baseURL: "http://localhost:8000/api/project"
+    baseURL: "http://localhost:8000/api/project",
+    withCredentials: true
 });
 
 const getAllProjects = async () => {

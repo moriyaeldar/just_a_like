@@ -1,28 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AxiosResponse } from 'axios';
 import { FC } from 'react';
 import { projectService } from './../services/projectService';
+// import { useDispatch,useSelector } from 'react-redux';
+// import { loadprojects } from './../store/project.actions';
 
 const AllProjects:FC = () => {
-  const [projects, setProjects] = useState();
+const [projects, setProjects] = useState([]);
+// const dispatch = useDispatch();
+// const {projects} =useSelector((state: any)=>state.projectModule);
 
+  useEffect(() => {
+    // dispatch(loadprojects());
+  });
+  
+  
   const handleGetAllClick = async () => {
     const allprojects = await projectService.getAllProjects();
-    const project = await projectService.updateProject(JSON.stringify({
-      _id: "61810e70c56eeb2f11278b96",
-      name: "MiddleEast-USA",
-      projectManagers: ["61810a8d4d3e443431ded4ac"],
-      status: 1,
-      tasks: ["61810a8d4d3e443431ded4ac"],
-      team:["61810a8d4d3e443431ded4ac"]    
-    }))
+    setProjects(allprojects);
     console.log(allprojects);
   }
-
-  return (
+  
+  if(!projects.length)return <p>loading..</p>
+   return(
       <>
         <p>AllProjects</p>
         <button onClick={handleGetAllClick}>Get all projects</button>
+        {projects.map((project: any) => <p key={project._id}>{project.name}</p>)}
       </>
     )
 }

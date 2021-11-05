@@ -1,9 +1,9 @@
-import { projectService } from '../services/project.service.js';
+import { projectService } from '../services/projectService';
 
 export function loadprojects(filter = {}) {
   return async (dispatch:any) => {
     try {
-      const projects = await projectService.query(filter);
+      const projects = await projectService.getAllProjects();
       dispatch({
         type: 'SET_projectS',
         projects,
@@ -36,7 +36,7 @@ export function filterprojects(filter:any = null) {
 export function onRemoveproject(projectId:string) {
   return (dispatch:any, getState:any) => {
     projectService
-      .remove(projectId)
+      .deleteProject(projectId)
       .then(() => {
         console.log('Deleted Succesfully!');
         dispatch({
@@ -54,7 +54,7 @@ export function onAddproject(project:Object) {
   return (dispatch:any) => {
     // const project = projectService.getEmptyproject();
     const addedproject = projectService
-      .save(project)
+      .createProject(project)
       .then((savedproject) => {
         console.log('Added project', savedproject);
         dispatch({
@@ -71,7 +71,7 @@ export function onAddproject(project:Object) {
 export function onUpdateproject(project:Object) {
   return async (dispatch:any) => {
     try {
-      const updatedproject = await projectService.save(project);
+      const updatedproject = await projectService.updateProject(project);
       dispatch({
         type: 'UPDATE_project',
         updatedproject,
@@ -86,7 +86,7 @@ export function onUpdateproject(project:Object) {
 export function onSetCurrproject(projectId:string) {
   return async (dispatch:any) => {
     try {
-      const currproject = await projectService.getById(projectId);
+      const currproject = await projectService.getProjectById(projectId);
       dispatch({
         type: 'SET_CURR_project',
         currproject,
