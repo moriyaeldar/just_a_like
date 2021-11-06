@@ -7,5 +7,6 @@ router.post("/", taskController.createTask);
 router.delete("/:tid", taskController.deleteTask);
 router.put("/:tid", taskController.updateTask);
 router.get("/:uid", taskController.getAssociatedTasks);
+router.get("/:uid/:pid", taskController.getAssociatedTasksInProject);
 
 module.exports = router;
