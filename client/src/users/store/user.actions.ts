@@ -1,5 +1,19 @@
 import { userService } from "../services/user.service";
 
+export function fetchExpertise() {
+  return async (dispatch:any) => {
+    try {
+      const expertises = await userService.getExpertise();
+      dispatch({
+        type: "FETCH_EXPERTISE",
+        expertises,
+      });
+    } catch (err) {
+      console.log("Cannot login", err);
+    }
+  };
+}
+
 export function onLogin(credentials:Object) {
   return async (dispatch:any) => {
     try {

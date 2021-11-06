@@ -1,6 +1,6 @@
 import {Response, Request} from 'express';
-const catchAsync = require('../utillities/catchAsync');
-const Expertise = require('../models/expertise.model');
+const catchAsync = require('../../utillities/catchAsync');
+const Expertise = require('../../models/expertise.model');
 
 /**
  * Get all expertise:
@@ -18,7 +18,7 @@ module.exports.index = catchAsync(async (req: Request, res: Response) => {
 
 /**
  * Create expertise:
- * Any user from level 1-4
+ * Require user in level 1
  * can create expertises
  * */
 module.exports.create = catchAsync(async (req: Request, res: Response) => {

@@ -1,6 +1,6 @@
 import { Router } from "express";
 const router = Router();
-const projectController = require('../controllers/projectController');
+const projectController = require('./projectController');
 
 router.get("/", projectController.getAllProjects);
 router.get("/:id", projectController.getSpecificProject);

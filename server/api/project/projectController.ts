@@ -1,8 +1,8 @@
 import { Response, Request } from "express";
-const catchAsync = require("../utillities/catchAsync");
-// const { Project, validateProject } = require('../models/project.model'); //Validate is not export for now.
-const Project = require('../models/project.model');
-const { User } = require('../models/user.model'); //Must to be ---validateUser---
+const catchAsync = require("../../utillities/catchAsync");
+// const { Project, validateProject } = require('../../models/project.model'); //Validate is not export for now.
+const Project = require('../../models/project.model');
+const { User } = require('../../models/user.model'); //Must to be ---validateUser---
 
 /*************************************************************
  ** All Routes taken from "requirments" doc. *****************

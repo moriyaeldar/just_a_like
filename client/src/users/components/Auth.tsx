@@ -1,9 +1,12 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import '../styles/auth.css';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import axios from 'axios';
 
 const Auth:FC = () => {
+    const [login, setLogin] = useState(true);
+
     const googleAuthSuccess = (response:any) => {
         console.log(response);
         axios.post('http://localhost:8000/user/google-login', {tokenId: response.tokenId})
