@@ -20,11 +20,16 @@ const [projects, setProjects] = useState([]);
     setProjects(allprojects);
     console.log(allprojects);
   }
+
+  const handleOneProjectClick = async () => {
+    
+  }
   
    return(
       <>
         <p>AllProjects</p>
         <button onClick={handleGetAllClick}>Get all projects</button>
+        <button onClick={handleOneProjectClick}>Choose one project</button>
         {projects.map((project: any) => <p key={project._id}>{project.name}</p>)}
       </>
     )

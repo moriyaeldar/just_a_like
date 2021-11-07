@@ -4,6 +4,7 @@ import Project from "./projects/components/Project";
 import TasksPage from "./tasks/pages/Tasks";
 import Layout from "./hoc/Layout/Layout";
 import AllProjects from './projects/pages/AllProjects';
+import OneProject from './projects/pages/OneProject';
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route exact path="/auth" component={Auth} />
       <Route exact path="/tasks" component={TasksPage} />
       <Route exact path="/projects" component={AllProjects} />
+      <Route exact path="/project/:id" component={OneProject} />
     </Layout>
   );
 }
