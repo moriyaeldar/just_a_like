@@ -16,24 +16,24 @@ const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>
 
 
   useEffect(() => {
-   
+     console.log(watch("example")) 
+ 
   }, []);
 
-   console.log(watch("example")) // watch input value by passing the name of it
 
   
  
   return (
     <section className="profile-page">
  <form onSubmit={handleSubmit(onSubmit)}>
-      {/* register your input into the hook by invoking the "register" function */}
-      <input defaultValue="test" {...register("example")} />
-      
-      {/* include validation with required or other standard HTML validation rules */}
-      <input {...register("exampleRequired", { required: true })} />
-      {/* errors will return when field validation fails  */}
+ <label htmlFor="user-name">User name</label>
+      <input id="user-name" defaultValue="test" {...register("example")} />
+      <label htmlFor="experties">Experties</label>
+      <input id="experties" defaultValue="test" {...register("exampleRequired", { required: true })} />
+      <label htmlFor="interests">Interests</label>
+      <input id="interests" defaultValue="test" {...register("exampleRequired", { required: true })} />
+     
       {errors.exampleRequired && <span>This field is required</span>}
-      
       <input type="submit" />
     </form>
     </section>
