@@ -6,8 +6,7 @@ const BASE_URL =
     : 'http://localhost:8000/api/project/';
     
 const client = axios.create({
-    baseURL: "http://localhost:8000/api/project",
-    withCredentials: true
+    baseURL: "http://localhost:8000/api/project"
 });
 
 const getAllProjects = async () => {

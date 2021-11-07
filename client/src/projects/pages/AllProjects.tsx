@@ -21,7 +21,6 @@ const [projects, setProjects] = useState([]);
     console.log(allprojects);
   }
   
-  if(!projects.length)return <p>loading..</p>
    return(
       <>
         <p>AllProjects</p>
