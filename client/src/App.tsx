@@ -1,6 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import Auth from "./users/components/Auth";
-import Project from "./projects/components/Project";
+import Project from "./projects/components/Project";//This one in not the dashboard
 import TasksPage from "./tasks/pages/Tasks";
 import Layout from "./hoc/Layout/Layout";
 import AllProjects from './projects/pages/AllProjects';
