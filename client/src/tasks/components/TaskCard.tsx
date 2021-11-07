@@ -1,7 +1,7 @@
 import { BsPlusLg, BsThreeDotsVertical } from "react-icons/bs";
 
-import { details } from "../helpers/cardInfo";
-import { Headers } from "../helpers/cardInfo";
+import { details } from "../services/cardInfo";
+import { Headers } from "../services/cardInfo";
 
 const TaskCard = () => {
   return (
