@@ -8,12 +8,10 @@ import OneProject from './projects/pages/OneProject';
 import "./App.css";
 import "../src/general/styles/styles.scss";
 import { Profile } from "./users/pages/profile";
-import {Header} from "./general/components/app-header"
 
 function App() {
   return (
     <Layout>
-      <Header/>
       <Switch />
       <Route exact path="/" component={Project} />
       <Route exact path="/auth" component={Auth} />
