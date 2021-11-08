@@ -25,12 +25,13 @@ const Sidebar: FC = () => {
   return (
     <>
    {isMenuOpen&& (  <div className="sidebar-container">
-        <a onClick={onCloseMenu}>
-          <Open />
-        </a>
+      
 
         <div className="logo-container">
-          <Svg />
+            <a onClick={onCloseMenu}>
+          <Open />
+        </a>
+          <Svg />Kulla_Like
         </div>
         <div className="buttons-container">
           <button>
@@ -88,10 +89,11 @@ const Sidebar: FC = () => {
         </div>
       </div>)}
    { !isMenuOpen&&(  <div className="mini-side-bar">
+       
+        <div className="logo-container"> 
         <a onClick={onOpenMenu}>
           <Open />
         </a>
-        <div className="logo-container">
           <Svg />
         </div>
         <div className="buttons-container">
