@@ -11,5 +11,9 @@
 @import "basics/_buttons.scss";
 
 // Components
-@import "../../users/styles/auth.css"
+@import "../../users/styles/auth.scss";
+@import "./cmps/header.scss";
+@import "../../users/styles/user-modal.scss";
+@import "../styles/cmps/sidebar.scss"
+
 //views

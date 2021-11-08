@@ -17,7 +17,6 @@ function App() {
       <Switch />
       <Route exact path="/" component={Project} />
       <Route exact path="/auth" component={Auth} />
-      <Route exact path="/profile" component={Profile} />
       <Route exact path="/tasks" component={TasksPage} />
       <Route exact path="/projects" component={AllProjects} />
       <Route exact path="/project/:id" component={OneProject} />
