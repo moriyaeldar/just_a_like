@@ -1,6 +1,6 @@
 import { Switch, Route } from "react-router-dom";
+import { HomePage } from './general/pages/HomePage';
 import Auth from "./users/components/Auth";
-import Project from "./projects/components/Project";//This one in not the dashboard
 import TasksPage from "./tasks/pages/Tasks";
 import Layout from "./hoc/Layout/Layout";
 import AllProjects from './projects/pages/AllProjects';
@@ -15,7 +15,7 @@ function App() {
     <Layout>
       <Header/>
       <Switch />
-      <Route exact path="/" component={Project} />
+      <Route exact path="/" component={HomePage} />
       <Route exact path="/auth" component={Auth} />
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/tasks" component={TasksPage} />
