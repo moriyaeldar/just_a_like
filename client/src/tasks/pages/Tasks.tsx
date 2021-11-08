@@ -1,14 +1,13 @@
 import { FC } from "react";
 
 import NavbarTasks from "../components/NavbarTasks";
-import TaskCard from "../components/TaskCard";
+import TaskCards from "../components/TaskCards";
 
 const TasksPage: FC = () => {
   return (
     <>
-      <h1>Tasks page</h1>
       <NavbarTasks />
-      <TaskCard />
+      <TaskCards />
     </>
   );
 };

@@ -1,0 +1,11 @@
+.column {
+  direction: rtl;
+  display: grid;
+  columns: 4 auto;
+}
+
+.title {
+  color: blue;
+  text-align: left;
+  direction: ltr;
+}

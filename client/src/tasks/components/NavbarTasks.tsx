@@ -4,27 +4,29 @@ import { IoIosArrowDown } from "react-icons/io";
 import classes from "../../styles/navbartasks.module.css";
 
 const NavbarTasks = () => {
-  const [arrow, setArrow] = useState(false);
+  const [tasksPageMenu, setTasksPageMenu] = useState(false);
 
-  const dropDown = () => {
-    setArrow(!arrow);
+  const tasksPageMenuHandler = () => {
+    setTasksPageMenu(!tasksPageMenu);
   };
   return (
     <nav className={classes.navbartasks}>
       <h1>My Tasks</h1>
-      <IoIosArrowDown onClick={dropDown} className={classes.downarrow} />
-      {arrow && (
-        <ul className={classes.ul}>
-          <li className={classes.li}>Edit Project Details</li>
+      <IoIosArrowDown
+        onClick={tasksPageMenuHandler}
+        className={classes.downarrow}
+      />
+      {tasksPageMenu && (
+        <div>
+          <li className={classes.li}>Sync to calendar</li>
+          <li>Add Tasks via Email</li>
           <li>Edit</li>
-          <li>Edit</li>
-        </ul>
+        </div>
       )}
-      <ul>
-        <p className={classes.list}>List</p>
-        <p>Board</p>
-        <p>Calendar</p>
-      </ul>
+      <li>List</li>
+      <li>Board</li>
+      <li>Calendar</li>
+      <li>Files</li>
     </nav>
   );
 };
