@@ -1,6 +1,7 @@
 .sidebar-container {
   width: 15rem;
-  background-color: rgb(40, 40, 40);
+  background-color:$clr7;
+  color: $txt;
 }
 
 .sidebar-container h3 {
@@ -33,11 +34,30 @@
   justify-content: left;
   border: none;
   background-color: inherit;
-  color: white;
   padding: 5px 0 5px 1rem;
 }
 
 .sidebar-container button:hover {
-  background-color: rgb(70, 70, 70);
+  background-color: $clr3;
+  color:$clr1;
   cursor: pointer;
+}
+
+.logo-container{
+  background-color: $clr3;
+}
+.mini-side-bar{
+  .buttons-container{
+    display: flex;
+  flex-direction: column;
+  button{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    border: none;
+    background-color: inherit;
+    padding: 5px 0 5px 1rem;
+  }
+  }
+  
 }

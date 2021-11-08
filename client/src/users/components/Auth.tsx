@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import '../styles/auth.css';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import axios from 'axios';

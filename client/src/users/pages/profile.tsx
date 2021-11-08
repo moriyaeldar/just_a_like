@@ -12,12 +12,11 @@ type Inputs = {
 export const Profile = () => {
 const {}= useState()
 const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
 
 
   useEffect(() => {
      console.log(watch("example")) 
- 
   }, []);
 
 
