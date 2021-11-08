@@ -26,18 +26,16 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    experties: [
-        {
+    expertise: {
             type: Schema.Types.ObjectId,
             ref: "Expertise",
-            required: false,
-        },
-    ],
+            required: true,
+    },
     interests: [
         {
             type: Schema.Types.ObjectId,
             ref: "Interest",
-            required: false,
+            required: true,
         },
     ],
     level: {

@@ -1,5 +1,4 @@
-.taskstatus {
-  color: red;
-  display: flex;
-  flex-direction: row;
+.task {
+  border-radius: 0.75rem;
+  box-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
 }

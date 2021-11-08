@@ -18,16 +18,8 @@ export const details = [
 ];
 
 export const Headers = [
-  {
-    name: "Recently Assigned",
-  },
-  {
-    name: "Do Today",
-  },
-  {
-    name: "Do next Week",
-  },
-  {
-    name: "Done",
-  },
+  "Recently Assigned",
+  "Do Today",
+  "Do next Week",
+  "Done",
 ];
