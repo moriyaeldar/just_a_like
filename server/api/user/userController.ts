@@ -16,6 +16,8 @@ module.exports.index = catchAsync(async (req: Request, res: Response) => {
     // Get all users from database
     const users = User.find();
 
+    console.log(`[USER-GET] - send ${users.length} users`);
+    
     // return to client found users
     res.json(users);
 });
@@ -46,10 +48,10 @@ module.exports.index = catchAsync(async (req: Request, res: Response) => {
  * */
 module.exports.googleLogin = catchAsync(async (req: Request, res: Response) => {
     // Recive token from client (google provide this token) 
-    const {tokenId} = req.body;
+    const {tokenID} = req.body;
     
     // Check google token validity 
-    let response = await client.verifyIdToken({idToken: tokenId, audience: process.env.GOOGLE_AUTH_CLIENT_ID});
+    let response = await client.verifyIdToken({idToken: tokenID, audience: process.env.GOOGLE_AUTH_CLIENT_ID});
     
     const {name, email} = response.payload;
 
@@ -78,21 +80,25 @@ module.exports.googleLogin = catchAsync(async (req: Request, res: Response) => {
  * */
 module.exports.googleRegister = catchAsync(async (req: Request, res: Response) => {
     // Recive token from client (google provide this token) 
-    const {tokenId, linkedin_url, username, phone_number, expertise, interests} = req.body;
+    const {tokenID, linkedin_url, username, phone_number, expertise, interests} = req.body;
     
     // Check token validity
-    let response = await client.verifyIdToken({idToken: tokenId, audience: process.env.GOOGLE_AUTH_CLIENT_ID});
+    let response = await client.verifyIdToken({idToken: tokenID, audience: process.env.GOOGLE_AUTH_CLIENT_ID});
     const { given_name, family_name, email } = response.payload;
-
+    console.log(req.body);
+    
     // Find user
-    const user = User.findOne({email: email});
+    const user = await User.findOne({email: email});
+    console.log(user);
     
     if(user){
         // If user exist return error with status code 400
         res.status(400).send('User already exist');
     }else {
+        console.log('Create user....');
+        
         // Else create user with given data from client and google
-        const user = new User({
+        const user = await new User({
             username: username,
             first_name: given_name,
             last_name: family_name,
@@ -102,8 +108,10 @@ module.exports.googleRegister = catchAsync(async (req: Request, res: Response) =
             interests: interests,
             email: email
         }) 
+
+        console.log(user);
         // Save user
-        const savedUser = user.save();
+        const savedUser = await user.save();
         // Generate token
         // and send token and user to client
         const token  = jwt.sign({_id: savedUser._id}, process.env.JWT_SECRET, {expiresIn: '7d'});
@@ -122,10 +130,10 @@ module.exports.googleRegister = catchAsync(async (req: Request, res: Response) =
  * */
 module.exports.facebookLogin = catchAsync(async (req: Request, res: Response) => {
     // Recive token and userID from client (facebook provide this)
-    const { accessToken, userID } = req.body;
+    const { tokenID, userID } = req.body;
 
     // Get some data of the user by facebook api (first_name, last_name, id, email)
-    let urlGraphFacebook = `https://graph.facebook.com/v12.0/${userID}/?fields=id,first_name,last_name,email&access_token=${accessToken}`;
+    let urlGraphFacebook = `https://graph.facebook.com/v12.0/${userID}/?fields=id,first_name,last_name,email&access_token=${tokenID}`;
     let response = await fetch(urlGraphFacebook, {method: 'GET'});
     response = await response.json();
     const { email } = response;
@@ -154,13 +162,19 @@ module.exports.facebookLogin = catchAsync(async (req: Request, res: Response) =>
  * */
  module.exports.facebookRegister = catchAsync(async (req: Request, res: Response) => {
     // Recive token and userID from client (facebook provide this)
-    const {accessToken, userID,  linkedin_url, username, phone_number, expertise, interests} = req.body;
+    const {tokenID, userID,  linkedin_url, username, phone_number, expertise, interests} = req.body;
 
     // Get some data of the user by facebook api (first_name, last_name, id, email)
-    let urlGraphFacebook = `https://graph.facebook.com/v12.0/${userID}/?fields=id,first_name,last_name,email&access_token=${accessToken}`;
+    let urlGraphFacebook = `https://graph.facebook.com/v12.0/${userID}/?fields=id,first_name,last_name,email&access_token=${tokenID}`;
     let response = await fetch(urlGraphFacebook, {method: 'GET'});
     response = await response.json();
+
+    if(response.error) {
+        res.status(500).send(response.error);
+    }
+    
     const { email, first_name, last_name } = response;
+    
     
     // Find user
     const user = await User.findOne({email: email});
@@ -170,7 +184,7 @@ module.exports.facebookLogin = catchAsync(async (req: Request, res: Response) =>
         res.status(400).send('User already exist');
     }else {
         // Else create user with given data from client and google
-        const user = new User({
+        const user = await new User({
             username: username,
             first_name: first_name,
             last_name: last_name,
@@ -181,7 +195,7 @@ module.exports.facebookLogin = catchAsync(async (req: Request, res: Response) =>
             email: email
         }) 
         // Save user
-        const savedUser = user.save();
+        const savedUser = await user.save();
         // Generate token
         // and send token and user to client
         const token  = jwt.sign({_id: savedUser._id}, process.env.JWT_SECRET, {expiresIn: '7d'});
