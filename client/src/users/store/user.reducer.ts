@@ -1,40 +1,63 @@
-// import { userService } from '../services/user.service.js'
+import { updateObject } from '../../utilities/utility';
+import * as actionTypes from './actionTypes';
+
 interface Action {
   type:string
   user: any
   users:Array<object>
   userId:string
-  expertises:Array<object>
 }
-// const loggedUser = userService.getLoggedinUser();
 
 const initialState = {
-  // user: loggedUser ? loggedUser : null,
-  user: {} ?? null,
-  users:Array({}),
-  expertises: Array({})
+  user: null as any,
+  token:  null as any,
+  users: [] as any,
+  loading: false,
+  error: null as any,
 }
+
+const authStart = (state: any, action: any) => {
+  return updateObject(state, {
+      loading: true, 
+      error: null
+  })
+}
+
+const authSuccess = (state: any, action: any) => {
+  return updateObject(state, {
+      token: action.token,
+      user: action.user,
+      loading: false,
+      error: null
+  })
+}
+
+
+const authFail = (state: any, action: any) => {
+  return updateObject(state, {
+      loading: false,
+      error: action.error
+  })
+}
+
+const authLogout = (state: any, action: any) => {
+  return updateObject(state, {
+      error: null,
+      user: null,
+      token: null
+  })
+}
+
+
 export function userReducer(state = initialState, action:Action) {
   var newState = state;
   switch (action.type) {
-    case 'FETCH_EXPERTISE':
-      newState = { ...state, expertises: action.expertises };
-      break;
-    case 'SET_USER':
-      newState = { ...state, user: action.user };
-      break;
-  
-    case 'REMOVE_USER':
-      newState = {
-        ...state,
-        users: state.users.filter((user:any) => user._id !== action.userId),
-      };
-      break;
-    case 'SET_USERS':
-      newState = { ...state, users: action.users };
-      break;
+    case actionTypes.AUTH_START: return authStart(state, action);
+    case actionTypes.AUTH_FAIL: return authFail(state, action);
+    case actionTypes.AUTH_SUCCESS: return authSuccess(state, action);
+    case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
  
-    default:
+    default: return state;
   }
  
   return newState;

@@ -1,10 +1,15 @@
 import { FC, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import '../styles/auth.css';
+import { useDispatch, useSelector } from 'react-redux';
+import '../styles/auth.scss';
 import { AuthInit, StepOne, StepTow, StepThree, StepFour, StepFive } from '../components/AuthSteps/AuthSteps';
 import axios from 'axios';
+import {userService } from '../services/user.service';
+import {authLogin, authRegister} from '../store/user.actions';
 
 const Auth:FC = () => {
+    const dispatch = useDispatch();
+    const {user, loading, token} = useSelector((state:any)=> state.userModule);
     const [login, setLogin] = useState(true);
     const [step, setStep]:any = useState(0);
     const [expertises, setExpertises]:any = useState([]);
@@ -34,8 +39,7 @@ const Auth:FC = () => {
             const {tokenID} = getValues();
             if(tokenID) setStep(1);
         }else{
-            const userResponse:any = await axios.post('http://localhost:8000/api/user/google-login', {tokenID: tokenId});
-            console.log(userResponse);
+            dispatch(authLogin({tokenID: tokenId}));
         }
     }
 
@@ -48,8 +52,7 @@ const Auth:FC = () => {
             const {tokenID} = getValues();
             if(tokenID && userID) setStep(1);
         }else {
-            const userResponse:any = await axios.post('http://localhost:8000/api/user/facebook-login', {tokenID: accessToken, userID: userID});
-            console.log(userResponse);
+            dispatch(authLogin({tokenID: accessToken, userID: userID}));
         }
     }
 
@@ -69,16 +72,7 @@ const Auth:FC = () => {
         if(expertise) setStep(5);
     }
     const onFinalSubmit = async (data: any) => {
-        const { userID } = getValues();
-        console.log(data);
-        
-        if(userID) {
-            const userResponse:any = await axios.post('http://localhost:8000/api/user/facebook-register', data);
-            console.log(userResponse);
-        }else {
-            const userResponse:any = await axios.post('http://localhost:8000/api/user/google-register', data);
-            console.log(userResponse);
-        }
+        dispatch(authRegister(data));
     }
 
     let auth = (
@@ -132,7 +126,7 @@ const Auth:FC = () => {
         )
     }
 
-    return auth;
+    return (auth);
 }
 
 export default Auth;
