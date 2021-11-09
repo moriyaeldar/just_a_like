@@ -16,7 +16,7 @@ function App() {
       <Route exact path="/auth" component={Auth} />
       <Route exact path="/tasks" component={TasksPage} />
       <Route exact path="/projects" component={AllProjects} />
-      <Route exact path="/project/:id" component={OneProject} />
+      <Route exact path="/projects/:id" component={OneProject} />
     </Layout>
   );
 }

@@ -29,8 +29,8 @@ const OneProject:FC = () => {
     };
     
     return ( 
-        <div className="DisplayOneProject">
-        <p>One Project</p>
+        <div className="displayOneProject">
+        <p className="title">One Project</p>
         <button onClick={handleClick}>Get details project</button>
         <p>Name: {project.name}</p>
         <p>Project managers: {project.projectManagers}</p>
