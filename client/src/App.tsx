@@ -6,7 +6,6 @@ import Layout from "./hoc/Layout/Layout";
 import AllProjects from './projects/pages/AllProjects';
 import OneProject from './projects/pages/OneProject';
 import "./App.css";
-import "../src/general/styles/styles.scss";
 import { Profile } from "./users/pages/profile";
 
 function App() {

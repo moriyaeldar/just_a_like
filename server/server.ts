@@ -7,8 +7,8 @@ require("./startup/routes")(app);
 const seeds = require("./startup/seed");
 
 //Uncomment to seed db
-seeds.seedExperties();
-seeds.seedInterests();
+// seeds.seedExperties();
+// seeds.seedInterests();
 // seeds.seedUsers();
 // seeds.seedTasks();
 // seeds.seedProjects();

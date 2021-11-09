@@ -1,5 +1,4 @@
 import { Switch, Route, Link } from "react-router-dom";
-import { Loader } from "./loader";
 import { useState } from "react";
 import { ReactComponent as UserIcon } from "../../assets/svg/user.svg";
 import { Profile } from "../../users/pages/profile";
@@ -16,13 +15,13 @@ const Header = () => {
   };
   return (
     <section className="header">
-      <a onClick={openModal}>
+     {!isModalOpen&&( <a onClick={openModal}>
         <UserIcon />
-      </a>
+      </a>)}
       {isModalOpen && (
         <div className="user-modal">
           <Profile />
-          <a onClick={onCloseModal}>❎</a>
+          <a onClick={onCloseModal}>close</a>
         </div>
       )}
     </section>

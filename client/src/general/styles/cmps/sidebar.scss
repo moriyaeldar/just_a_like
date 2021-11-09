@@ -38,14 +38,26 @@
 }
 
 .sidebar-container button:hover {
-  background-color: rgb(70, 70, 70);
+  background-color: $clr3;
+  color:$clr1;
   cursor: pointer;
 }
 
+.logo-container{
+  background-color: $clr3;
+}
 .mini-side-bar{
   .buttons-container{
     display: flex;
   flex-direction: column;
+  button{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    border: none;
+    background-color: inherit;
+    padding: 5px 0 5px 1rem;
+  }
   }
   
 }
