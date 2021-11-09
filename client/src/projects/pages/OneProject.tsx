@@ -29,15 +29,15 @@ const OneProject:FC = () => {
     };
     
     return ( 
-        <>
-        <p>One Project</p>
+        <div className="displayOneProject">
+        <p className="title">One Project</p>
         <button onClick={handleClick}>Get details project</button>
         <p>Name: {project.name}</p>
         <p>Project managers: {project.projectManagers}</p>
         <p>Tasks: {project.tasks}</p>
         <p>Status: {project.status}</p>
         <p>Tasks: {project.tasks}</p>
-        </>
+        </div>
      );
   }
    
