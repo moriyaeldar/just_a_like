@@ -29,7 +29,7 @@ const OneProject:FC = () => {
     };
     
     return ( 
-        <>
+        <div className="DisplayOneProject">
         <p>One Project</p>
         <button onClick={handleClick}>Get details project</button>
         <p>Name: {project.name}</p>
@@ -37,7 +37,7 @@ const OneProject:FC = () => {
         <p>Tasks: {project.tasks}</p>
         <p>Status: {project.status}</p>
         <p>Tasks: {project.tasks}</p>
-        </>
+        </div>
      );
   }
    

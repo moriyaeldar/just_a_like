@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ReactComponent as UserIcon } from "../../assets/svg/user.svg";
 import { Profile } from "../../users/pages/profile";
 
-export const Header = () => {
+const Header = () => {
   const [isModalOpen, setModal] = useState(false);
 
   const openModal = () => {
@@ -28,3 +28,4 @@ export const Header = () => {
     </section>
   );
 };
+export default Header;
