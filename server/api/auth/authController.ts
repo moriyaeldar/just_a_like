@@ -180,13 +180,15 @@ module.exports.facebookLogin = catchAsync(async (req: Request, res: Response) =>
  * */
 module.exports.tokenValidation = catchAsync(async (req: Request, res: Response) => {
     const token = req.header("x-auth-token");
-    if(!token) return res.send(false)
-
+  
+    if(!token) return res.status(400).send(false);
+    
     const verified = jwt.verify(token, process.env.JWT_SECRET)
-    if(!verified) return res.send(false);
+    
+    if(!verified) return res.status(400).send(false);
 
-    const user = await User.findOne({_id: verified.id})
-    if(!user) return res.send(false);
+    const user = await User.findOne({_id: verified._id})
+    if(!user) return res.status(400).send(false);
 
-    res.send(user);
+    res.send({user: user, token: token});
 });
