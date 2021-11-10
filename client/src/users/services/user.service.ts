@@ -8,8 +8,8 @@ const BASE_USER_URL =
 export const userService = {
       login,
       register,
-      getLoggedinUser,
-      update,
+      tokenIsValid,
+      getLoggedinUser
 };
 const axios = Axios.create({
   baseURL: BASE_USER_URL,
@@ -64,23 +64,34 @@ async function register(data: RegisterInterface) {
   }
 }
 
-async function update(user:any) {
-  console.log('this is user storage***********');
-  // Handle case in which admin updates other user's details
-  if (getLoggedinUser()._id === user._id) _saveLocalUser(user);
-  return user;
+async function tokenIsValid(token:any) {
+  try{
+    const res = await Axios.post(`${BASE_USER_URL}tokenIsValid`, null, {headers: { "x-auth-token": token }});
+    return res.data;
+  }catch (err) {
+    return err;
+  }
 }
 
-function _saveLocalUser(user:Object) {
-  if (!user) return;
-  sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
-  return user;
-}
+// async function update(user:any) {
+//   console.log('this is user storage***********');
+//   // Handle case in which admin updates other user's details
+//   if (getLoggedinUser()._id === user._id) _saveLocalUser(user);
+//   return user;
+// }
+
+// function _saveLocalUser(user:Object) {
+//   if (!user) return;
+//   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
+//   return user;
+// }
 
 function getLoggedinUser() {
   return JSON.parse(
     sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null'
     );
   }
+
+
   
   

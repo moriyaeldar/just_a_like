@@ -171,4 +171,24 @@ module.exports.facebookLogin = catchAsync(async (req: Request, res: Response) =>
         });
     }
     
-})
+});
+
+/**
+ * Check token validation:
+ * Any user from level 1-4
+ * can check token validation
+ * */
+module.exports.tokenValidation = catchAsync(async (req: Request, res: Response) => {
+    const token = req.header("x-auth-token");
+  
+    if(!token) return res.status(400).send(false);
+    
+    const verified = jwt.verify(token, process.env.JWT_SECRET)
+    
+    if(!verified) return res.status(400).send(false);
+
+    const user = await User.findOne({_id: verified._id})
+    if(!user) return res.status(400).send(false);
+
+    res.send({user: user, token: token});
+});

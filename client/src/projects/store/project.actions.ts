@@ -18,6 +18,25 @@ export function loadprojects(filter = {}) {
     }
   };
 }
+
+export function loadproject(projectId: string) {
+  return async (dispatch:any) => {
+    try {
+      const project = await projectService.getProjectById(projectId);
+      dispatch({
+        type: 'SET_project',
+        project,
+      });
+      // dispatch({
+      //   type: 'FILTER_projectS',
+      //   filter,
+      // });
+      return project;
+    } catch (err) {
+      console.log('Cannot load projects', err);
+    }
+  };
+}
 export function filterprojects(filter:any = null) {
   // return async (dispatch) => {
   //   try {

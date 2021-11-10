@@ -60,8 +60,8 @@ async function seedUsers() {
       email: faker.internet.email(),
       phone_number: faker.phone.phoneNumber(),
       linkedin_url: faker.internet.email("linkedin"),
-      experties: ["618269e71c08cbf7596a541f", "618269e71c28cbf7596a541f"],
-      interests: ["61826b7008baa26b3af19e26", "61826b7008baa46b3af19e26"],
+      expertise: "618269e71c08cbf7596a541f",
+      interests: ["61826b7008baa06b3af19e26", "61826b7008baa16b3af19e26"],
       level: "4",
     });
 
@@ -121,11 +121,7 @@ async function seedProjects() {
   for (let i = 0; i < 15; i++) {
     const newProject = {
       name: faker.name.firstName(),
-      projectManagers: [
-        mongoose.Types.ObjectId("888269e71c18cbf7596a541f"),
-        mongoose.Types.ObjectId("888269e71c28cbf7596a541f"),
-        mongoose.Types.ObjectId("888269e71c38cbf7596a541f"),
-      ],
+      projectManager: mongoose.Types.ObjectId(),
       status: faker.datatype.number(100),
       tasks: [
         mongoose.Types.ObjectId("999269e71c08cbf7596a541f"),

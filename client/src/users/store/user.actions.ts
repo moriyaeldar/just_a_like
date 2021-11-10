@@ -60,7 +60,25 @@ export const authLogin = (data: LoginInterface) => {
   };
 }
 
-
+export const authCheckState = () => {
+  return async (dispatch:any) => {
+    try {
+      const token = localStorage.getItem('token');
+      if(!token) {
+          dispatch(authLogout());
+      }else{
+          const res = await userService.tokenIsValid(token)
+          if(res !== false){
+              dispatch(authSuccess(res.user, res.token));
+          }else{
+              dispatch(authLogout);
+          }
+      }
+    }catch(err){
+      dispatch(authLogout());        
+    }
+  }
+}
 
 
 

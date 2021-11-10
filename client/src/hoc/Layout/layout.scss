@@ -1,9 +1,12 @@
 .layout {
   display: flex;
+  flex-direction: row-reverse;
   min-height: 100vh;
   .main {
     display: flex;
     flex-flow: column;
     width: 100%;
+    margin: 10px;
   }
+  
 }

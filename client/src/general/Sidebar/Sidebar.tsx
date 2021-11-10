@@ -8,9 +8,20 @@ import {
   AiOutlineRise,
   AiOutlineFileSearch,
 } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { GiConvergenceTarget } from "react-icons/gi";
 import { ReactComponent as Svg } from "../../assets/svg/logo.svg";
 import { ReactComponent as Open } from "../../assets/svg/open-icon.svg";
+import { ReactComponent as Calender } from "../../assets/svg/calender.svg";
+import { ReactComponent as Favorites } from "../../assets/svg/favorits.svg";
+import { ReactComponent as Home } from "../../assets/svg/home.svg";
+import { ReactComponent as Invite } from "../../assets/svg/invite.svg";
+import { ReactComponent as InviteTeam } from "../../assets/svg/inviteTeam.svg";
+import { ReactComponent as Logout } from "../../assets/svg/logout.svg";
+import { ReactComponent as Project } from "../../assets/svg/project.svg";
+import { ReactComponent as Setting } from "../../assets/svg/setting.svg";
+import { ReactComponent as Vi } from "../../assets/svg/vi.svg";
+import { ReactComponent as Vi2 } from "../../assets/svg/vi2.svg";
 
 const Sidebar: FC = () => {
   const [isMenuOpen, setMenu] = useState(false);
@@ -34,58 +45,37 @@ const Sidebar: FC = () => {
           <Svg />Kulla_Like
         </div>
         <div className="buttons-container">
+        <Link to="/">
           <button>
-            <IconContext.Provider value={{ className: "icon" }}>
-              <AiOutlineHome /> Home
-            </IconContext.Provider>
+            <Home className="icon"/> Home
+          </button>
+          </Link>
+          <button>
+          <Vi className="icon"/>  Boards
+          </button>
+          <Link to="/projects">
+            <button>
+              <Project className="icon"/> Projects
+          </button>
+          </Link>
+          <button>
+             <Vi2 className="icon"/> My Tasks
           </button>
           <button>
-            <IconContext.Provider value={{ className: "icon" }}>
-              <AiOutlineCheckCircle /> My Tasks
-            </IconContext.Provider>
-          </button>
-          <button>
-            <IconContext.Provider value={{ className: "icon" }}>
-              <AiOutlineBell /> Inbox
-            </IconContext.Provider>
-          </button>
-          <button>
-            <IconContext.Provider value={{ className: "icon" }}>
-              <AiOutlineRise /> Reporting
-            </IconContext.Provider>
-          </button>
-          <button>
-            <IconContext.Provider value={{ className: "icon" }}>
-              <AiOutlineFileSearch /> Portfolios
-            </IconContext.Provider>
-          </button>
-          <button>
-            <IconContext.Provider value={{ className: "icon" }}>
-              <GiConvergenceTarget /> Goals
-            </IconContext.Provider>
+            <Calender className="icon"/> Calender
           </button>
         </div>
         <div className="favorites-container">
-          <h4>Favorites</h4>
-          {/* Favorite State Goes Here */}
-          <button>Show more</button>
+         <button> <Favorites className="icon"/> Favorites</button>
         </div>
-        <div className="saved-searches-container">
-          <h4>Saved Searches</h4>
-          <button>Tasks I've created</button>
-          <button>Tasks I've assigned to others</button>
-          <button>Recently completed tasks</button>
-          <button>Messages I've sent</button>
-          <button>Messeages I've received</button>
-        </div>
-        <div className="design-container">
-          <h4>Design</h4>
-        </div>
+      
         <div className="invite-container">
-          <button>Invite Teammates</button>
+           <button><Invite className="icon"/> Invite Friends</button>
+          <button><InviteTeam className="icon"/> Invite Teammates</button>         
         </div>
-        <div className="getting-started-container">
-          <button>Help & Getting Started</button>
+        <div className="setting-container">
+          <button><Setting className="icon"/> Setting</button>
+          <button><Logout className="icon"/> Logout</button>
         </div>
       </div>)}
    { !isMenuOpen&&(  <div className="mini-side-bar">
@@ -97,37 +87,33 @@ const Sidebar: FC = () => {
           <Svg />
         </div>
         <div className="buttons-container">
+        <Link to="/">
           <button>
-            <IconContext.Provider value={{ className: "icon" }}>
-              <AiOutlineHome />
-            </IconContext.Provider>
+            <Home className="icon"/> 
+          </button>
+          </Link>
+          <button>
+          <Vi className="icon"/>  
+          </button>
+          <Link to="/projects">
+            <button>
+              <Project className="icon"/> 
+          </button>
+          </Link>
+          <button>
+             <Vi2 className="icon"/> 
           </button>
           <button>
-            <IconContext.Provider value={{ className: "icon" }}>
-              <AiOutlineCheckCircle />
-            </IconContext.Provider>
+            <Calender className="icon"/> 
           </button>
-          <button>
-            <IconContext.Provider value={{ className: "icon" }}>
-              <AiOutlineBell />
-            </IconContext.Provider>
-          </button>
-          <button>
-            <IconContext.Provider value={{ className: "icon" }}>
-              <AiOutlineRise />
-            </IconContext.Provider>
-          </button>
-          <button>
-            <IconContext.Provider value={{ className: "icon" }}>
-              <AiOutlineFileSearch />
-            </IconContext.Provider>
-          </button>
-          <button>
-            <IconContext.Provider value={{ className: "icon" }}>
-              <GiConvergenceTarget />
-            </IconContext.Provider>
-          </button>
-        </div>
+       
+         <button> <Favorites className="icon"/> </button>
+      
+           <button><Invite className="icon"/> </button>
+          <button><InviteTeam className="icon"/> </button>         
+          <button><Setting className="icon"/> </button>
+          <button><Logout className="icon"/> </button>
+          </div>
       </div>)}
     </>
   );

@@ -11,13 +11,12 @@ const projectSchema = new Schema({
     default: "New Project",
   },
   //admin should be at level 2
-  projectManagers: [
+  projectManager: 
     {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
-  ],
   status: {
     type: Number,
     required: true,
@@ -46,7 +45,7 @@ const projectSchema = new Schema({
 function validateProject(project: any){
   const schema = Joi.object({
     name: Joi.string(),
-    projectManagers: Joi.array().item(Joi.objectId()).required(),
+    projectManager: Joi.Joi.objectId().required(),
     status: Joi.number(),
     tasks: Joi.array().item(Joi.objectId()),
     team: Joi.objectId()
