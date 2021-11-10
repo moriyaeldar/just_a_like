@@ -5,7 +5,9 @@ import TaskCard from "./TaskCard";
 import { Headers } from "../services/cardInfo";
 import classes from "../../styles/taskcards.module.css";
 
-const TaskCards = () => {
+const TaskCards = ({ tasks }: { tasks: any }) => {
+  console.log(tasks);
+
   return (
     <Fragment>
       {Headers.map((header) => (
@@ -13,7 +15,10 @@ const TaskCards = () => {
           <header className={classes.title}>{header}</header>
           <BsThreeDotsVertical />
           <BsPlusLg />
-          <TaskCard />
+          {tasks.map((task: any) => (
+            <TaskCard task={task} />
+          ))}
+
           <section style={{ textAlign: "center" }}>
             <BsPlusLg /> Add task
           </section>
