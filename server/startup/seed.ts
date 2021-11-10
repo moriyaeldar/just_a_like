@@ -121,11 +121,7 @@ async function seedProjects() {
   for (let i = 0; i < 15; i++) {
     const newProject = {
       name: faker.name.firstName(),
-      projectManagers: [
-        mongoose.Types.ObjectId("888269e71c18cbf7596a541f"),
-        mongoose.Types.ObjectId("888269e71c28cbf7596a541f"),
-        mongoose.Types.ObjectId("888269e71c38cbf7596a541f"),
-      ],
+      projectManagers: mongoose.Types.ObjectId("888269e71c18cbf7596a541f"),
       status: faker.datatype.number(100),
       tasks: [
         mongoose.Types.ObjectId("999269e71c08cbf7596a541f"),
