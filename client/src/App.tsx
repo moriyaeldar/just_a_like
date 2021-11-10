@@ -1,6 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import { HomePage } from './general/pages/HomePage';
-import Auth from "./users/components/Auth";
+import Auth from "./users/pages/Auth";
 import TasksPage from "./tasks/pages/Tasks";
 import Layout from "./hoc/Layout/Layout";
 import AllProjects from './projects/pages/AllProjects';

@@ -25,6 +25,7 @@ const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
   return (
     <section className="profile-page">
  <form onSubmit={handleSubmit(onSubmit)}>
+   <h1>Profile</h1>
  <label htmlFor="user-name">User name</label>
       <input id="user-name" defaultValue="test" {...register("example")} />
       <label htmlFor="experties">Experties</label>

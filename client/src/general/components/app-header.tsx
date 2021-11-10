@@ -15,13 +15,16 @@ const Header = () => {
   };
   return (
     <section className="header">
-     {!isModalOpen&&( <a onClick={openModal}>
-        <UserIcon />
-      </a>)}
+      {!isModalOpen && (
+        <a onClick={openModal}>
+          <UserIcon />
+        </a>
+      )}
       {isModalOpen && (
         <div className="user-modal">
-          <Profile />
           <a onClick={onCloseModal}>close</a>
+
+          <Profile />
         </div>
       )}
     </section>

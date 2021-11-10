@@ -1,58 +1,74 @@
 import Axios from 'axios';
 
-const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser';
-export const userService = {
-  login,
-  logout,
-  signup,
-  getLoggedinUser,
-  update,
-  getExpertise
-};
-const axios = Axios.create({
-  withCredentials: true,
-});
-const STORAGE_KEY_LOGGEDIN = 'loggedinUser';
-
 const BASE_USER_URL =
   process.env.NODE_ENV === 'production'
     ? '/api/auth/'
-    : 'http://localhost:8000/expertise/';
+    : 'http://localhost:8000/api/auth/';
+
+export const userService = {
+      login,
+      register,
+      getLoggedinUser,
+      update,
+};
+const axios = Axios.create({
+  baseURL: BASE_USER_URL,
+  withCredentials: true,
+});
+const STORAGE_KEY_LOGGEDIN = 'loggedinUser';
+const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser';
 
 
-async function getExpertise () {
-  const response = await Axios.get(BASE_USER_URL);
-  console.log(response);
-  
-  return response.data;
+
+
+export interface LoginInterface {
+  userID?: string;
+  tokenID: string;
 }
 
+async function login(data: LoginInterface){
+  try{
+    if(data.userID) {
+      const res = await Axios.post(`${BASE_USER_URL}facebook-login/`, data);
+      return res.data;
+    }else {
+      const res = await Axios.post(`${BASE_USER_URL}google-login/`, data);
+      return res.data;
+    }
+  }catch (err) {
+    return err;
+  }
+}
 
+export interface RegisterInterface {
+  userID?: String;
+  tokenID: String;
+  username?: String;
+  phone_number: String;
+  linkedin_url: String;
+  expertise: String;
+  interests: Array<string>;
+}
+
+async function register(data: RegisterInterface) {
+  try{
+    if(data.userID) {
+      const res = await Axios.post(`${BASE_USER_URL}facebook-register/`, data);
+      return res.data;
+    }else {
+      const res = await Axios.post(`${BASE_USER_URL}google-register/`, data);
+      return res.data;
+    }
+  }catch (err) {
+    return err;
+  }
+}
 
 async function update(user:any) {
   console.log('this is user storage***********');
   // Handle case in which admin updates other user's details
   if (getLoggedinUser()._id === user._id) _saveLocalUser(user);
   return user;
-}
-
-async function login(userCred = {}) {
-  const user = await axios.post('auth/login', userCred)
-    .then((res) => res.data);
-  // socketService.emit('set-user-socket', user._id);
-  if (user) return _saveLocalUser(user);
-}
-
-async function signup(userCred:Object) {
-  const user = await axios.post('auth/signup', userCred)
-  .then((res) => res.data);
-  return _saveLocalUser(user);
-}
-
-async function logout() {
-  sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER);
-  return await axios.post('auth/logout')
-  .then((res) => res.data);
 }
 
 function _saveLocalUser(user:Object) {
@@ -64,6 +80,7 @@ function _saveLocalUser(user:Object) {
 function getLoggedinUser() {
   return JSON.parse(
     sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null'
-  );
-}
-
+    );
+  }
+  
+  
