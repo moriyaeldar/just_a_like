@@ -16,8 +16,6 @@ function App() {
   const { token } = useSelector((state:any) => state.userModule);
 
   useEffect(() => {
-    console.log('wowowow');
-    
     dispatch(authCheckState());
   },[])
 

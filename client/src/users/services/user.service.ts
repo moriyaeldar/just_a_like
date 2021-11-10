@@ -67,7 +67,6 @@ async function register(data: RegisterInterface) {
 async function tokenIsValid(token:any) {
   try{
     const res = await Axios.post(`${BASE_USER_URL}tokenIsValid`, null, {headers: { "x-auth-token": token }});
-    console.log(res.data);
     return res.data;
   }catch (err) {
     return err;

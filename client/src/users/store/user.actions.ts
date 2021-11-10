@@ -64,8 +64,6 @@ export const authCheckState = () => {
   return async (dispatch:any) => {
     try {
       const token = localStorage.getItem('token');
-      console.log(token);
-      
       if(!token) {
           dispatch(authLogout());
       }else{
