@@ -1,0 +1,11 @@
+.home-page{
+    .content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    section{
+        border-bottom: rgba(0, 0, 0, 0.349) 1px solid;
+        width: 50%;
+    }
+}

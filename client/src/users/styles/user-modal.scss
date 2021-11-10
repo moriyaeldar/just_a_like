@@ -1,15 +1,48 @@
-.user-modal{
-    z-index: 1;
-    width: 50%;
-    height: 100vh;
+.user-modal {
+  z-index: 1;
+  width: 50%;
+  height: 100vh;
 }
 
-.profile-page{
-    form{
-        border: $clr1 0.5px solid;
-        padding: 20px;
-        border-radius: 15px;
-        display: flex;
-        flex-direction: column;
-    }
+.profile-page {
+  color: $txt;
+  border-color: $txt;
+  h1 {
+    margin: 6px;
+  }
+  form {
+    border: $txt 0.5px solid;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  input {
+    width: 240px;
+    border-radius: 6px;
+    padding: 5px;
+  }
+  .submit {
+    margin: 8px;
+    width: 60px;
+    height: 40px;
+    align-self: end;
+  }
+
+  .avatar-input {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    background-image: url('../../assets/svg/avatars/defult.svg');
+    background-repeat:no-repeat;
+    background-position: center;
+  }
+  .left,
+  .right {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-body{
+      display: flex;
+  }
 }

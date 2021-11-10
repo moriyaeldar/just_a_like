@@ -3,25 +3,15 @@
   background-color:$clr7;
   color: $txt;
   border-right: #00000012 0.5px solid;
-}
 
-.sidebar-container h3 {
-  color: rgb(100, 100, 100);
-  text-align: center;
-}
-
-.sidebar-container h4 {
-  color: rgb(100, 100, 100);
-  padding-left: 5%;
-}
 
 .icon {
   font-size: 1rem;
   color: rgb(100, 100, 100);
-  margin-right: 5px;
+  margin-right: 40px;
 }
 
-.sidebar-container > div {
+ > div {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -29,37 +19,47 @@
   padding: 1rem 0 1rem 0;
 }
 
-.sidebar-container button {
+ button {
   width: 100%;
   display: flex;
   justify-content: left;
   border: none;
   background-color: inherit;
   padding: 5px 0 5px 1rem;
+  margin-bottom: 18px;
 }
 
-.sidebar-container button:hover {
+ button:hover {
   background-color: $clr3;
   color:$clr1;
   cursor: pointer;
 }
-
+}
 .logo-container{
   background-color: $clr4;
+  margin-left: 4px
+;
 }
 .mini-side-bar{ 
   border-right: #00000012 0.5px solid;
   .buttons-container{
     display: flex;
   flex-direction: column;
-
-  button{
+  margin-top: 15px;
+  button {
     width: 100%;
     display: flex;
     justify-content: left;
     border: none;
     background-color: inherit;
-    padding: 5px 0 5px 1rem;
+    justify-content: space-evenly;
+    margin-bottom: 18px;
+  }
+  
+   button:hover {
+    background-color: $clr3;
+    color:$clr1;
+    cursor: pointer;
   }
   }
   

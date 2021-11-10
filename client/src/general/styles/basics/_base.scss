@@ -10,7 +10,7 @@
 html {
     font-family:Assistant-Regular, sans-serif;
     line-height: 1.75;
-    color: $clr2;
+    color: $txt;
 }
 
 body {
@@ -24,9 +24,7 @@ img {
 }
 
 h1,h2,h3,h4,h5,h6 {
-    font-weight: 400;
     font-family: Assistant-SemiBold, sans-serif;
-    text-transform: uppercase;
     margin: 0 0 2rem;
 }
 
