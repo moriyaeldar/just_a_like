@@ -1,10 +1,10 @@
 import { FC, useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import '../styles/auth.scss';
 import { AuthInit, StepOne, StepTow, StepThree, StepFour, StepFive } from '../components/AuthSteps/AuthSteps';
 import axios from 'axios';
-import {userService } from '../services/user.service';
 import {authLogin, authRegister} from '../store/user.actions';
 
 const Auth:FC = () => {
@@ -75,6 +75,13 @@ const Auth:FC = () => {
         dispatch(authRegister(data));
     }
 
+    let authRedirect = null;
+    if(token !== null) {
+        authRedirect = (
+            <Redirect to='/'/>
+        )
+    }
+
     let auth = (
         <AuthInit
         googleKey={process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID}
@@ -126,7 +133,12 @@ const Auth:FC = () => {
         )
     }
 
-    return (auth);
+    return (
+        <>
+        {authRedirect}
+        {auth}
+        </>
+        );
 }
 
 export default Auth;

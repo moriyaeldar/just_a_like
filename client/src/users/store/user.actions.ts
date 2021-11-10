@@ -61,27 +61,26 @@ export const authLogin = (data: LoginInterface) => {
 }
 
 export const authCheckState = () => {
-  return (dispatch:any) => {
+  return async (dispatch:any) => {
+    try {
       const token = localStorage.getItem('token');
+      console.log(token);
+      
       if(!token) {
           dispatch(authLogout());
       }else{
-          axios.post('/tokenIsValid', null, {headers: { "x-auth-token": token }})
-              .then(response => {
-                  if(response.data !== false){
-                      dispatch(authSuccess(response.data.user, response.data.token));
-                  }else{
-                      dispatch(authLogout);
-                  }
-              }).catch(error => {
-                  dispatch(authLogout());
-              });
+          const res = await userService.tokenIsValid(token)
+          if(res !== false){
+              dispatch(authSuccess(res.user, res.token));
+          }else{
+              dispatch(authLogout);
+          }
       }
+    }catch(err){
+      dispatch(authLogout());        
+    }
   }
 }
-
-
-
 
 
 
