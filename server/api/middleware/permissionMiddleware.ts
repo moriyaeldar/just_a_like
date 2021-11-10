@@ -88,9 +88,8 @@ const allPermitted = async (
   }
 };
 
-/**Check if user exist
- * @access Level 1, 2, 3, 4
- * @augments user._id should be in request body.
+/**Check if user have an authorized token
+ * @augments x-auth-token should be in request header.
  */
 const requireUser = async (req: Request, res: Response, next: NextFunction) => {
   const token = req.header("x-auth-token");
