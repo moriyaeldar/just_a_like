@@ -28,7 +28,7 @@ export const AuthInit:FC<AuthInitProps> = (props) => (
         <hr/>
         <span>
             {props.login ? 'New here? ' : 'Have an account? '} 
-            <a onClick={props.authSwitch}>{props.login ? 'Sign up' : 'Login'}</a> 
+            <span onClick={props.authSwitch}>{props.login ? 'Sign up' : 'Login'}</span> 
         </span>
     </div>
 )
