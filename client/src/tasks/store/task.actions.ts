@@ -1,11 +1,11 @@
-import { taskService } from '../services/task.service.js';
+import { taskService } from "../services/task.service";
 
-export function loadtasks(filter = {}) {
-  return async (dispatch:any) => {
+export function loadTasks(filter = {}) {
+  return async (dispatch: any) => {
     try {
       const tasks = await taskService.query(filter);
       dispatch({
-        type: 'SET_taskS',
+        type: "SET_TASKS",
         tasks,
       });
       // dispatch({
@@ -14,11 +14,11 @@ export function loadtasks(filter = {}) {
       // });
       return tasks;
     } catch (err) {
-      console.log('Cannot load tasks', err);
+      console.log("Cannot load tasks", err);
     }
   };
 }
-export function filtertasks(filter:any = null) {
+export function filtertasks(filter: any = null) {
   // return async (dispatch) => {
   //   try {
   //     const tasks = await taskService.query(filter);
@@ -33,67 +33,67 @@ export function filtertasks(filter:any = null) {
   // };
 }
 
-export function onRemovetask(taskId:string) {
-  return (dispatch:any, getState:any) => {
+export function onRemovetask(taskId: string) {
+  return (dispatch: any, getState: any) => {
     taskService
       .remove(taskId)
       .then(() => {
-        console.log('Deleted Succesfully!');
+        console.log("Deleted Succesfully!");
         dispatch({
-          type: 'REMOVE_task',
+          type: "REMOVE_TASK",
           taskId,
         });
       })
-      .catch((err:any) => {
-        console.log('Cannot remove task', err);
+      .catch((err: any) => {
+        console.log("Cannot remove task", err);
       });
   };
 }
 
-export function onAddtask(task:Object) {
-  return (dispatch:any) => {
+export function onAddtask(task: Object) {
+  return (dispatch: any) => {
     // const task = taskService.getEmptytask();
     const addedtask = taskService
       .save(task)
       .then((savedtask) => {
-        console.log('Added task', savedtask);
+        console.log("Added task", savedtask);
         dispatch({
-          type: 'ADD_task',
+          type: "ADD_TASK",
           task: savedtask,
         });
       })
       .catch((err) => {
-        console.log('Cannot add task', err);
+        console.log("Cannot add task", err);
       });
   };
 }
 
-export function onUpdatetask(task:Object) {
-  return async (dispatch:any) => {
+export function onUpdatetask(task: Object) {
+  return async (dispatch: any) => {
     try {
       const updatedtask = await taskService.save(task);
       dispatch({
-        type: 'UPDATE_task',
+        type: "UPDATE_TASK",
         updatedtask,
       });
       return task;
     } catch (err) {
-      console.log('Cannot  update task', err);
+      console.log("Cannot  update task", err);
     }
   };
 }
 
-export function onSetCurrtask(taskId:string) {
-  return async (dispatch:any) => {
+export function onSetCurrtask(taskId: string) {
+  return async (dispatch: any) => {
     try {
       const currtask = await taskService.getById(taskId);
       dispatch({
-        type: 'SET_CURR_task',
+        type: "SET_CURR_TASK",
         currtask,
       });
       return currtask;
     } catch (err) {
-      console.log('Cannot  onSetCurrtask ', err);
+      console.log("Cannot  onSetCurrtask ", err);
     }
   };
 }

@@ -1,5 +1,6 @@
 import { Response, Request, NextFunction } from "express";
 const User = require("../../models/user.model");
+const jwt = require("jsonwebtoken");
 
 /**Only Admin access
  * [Level 1 User]
@@ -71,16 +72,40 @@ const taskManager = async (req: Request, res: Response, next: NextFunction) => {
  * @access Level 1, 2, 3, 4
  * @augments user._id should be in request body.
  */
- const allPermitted = async (req: Request, res: Response, next: NextFunction) => {
-    const { _id } = req.body.user || req.body;
-    const user = await User.findById(_id);
-  
-    if (user) {
-      next();
-    } else {
-      res.status(401).send("User not authorized");
-      throw new Error("Not authorized");
-    }
-  };
+const allPermitted = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { _id } = req.body.user || req.body;
+  const user = await User.findById(_id);
 
-export { admin, taskManager, volunteer, notJunior, allPermitted };
+  if (user) {
+    next();
+  } else {
+    res.status(401).send("User not authorized");
+    throw new Error("Not authorized");
+  }
+};
+
+/**Check if user have an authorized token
+ * @augments x-auth-token should be in request header.
+ */
+const requireUser = async (req: Request, res: Response, next: NextFunction) => {
+  const token = req.header("x-auth-token");
+
+  if (!token) {
+    console.log(token);
+    
+    return res.status(401).send("User not authorized");}
+
+  const verified = jwt.verify(token, process.env.JWT_SECRET);
+
+  if (!verified) {
+    console.log(token);
+
+    return res.status(400).send("User not authorized");}
+
+  next();
+};
+export { admin, requireUser, taskManager, volunteer, notJunior, allPermitted };
