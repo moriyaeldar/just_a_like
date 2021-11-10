@@ -178,7 +178,7 @@ module.exports.facebookLogin = catchAsync(async (req: Request, res: Response) =>
  * Any user from level 1-4
  * can check token validation
  * */
-module.exports.tokenValidation = catchAsync(async (req,res) => {
+module.exports.tokenValidation = catchAsync(async (req: Request, res: Response) => {
     const token = req.header("x-auth-token");
     if(!token) return res.send(false)
 
