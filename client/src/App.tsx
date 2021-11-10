@@ -11,10 +11,6 @@ import { Profile } from "./users/pages/profile";
 
 function App() {
 
-  let routes = (
-
-  )
-
   return (
     <Layout>
       <Switch />
