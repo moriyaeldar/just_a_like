@@ -5,8 +5,9 @@ import { details } from "../services/cardInfo";
 
 import classes from "../../styles/taskcard.module.css";
 import TaskMenu from "./TaskMenu";
+import { AddTask } from "./AddTask";
 
-const TaskCard = () => {
+const TaskCard = ({ task }: { task: any }) => {
   const [taskMenu, setTaskMenu] = useState(false);
 
   const MenutaskHandler = () => {
@@ -18,12 +19,13 @@ const TaskCard = () => {
       {details.map((detail) => (
         <div className={classes.task}>
           <h3>
-            {detail.taskName} <BsThreeDotsVertical onClick={MenutaskHandler} />
+            {task.name} <BsThreeDotsVertical onClick={MenutaskHandler} />
           </h3>
           {taskMenu && <TaskMenu />}
-          <label>{detail.taskPiority}</label>
+          <label>{task.description}</label>
         </div>
       ))}
+      <AddTask />
     </div>
   );
 };

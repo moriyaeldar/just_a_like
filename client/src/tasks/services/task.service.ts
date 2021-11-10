@@ -19,9 +19,10 @@ export const taskService = {
   remove,
 };
 async function query(filterBy = {}) {
-  return axios
-    .get("http://localhost:8000/api/task", { params: filterBy })
-    .then((res) => res.data);
+  const res = await Axios.get("http://localhost:8000/api/task", {
+    params: filterBy,
+  });
+  return res.data;
 }
 
 function getById(taskId: string) {
