@@ -2,7 +2,8 @@ import React from "react";
 import { Component, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { ReactComponent as DefultB} from "../../assets/svg/avatars/defult-blank.svg";
+import {  useSelector } from 'react-redux';
+import { ReactComponent as DefultB} from "../../assets/svg/avatars/0.svg";
 import { ReactComponent as Defult} from "../../assets/svg/avatars/defult.svg";
 import { ReactComponent as A} from "../../assets/svg/avatars/1.svg";
 import { ReactComponent as B} from "../../assets/svg/avatars/2.svg";
@@ -22,6 +23,7 @@ type Inputs = {
 
 export const Profile = () => {
   const [isOptionsOpen, setOptions] = useState(false);
+  const { user } = useSelector((state: any)=>state.userModule);
 
   const {
     register,
@@ -33,6 +35,8 @@ export const Profile = () => {
 
   useEffect(() => {
     console.log(watch("example"));
+    console.log(user);
+    
   }, []);
  const onOpenOptions=()=>{
   isOptionsOpen?setOptions(false):setOptions(true);
@@ -51,18 +55,28 @@ export const Profile = () => {
               id="user-avatar"
               onClick={onOpenOptions}
             >
-              <Defult/>
-              <option value="defult"></option>
+              <option value="defult">-</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
             {isOptionsOpen&&(<div className="options">
-              <DefultB/> <E/> <F/> <H/>
-               <I/> <J/> <A/> <B/> <C/> <D/> <G/>
-
+              0<DefultB/>1<A/>
+              2<B/>3<C/>4<D/>
+              5<E/>6<F/>7<G/>8<H/>9<I/>10<J/> 
             </div>)}
-            <label htmlFor="user-name">Your full name</label>
+            <label htmlFor="user-name">Your user name</label>
             <input
               id="user-name"
-              defaultValue="test"
+              defaultValue={user.username}
               {...register("example")}
             />
           </div>
