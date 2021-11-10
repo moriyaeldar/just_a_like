@@ -15,9 +15,9 @@ const seeds = require("./startup/seed");
 // seeds.seedTeams();
 
 // Seed all DB
-// seeds.seedDB();
+seeds.seedDB();
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
-  console.log("Connect succesfully on port: " + port);
+  console.log("Connect successfully on port: " + port);
 });

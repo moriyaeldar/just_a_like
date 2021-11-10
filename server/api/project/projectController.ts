@@ -49,7 +49,7 @@ module.exports.createProject = catchAsync(async (req: Request, res: Response) =>
       //  }
       const project = new Project({
         name: req.body.name,
-        projectManagers: req.body.projectManagers,
+        projectManager: req.body.projectManager,
         status: req.body.status,
         tasks: req.body.tasks,
         team: req.body.team
@@ -97,7 +97,7 @@ module.exports.updateProject = catchAsync(
  
       //  //Check the users that will be project manager
       //  const projectMangerId = req.params.projectManager;
-      //      let user = await User.findById(projectMangers);
+      //      let user = await User.findById(projectManger);
       //      if(!user) 
       //        return res.status(404).json(`The user with the id: ${projectMangerId} does not exist.`);
       //      if(user.level > 2) //Check the permission level
@@ -108,7 +108,7 @@ module.exports.updateProject = catchAsync(
          req.params.id,
          {
           name: req.body.name,
-          projectManagers: req.body.projectManagers,
+          projectManager: req.body.projectManager,
           status: req.body.status,
           tasks: req.body.tasks,
           team: req.body.team
