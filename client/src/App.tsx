@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+
 import { HomePage } from './general/pages/HomePage';
 import Auth from "./users/pages/Auth";
 import TasksPage from "./tasks/pages/Tasks";
@@ -9,6 +10,11 @@ import "./App.css";
 import { Profile } from "./users/pages/profile";
 
 function App() {
+
+  let routes = (
+
+  )
+
   return (
     <Layout>
       <Switch />
