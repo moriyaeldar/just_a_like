@@ -14,7 +14,7 @@ const OneProject:FC = () => {
     //Validate of project:
     // const schema = Joi.object({
     //     name: Joi.string(),
-    //     projectManagers: Joi.array().item(Joi.objectId()).required(),
+    //     projectManager: Joi.Joi.objectId().required(),
     //     status: Joi.number(),
     //     tasks: Joi.array().item(Joi.objectId()),
     //     team: Joi.objectId()
@@ -28,7 +28,7 @@ const OneProject:FC = () => {
         <div className="displayOneProject">
         <p className="title">One Project</p>
         <p>Name: {project.name}</p>
-        <p>Project managers: {project.projectManagers}</p>
+        <p>Project manager: {project.projectManager}</p>
         <p>Tasks: {project.tasks}</p>
         <p>Status: {project.status}</p>
         <p>Tasks: {project.tasks}</p>
