@@ -60,6 +60,27 @@ export const authLogin = (data: LoginInterface) => {
   };
 }
 
+export const authCheckState = () => {
+  return (dispatch:any) => {
+      const token = localStorage.getItem('token');
+      if(!token) {
+          dispatch(authLogout());
+      }else{
+          axios.post('/tokenIsValid', null, {headers: { "x-auth-token": token }})
+              .then(response => {
+                  if(response.data !== false){
+                      dispatch(authSuccess(response.data.user, response.data.token));
+                  }else{
+                      dispatch(authLogout);
+                  }
+              }).catch(error => {
+                  dispatch(authLogout());
+              });
+      }
+  }
+}
+
+
 
 
 

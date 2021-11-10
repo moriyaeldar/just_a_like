@@ -54,4 +54,3 @@ module.exports.delete = catchAsync(async (req: Request, res: Response) => {
     }
     res.send(result);
 });
-

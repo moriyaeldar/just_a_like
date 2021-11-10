@@ -64,6 +64,15 @@ async function register(data: RegisterInterface) {
   }
 }
 
+async function tokenIsValid(token:any) {
+  try{
+    const res = Axios.post('/tokenIsValid', null, {headers: { "x-auth-token": token }});
+    
+  }catch (err) {
+
+  }
+}
+
 async function update(user:any) {
   console.log('this is user storage***********');
   // Handle case in which admin updates other user's details
