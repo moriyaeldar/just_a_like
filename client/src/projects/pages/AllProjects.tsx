@@ -8,7 +8,6 @@ import ListProjects from '../components/ListProjects';
 import { ProjectPreview } from './../components/ProjectPreview';
 
 const AllProjects:FC = () => {
-// const [projects, setProjects] = useState([]);
 const dispatch = useDispatch();
 const { projects } = useSelector((state: any)=>state.projectModule);
 
@@ -16,8 +15,8 @@ const { projects } = useSelector((state: any)=>state.projectModule);
       dispatch(loadprojects());
   },[]);
   
-
-   return(
+  console.log(projects);
+  return(
       <>
         <p>AllProjects</p>
         <ListProjects projects = {projects} />
