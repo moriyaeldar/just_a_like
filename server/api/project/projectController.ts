@@ -97,7 +97,11 @@ module.exports.updateProject = catchAsync(
  
       //  //Check the users that will be project manager
       //  const projectMangerId = req.params.projectManager;
+<<<<<<< HEAD
       //      let user = await User.findById(projectManger);
+=======
+      //      let user = await User.findById(projectMangers);
+>>>>>>> 99afb019b01f5bb9edf9d087bbc133fac3328bc1
       //      if(!user) 
       //        return res.status(404).json(`The user with the id: ${projectMangerId} does not exist.`);
       //      if(user.level > 2) //Check the permission level
