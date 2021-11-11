@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { authCheckState } from './users/store/user.actions';
 import { HomePage } from './general/pages/HomePage';
@@ -26,13 +26,15 @@ function App() {
       <Route exact path="/tasks" component={TasksPage} />
       <Route exact path="/projects" component={AllProjects} />
       <Route exact path="/projects/:id" component={OneProject} />
+      <Redirect exact to="/"/>
     </Layout>
   )
 
   if(!token) {
     routes = (
       <>
-      <Route exact path="/" component={Auth} />
+      <Route exact path="/auth" component={Auth} />
+      <Redirect exact to="/auth" />
       </>
     )
   }
