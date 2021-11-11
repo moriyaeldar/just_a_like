@@ -3,8 +3,8 @@ import Axios from 'axios';
 
 const BASE_URL =
   process.env.NODE_ENV === 'production'
-    ? '/team/'
-    : 'http://localhost:3030/team/';
+    ? '/api/team/'
+    : 'http://localhost:8000/team/';
 
 const axios = Axios.create({
   withCredentials: true,

@@ -1,0 +1,1 @@
+{"version":3,"file":"interest.model.js","sourceRoot":"","sources":["../../models/interest.model.ts"],"names":[],"mappings":";;;;;AAAA,wDAAgC;AAChC,MAAM,EAAE,KAAK,EAAE,MAAM,EAAE,GAAG,kBAAQ,CAAC;AAEnC,MAAM,cAAc,GAAG,IAAI,MAAM,CAAC;IAC9B,IAAI,EAAE;QACF,IAAI,EAAE,MAAM;QACZ,QAAQ,EAAE,IAAI;KACjB;CACJ,CAAC,CAAC;AAEH,MAAM,CAAC,OAAO,GAAG,KAAK,CAAC,UAAU,EAAE,cAAc,CAAC,CAAC"}

@@ -1,6 +1,6 @@
 const faker = require("faker");
 const Task = require("../models/task.model");
-const User = require("../models/user.model.ts");
+const User = require("../models/user.model");
 const Project = require("../models/project.model");
 const Expertise = require("../models/expertise.model");
 const Interest = require("../models/interest.model");

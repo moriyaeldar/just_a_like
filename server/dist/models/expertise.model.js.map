@@ -1,0 +1,1 @@
+{"version":3,"file":"expertise.model.js","sourceRoot":"","sources":["../../models/expertise.model.ts"],"names":[],"mappings":";;;;;AAAA,wDAAgC;AAChC,MAAM,EAAE,KAAK,EAAE,MAAM,EAAE,GAAG,kBAAQ,CAAC;AAEnC,MAAM,eAAe,GAAG,IAAI,MAAM,CAAC;IAC/B,IAAI,EAAE;QACF,IAAI,EAAE,MAAM;QACZ,QAAQ,EAAE,IAAI;KACjB;CACJ,CAAC,CAAC;AAEH,MAAM,CAAC,OAAO,GAAG,KAAK,CAAC,WAAW,EAAE,eAAe,CAAC,CAAC"}
