@@ -8,6 +8,7 @@ import TasksPage from "./tasks/pages/Tasks";
 import Layout from "./hoc/Layout/Layout";
 import AllProjects from './projects/pages/AllProjects';
 import OneProject from './projects/pages/OneProject';
+import ProjectDetails from './projects/pages/ProjectDetails';
 import "./App.css";
 import { Profile } from "./users/pages/profile";
 
@@ -25,7 +26,7 @@ function App() {
       <Route exact path="/" component={HomePage} />
       <Route exact path="/tasks" component={TasksPage} />
       <Route exact path="/projects" component={AllProjects} />
-      <Route exact path="/projects/:id" component={OneProject} />
+      <Route exact path="/projects/:id" component={ProjectDetails} />
       <Redirect exact to="/"/>
     </Layout>
   )

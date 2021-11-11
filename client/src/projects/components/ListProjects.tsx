@@ -18,7 +18,7 @@ const ListProjects = ({projects} : {projects: Array<any>}) => {
         <>
         {/* <button className="btn" onClick={handleViewClick}>Change view</button> */}
         <div className="list-projects">
-            {projects && projects.map((project: any) => <ProjectView project={project}/>)} 
+            {projects && projects.map((project: any) => <ProjectView key={project._id} project={project}/>)} 
         </div>
         </>
     );
