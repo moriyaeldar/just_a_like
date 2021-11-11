@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { ProjectPreview } from './ProjectPreview';
+import { ProjectView } from './ProjectView';
 
 const ListProjects = ({projects} : {projects: Array<any>}) => {
     return (
         <>
-         {projects && projects.map((project: any) => <ProjectPreview project={project}/>)}
+         {projects && projects.map((project: any) => <ProjectView project={project}/>)}
         </>
     );
 }

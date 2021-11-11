@@ -1,6 +1,6 @@
 
 
-export const ProjectPreview = ({project} : {project: any}) => {
+export const ProjectView = ({project} : {project: any}) => {
     
     return (
         <>
