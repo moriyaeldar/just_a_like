@@ -16,7 +16,6 @@ const { projects } = useSelector((state: any)=>state.projectModule);
   
   return(
       <>
-        <p>AllProjects</p>
         <ListProjects projects = {projects} />
       </>
     )

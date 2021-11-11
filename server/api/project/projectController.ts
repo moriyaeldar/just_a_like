@@ -53,7 +53,7 @@ module.exports.createProject = catchAsync(async (req: Request, res: Response) =>
         projectManager: req.body.projectManager,
         status: req.body.status,
         tasks: req.body.tasks,
-        team: req.body.team
+        participants: req.body.participants
       });
 
       await project.save();
@@ -116,7 +116,7 @@ module.exports.updateProject = catchAsync(
           projectManager: req.body.projectManager,
           status: req.body.status,
           tasks: req.body.tasks,
-          team: req.body.team
+          participants: req.body.participants
          }
        );
         
