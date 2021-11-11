@@ -1,19 +1,87 @@
 .login-page {
-  background-color: rgba(177, 231, 231, 0.425);
+  background-image: url("../../assets/images/auth-background.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
   display: flex;
-  flex-flow: column;
-  width: 402px;
+  justify-content: center;
   align-items: center;
 }
 
-.login-page button {
-  width: 230px;
-  height: 31px;
-  border: 1px solid rgba(0, 0, 0, 0.75);
-  box-sizing: border-box;
+.login-card {
+  background-color: #ffff;
+  display: flex;
+  flex-flow: column;
+  width: 400px;
+  height: 528px;
+  align-items: center;
   border-radius: 8px;
-  background-color: white;
-  color: black;
-  font-size: 16px;
-  font-weight: 400;
+  padding: 40px 0;
+
+  .login-header {
+    display: flex;
+
+    h1 {
+      font-family: Assistant-Regular;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 24px;
+      text-transform: none;
+      color: rgba(0, 0, 0, 0.87);
+      margin-left: 5px;
+      margin-bottom: 7px;
+    }
+  }
+
+  .login-sub-header {
+    margin-bottom: 75px;
+    text-transform: none;
+    color: #34008e;
+  }
+
+  .login-button {
+    width: 230px;
+    height: 31px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: white;
+    font-family: Assistant-Regular;
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .login-or-div {
+    margin: 24px 0px;
+    display: flex;
+    align-items: center;
+    .login-span {
+      margin: 0px 11px;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+    div {
+      width: 96px;
+      height: 1px;
+      background-color: #9e9e9e;
+    }
+  }
+
+  .login-policy {
+    width: 230px;
+    text-align: center;
+    margin-top: auto;
+    span {
+      font-family: Assistant-Regular;
+      font-weight: 400;
+      font-size: 12px;
+      color: #00000080;
+    }
+  }
 }

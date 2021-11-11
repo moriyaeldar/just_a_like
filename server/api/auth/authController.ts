@@ -27,7 +27,6 @@ const client = new OAuth2Client(process.env.GOOGLE_AUTH_CLIENT_ID);
     if(!user){
         // If not user exist 
         res.status(404).send('User not exist');
-        console.log('User not exist');
     }else {
         // If user exist generate token
         // and return user with the token
@@ -51,17 +50,14 @@ module.exports.googleRegister = catchAsync(async (req: Request, res: Response) =
     // Check token validity
     let response = await client.verifyIdToken({idToken: tokenID, audience: process.env.GOOGLE_AUTH_CLIENT_ID});
     const { given_name, family_name, email } = response.payload;
-    console.log(req.body);
     
     // Find user
     const user = await User.findOne({email: email});
-    console.log(user);
     
     if(user){
         // If user exist return error with status code 400
         res.status(400).send('User already exist');
     }else {
-        console.log('Create user....');
         
         // Else create user with given data from client and google
         const user = await new User({
@@ -75,14 +71,13 @@ module.exports.googleRegister = catchAsync(async (req: Request, res: Response) =
             email: email
         }) 
 
-        console.log(user);
         // Save user
         const savedUser = await user.save();
         // Generate token
         // and send token and user to client
         const token  = jwt.sign({_id: savedUser._id}, process.env.JWT_SECRET, {expiresIn: '7d'});
         res.send({
-            toket: token,
+            token: token,
             user: savedUser
         });
     }
@@ -166,7 +161,7 @@ module.exports.facebookLogin = catchAsync(async (req: Request, res: Response) =>
         // and send token and user to client
         const token  = jwt.sign({_id: savedUser._id}, process.env.JWT_SECRET, {expiresIn: '7d'});
         res.send({
-            toket: token,
+            token: token,
             user: savedUser
         });
     }
@@ -180,15 +175,15 @@ module.exports.facebookLogin = catchAsync(async (req: Request, res: Response) =>
  * */
 module.exports.tokenValidation = catchAsync(async (req: Request, res: Response) => {
     const token = req.header("x-auth-token");
-  
-    if(!token) return res.status(400).send(false);
+    
+    if(!token || token == 'undefined') return res.send(false);
     
     const verified = jwt.verify(token, process.env.JWT_SECRET)
     
-    if(!verified) return res.status(400).send(false);
+    if(!verified) return res.send(false);
 
     const user = await User.findOne({_id: verified._id})
-    if(!user) return res.status(400).send(false);
+    if(!user) return res.send(false);
 
     res.send({user: user, token: token});
 });

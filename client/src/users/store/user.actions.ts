@@ -68,6 +68,7 @@ export const authCheckState = () => {
           dispatch(authLogout());
       }else{
           const res = await userService.tokenIsValid(token)
+          
           if(res !== false){
               dispatch(authSuccess(res.user, res.token));
           }else{
