@@ -3,6 +3,7 @@ import Sidebar from "../../general/Sidebar/Sidebar";
 import  Header  from "../../general/components/app-header";
 interface Props {
   children: React.ReactNode;
+  onLogoutClick: any;
 }
 
 const Layout: FC<Props> = (props) => (
@@ -11,7 +12,7 @@ const Layout: FC<Props> = (props) => (
       <Header />
       <main>{props.children}</main>
     </div>
-    <Sidebar />
+    <Sidebar onLogoutClick={props.onLogoutClick} />
   </div>
 );
 

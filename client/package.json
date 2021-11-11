@@ -20,6 +20,7 @@
     "joi": "^17.4.2",
     "joi-browser": "^13.4.0",
     "joi-objectid": "^4.0.2",
+    "material-components-web": "^13.0.0",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-chartjs-2": "^3.0.5",

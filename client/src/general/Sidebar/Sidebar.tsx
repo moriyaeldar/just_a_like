@@ -23,7 +23,11 @@ import { ReactComponent as Setting } from "../../assets/svg/setting.svg";
 import { ReactComponent as Vi } from "../../assets/svg/vi.svg";
 import { ReactComponent as Vi2 } from "../../assets/svg/vi2.svg";
 
-const Sidebar: FC = () => {
+interface SidebarProps {
+  onLogoutClick: any;
+}
+
+const Sidebar: FC<SidebarProps> = (props) => {
   const [isMenuOpen, setMenu] = useState(false);
 
   const onOpenMenu = () => {
@@ -75,7 +79,7 @@ const Sidebar: FC = () => {
         </div>
         <div className="setting-container">
           <button><Setting className="icon"/> Setting</button>
-          <button><Logout className="icon"/> Logout</button>
+          <button onClick={props.onLogoutClick} ><Logout className="icon"/> Logout</button>
         </div>
       </div>)}
    { !isMenuOpen&&(  <div className="mini-side-bar">
