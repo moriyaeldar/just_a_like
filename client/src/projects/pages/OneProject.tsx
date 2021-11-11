@@ -32,6 +32,7 @@ const OneProject:FC = () => {
             <li>Description: {project.description}</li>
             <li>Tasks: {project.tasks}</li>
             <li>Status: {project.status}</li>
+            <li>Team: {project.team}</li>
         </div>
      );
   }
