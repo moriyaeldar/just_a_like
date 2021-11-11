@@ -1,5 +1,7 @@
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
+import classes from "../styles/taskmenu.module.scss";
+
 const TaskMenu = () => {
   return (
     <ul>

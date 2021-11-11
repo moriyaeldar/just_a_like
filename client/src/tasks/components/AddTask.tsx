@@ -27,25 +27,18 @@ export const AddTask: FC = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="task-name">Task name</label>
         <input
-          placeholder="Write a task name"
+          placeholder="Task name"
           id="task-name"
           {...register("example")}
         />
         <label htmlFor="description">Description</label>
         <textarea
+          placeholder="Description"
           id="description"
-          defaultValue="test"
           {...register("exampleRequired", { required: true })}
         ></textarea>
-        <label htmlFor="interests">Interests</label>
-        <input
-          id="interests"
-          defaultValue="test"
-          {...register("exampleRequired", { required: true })}
-        />
-
         {errors.exampleRequired && <span>This field is required</span>}
-        <input type="submit" />
+        <input value="Add task" type="submit" />
       </form>
     </section>
   );
