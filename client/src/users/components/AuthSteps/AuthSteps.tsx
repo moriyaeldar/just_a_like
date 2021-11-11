@@ -1,6 +1,35 @@
 import { FC } from 'react';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
+import { ReactComponent as GoogleIcon } from "../../../assets/svg/google-icon.svg";
+import { ReactComponent as FacebookIcon } from "../../../assets/svg/facebook-icon.svg";
+import { ReactComponent as LogoIcon } from "../../../assets/svg/logo-login.svg";
+
+interface AuthCardProps {
+    children: any;
+}
+
+const AuthCard:FC<AuthCardProps> = (props) => (
+    <div className="login-page">
+    <div className="login-card">
+        <div className="login-header">
+            <LogoIcon/>
+            <h1>Kulla_like</h1>
+        </div>
+
+        <h3 className="login-sub-header">About you {'>'} About your work</h3>
+
+        {props.children}
+        
+        <div className="login-policy">
+            <span>
+            This site is protected by Linked in Privacy
+            Policy and Terms of service apply
+            </span>
+        </div>
+    </div>
+</div>
+)
 
 interface AuthInitProps {
     googleKey: string;
@@ -11,26 +40,34 @@ interface AuthInitProps {
     authSwitch: any;
 }
 
+
 export const AuthInit:FC<AuthInitProps> = (props) => (
-    <div className="login-page">
-        <h1>Kula_Like</h1>
-        <h3>About you {'>'} About your work</h3>
+    <AuthCard>
         <GoogleLogin
         clientId={props.googleKey ?? ''}
+        render={(renderProps) => (
+            <button onClick={renderProps.onClick} disabled={renderProps.disabled} className='login-button'>
+                <GoogleIcon/>
+              Log-in with Google
+            </button>
+          )}
         buttonText={'Login with Google'}
         onSuccess={props.googleAuthSuccess}
-        cookiePolicy={'single_host_origin'}/>
-        <hr/>
+        cookiePolicy={'single_host_origin'}
+        />
+        <div className="login-or-div">
+            <div></div>
+            <span className="login-span">or</span>
+            <div></div>
+        </div>
         <FacebookLogin
         appId={props.facebookKey ?? ''}
         autoLoad={false}
+        cssClass="login-button"
+        icon={<FacebookIcon/>}
         callback={props.facebookAuthSuccess}/>
-        <hr/>
-        <span>
-            {props.login ? 'New here? ' : 'Have an account? '} 
-            <span onClick={props.authSwitch}>{props.login ? 'Sign up' : 'Login'}</span> 
-        </span>
-    </div>
+    </AuthCard>
+            
 )
 
 
@@ -40,13 +77,15 @@ interface StepOneProps {
 }
 
 export const StepOne:FC<StepOneProps> = (props) => (
-    <form>
-        <input 
-        type="text" 
-        {...props.setInputValue('username')}
-        placeholder="Enter username"/>
-        <button onClick={props.submit}>submit</button>
-    </form>
+    <AuthCard>
+        <form>
+            <input 
+            type="text" 
+            {...props.setInputValue('username')}
+            placeholder="Enter username"/>
+            <button onClick={props.submit}>submit</button>
+        </form>
+    </AuthCard>
 )
 
 interface StepTowProps {
@@ -55,13 +94,15 @@ interface StepTowProps {
 }
 
 export const StepTow:FC<StepTowProps> = (props) => (
-    <form>
-        <input 
-        type="text" 
-        {...props.setInputValue('linkedin_url')}
-        placeholder="Enter linkedin url"/>
-        <button onClick={props.submit}>submit</button>
-    </form>
+    <AuthCard>
+        <form>
+            <input 
+            type="text" 
+            {...props.setInputValue('linkedin_url')}
+            placeholder="Enter linkedin url"/>
+            <button onClick={props.submit}>submit</button>
+        </form>
+    </AuthCard>
 )
 
 interface StepThreeProps {
@@ -70,13 +111,15 @@ interface StepThreeProps {
 }
 
 export const StepThree:FC<StepThreeProps> = (props) => (
-    <form>
-        <input 
-        type="text" 
-        {...props.setInputValue('phone_number')}
-        placeholder="Enter phone number"/>
-        <button onClick={props.submit}>submit</button>
-    </form>
+    <AuthCard>
+        <form>
+            <input 
+            type="text" 
+            {...props.setInputValue('phone_number')}
+            placeholder="Enter phone number"/>
+            <button onClick={props.submit}>submit</button>
+        </form>
+    </AuthCard>
 )
 
 interface StepFourProps {
@@ -86,21 +129,23 @@ interface StepFourProps {
 }
 
 export const StepFour:FC<StepFourProps> = (props) => (
-    <form>
-        <select 
-        {...props.setInputValue('expertise')}>
-            <option 
-            value="" selected disabled hidden
-            >Choose Your Expertise</option>
-            {props.expertises.map((expertise: any) => (
+    <AuthCard>
+        <form>
+            <select 
+            {...props.setInputValue('expertise')}>
                 <option 
-                key={expertise._id}
-                value={expertise._id}
-                >{expertise.name}</option>
-            ))}
-        </select>
-        <button onClick={props.submit}>submit</button>
-    </form>
+                value="" selected disabled hidden
+                >Choose Your Expertise</option>
+                {props.expertises.map((expertise: any) => (
+                    <option 
+                    key={expertise._id}
+                    value={expertise._id}
+                    >{expertise.name}</option>
+                ))}
+            </select>
+            <button onClick={props.submit}>submit</button>
+        </form>
+    </AuthCard>
 );
 
 interface StepFiveProps {
@@ -110,15 +155,17 @@ interface StepFiveProps {
 }
 
 export const StepFive:FC<StepFiveProps> = (props) => (
-    <form>
-        {props.interests.map((interest: any) => (
-            <div key={interest._id}>
-                <input type="checkbox" 
-                value={interest._id}
-                {...props.setInputValue('interests')}/>
-                <label>{interest.name}</label>
-            </div>
-        ))}
-        <button onClick={props.submit}>submit</button>
-    </form>
+    <AuthCard>
+        <form>
+            {props.interests.map((interest: any) => (
+                <div key={interest._id}>
+                    <input type="checkbox" 
+                    value={interest._id}
+                    {...props.setInputValue('interests')}/>
+                    <label>{interest.name}</label>
+                </div>
+            ))}
+            <button onClick={props.submit}>submit</button>
+        </form>
+    </AuthCard>
 )

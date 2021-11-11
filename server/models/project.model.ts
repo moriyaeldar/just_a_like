@@ -10,8 +10,12 @@ const projectSchema = new Schema({
     required: true,
     default: "New Project",
   },
+  description: {
+    type: String,
+    required: true,
+    default: "Have no description",
+  },
   //admin should be at level 2
-
   projectManager: 
     {
       type: Schema.Types.ObjectId,
@@ -46,6 +50,7 @@ const projectSchema = new Schema({
 function validateProject(project: any){
   const schema = Joi.object({
     name: Joi.string(),
+    description: Joi.string(),
     projectManager: Joi.Joi.objectId().required(),
     status: Joi.number(),
     tasks: Joi.array().item(Joi.objectId()),

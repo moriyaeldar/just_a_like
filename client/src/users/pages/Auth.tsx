@@ -33,26 +33,24 @@ const Auth:FC = () => {
     
     const googleAuthSuccess = async (response:any) => {
         const { tokenId } = response;        
-        if(!login) {
+        await dispatch(authLogin({tokenID: tokenId}));
+        if(!token) {
             setValue('tokenID', tokenId);
     
             const {tokenID} = getValues();
             if(tokenID) setStep(1);
-        }else{
-            dispatch(authLogin({tokenID: tokenId}));
         }
     }
 
     const facebookAuthSuccess = async (response:any) => {
         const { accessToken, userID } = response;
-        if(!login) {
+        await dispatch(authLogin({tokenID: accessToken, userID: userID}));
+        if(!token) {
             setValue('tokenID', accessToken);
             setValue('userID', userID);
 
             const {tokenID} = getValues();
             if(tokenID && userID) setStep(1);
-        }else {
-            dispatch(authLogin({tokenID: accessToken, userID: userID}));
         }
     }
 

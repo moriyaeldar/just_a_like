@@ -26,12 +26,13 @@ const OneProject:FC = () => {
 
     return ( 
         <div className="displayOneProject">
-        <p className="title">One Project</p>
-        <p>Name: {project.name}</p>
-        <p>Project manager: {project.projectManager}</p>
-        <p>Tasks: {project.tasks}</p>
-        <p>Status: {project.status}</p>
-        <p>Tasks: {project.tasks}</p>
+            <li className="title">One Project</li>
+            <li>Name: {project.name}</li>
+            <li>Project manager: {project.projectManager}</li>
+            <li>Description: {project.description}</li>
+            <li>Tasks: {project.tasks}</li>
+            <li>Status: {project.status}</li>
+            <li>Team: {project.team}</li>
         </div>
      );
   }

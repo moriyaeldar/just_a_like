@@ -49,6 +49,7 @@ module.exports.createProject = catchAsync(async (req: Request, res: Response) =>
       //  }
       const project = new Project({
         name: req.body.name,
+        description: req.body.description,
         projectManager: req.body.projectManager,
         status: req.body.status,
         tasks: req.body.tasks,
@@ -111,6 +112,7 @@ module.exports.updateProject = catchAsync(
          req.params.id,
          {
           name: req.body.name,
+          description: req.body.description,
           projectManager: req.body.projectManager,
           status: req.body.status,
           tasks: req.body.tasks,

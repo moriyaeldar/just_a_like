@@ -120,8 +120,9 @@ async function seedProjects() {
 
   for (let i = 0; i < 15; i++) {
     const newProject = {
-      name: faker.name.firstName(),
+      name: faker.commerce.productName(),
       projectManager: mongoose.Types.ObjectId(),
+      description: faker.commerce.productDescription(),
       status: faker.datatype.number(100),
       tasks: [
         mongoose.Types.ObjectId("999269e71c08cbf7596a541f"),
