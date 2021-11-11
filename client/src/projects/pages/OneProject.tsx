@@ -29,6 +29,7 @@ const OneProject:FC = () => {
             <li className="title">One Project</li>
             <li>Name: {project.name}</li>
             <li>Project manager: {project.projectManager}</li>
+            <li>Description: {project.description}</li>
             <li>Tasks: {project.tasks}</li>
             <li>Status: {project.status}</li>
         </div>
