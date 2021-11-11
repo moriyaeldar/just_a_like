@@ -2,4 +2,7 @@
     display: flex;
     justify-content: flex-end;
     background-color: $clr11;
+    a{
+        cursor: pointer;
+    }
 }

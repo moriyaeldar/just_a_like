@@ -1,6 +1,6 @@
 import { Switch, Route, Link } from "react-router-dom";
 import { useState } from "react";
-import { ReactComponent as UserIcon } from "../../assets/svg/user.svg";
+import { ReactComponent as Defult } from "../../assets/svg/avatars/defult.svg";
 import { Profile } from "../../users/pages/profile";
 
 const Header = () => {
@@ -17,7 +17,7 @@ const Header = () => {
     <section className="header">
       {!isModalOpen && (
         <a onClick={openModal}>
-          <UserIcon />
+          <Defult className="user-icon"/>
         </a>
       )}
       {isModalOpen && (

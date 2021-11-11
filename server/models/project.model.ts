@@ -10,7 +10,8 @@ const projectSchema = new Schema({
     required: true,
     default: "New Project",
   },
-  //Manager should be at level 2
+  //admin should be at level 2
+
   projectManager: 
     {
       type: Schema.Types.ObjectId,

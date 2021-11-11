@@ -110,9 +110,11 @@ const Sidebar: FC = () => {
          <button> <Favorites className="icon"/> </button>
       
            <button><Invite className="icon"/> </button>
-          <button><InviteTeam className="icon"/> </button>         
+          <button><InviteTeam className="icon"/> </button>   
+          <div className="setting-container">
           <button><Setting className="icon"/> </button>
           <button><Logout className="icon"/> </button>
+          </div>
           </div>
       </div>)}
     </>

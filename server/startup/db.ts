@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const uri = "mongodb://localhost/just_a_like";
+// const uri = "mongodb://localhost/just_a_like";
+const uri = process.env.MONGO_ATLAS || "mongodb://localhost/just_a_like";
 // const uri = process.env.MONGO_ATLAS;
 
 

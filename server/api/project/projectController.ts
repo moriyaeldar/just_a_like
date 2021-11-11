@@ -97,6 +97,9 @@ module.exports.updateProject = catchAsync(
  
       //  //Check the users that will be project manager
       //  const projectMangerId = req.params.projectManager;
+
+      //      let user = await User.findById(projectManger);
+
       //      let user = await User.findById(projectManger);
       //      if(!user) 
       //        return res.status(404).json(`The user with the id: ${projectMangerId} does not exist.`);
