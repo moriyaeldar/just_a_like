@@ -36,10 +36,10 @@ const projectSchema = new Schema({
       required: false,
     },
   ],
-  team: {
+  participants: [{
     type: Schema.Types.ObjectId,
-    ref: "Team",
-  },
+    ref:"User"
+  }],
 });
 /**
  * 
@@ -54,7 +54,7 @@ function validateProject(project: any){
     projectManager: Joi.Joi.objectId().required(),
     status: Joi.number(),
     tasks: Joi.array().item(Joi.objectId()),
-    team: Joi.objectId()
+    participants: Joi.array().item(Joi.objectId())
   });
 
   return schema.validate(project);

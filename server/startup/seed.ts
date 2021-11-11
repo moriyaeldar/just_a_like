@@ -130,7 +130,7 @@ async function seedProjects() {
         mongoose.Types.ObjectId("999269e71c28cbf7596a541f"),
         mongoose.Types.ObjectId("999269e71c48cbf7596a541f"),
       ],
-      team: [mongoose.Types.ObjectId("618280bfa70b06d020616f34")],
+      participants: [mongoose.Types.ObjectId(), mongoose.Types.ObjectId()],
     };
 
     projects.push(newProject);
