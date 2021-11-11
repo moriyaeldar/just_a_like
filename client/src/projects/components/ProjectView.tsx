@@ -6,7 +6,7 @@ import '../styles/ProjectView.scss'
 //   return new MDCRipple(el);
 // });
 
-export const ProjectView = ({project} : {project: any}) => {
+export const ProjectView = ({project} : {project: any}, {view} : {view:string}) => {
     return (
         <>
         <div className="card-container">
@@ -14,9 +14,9 @@ export const ProjectView = ({project} : {project: any}) => {
                 <h3>{project.name}</h3>
             </div>
                 <div className="card-content">
-                    {/* <div className="card-subtitle">
+                    <div className="card-subtitle">
                         <p>{project.projectManager}</p>
-                    </div> */}
+                    </div>
                     <div className="description">
                         <h5>{project.description}</h5>
                     </div>
