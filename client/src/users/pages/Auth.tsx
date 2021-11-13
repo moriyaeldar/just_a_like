@@ -21,6 +21,7 @@ const Auth: FC = () => {
   );
   const [login, setLogin] = useState(true);
   const [step, setStep]: any = useState(0);
+  const [name, setName]:any = useState();
   const [expertises, setExpertises]: any = useState([]);
   const [interests, setInterests]: any = useState([]);
   const {
@@ -28,6 +29,7 @@ const Auth: FC = () => {
     handleSubmit,
     setValue,
     getValues,
+    watch,
     formState: { errors },
   } = useForm();
 
@@ -52,8 +54,10 @@ const Auth: FC = () => {
 
   const googleAuthSuccess = async (response: any) => {
     const { tokenId } = response;
+    
     await dispatch(authLogin({ tokenID: tokenId }));
     if (!token) {
+      setName(response.profileObj.name);
       setValue("tokenID", tokenId);
 
       const { tokenID } = getValues();
@@ -63,8 +67,10 @@ const Auth: FC = () => {
 
   const facebookAuthSuccess = async (response: any) => {
     const { accessToken, userID } = response;
+    
     await dispatch(authLogin({ tokenID: accessToken, userID: userID }));
     if (!token) {
+      setName(response.name);
       setValue("tokenID", accessToken);
       setValue("userID", userID);
 
@@ -74,6 +80,8 @@ const Auth: FC = () => {
   };
 
   const onStepOneSubmit = (data: any) => {
+    console.log(getValues('username').length);
+    
     setStep(2);
   };
   const onStepTowSubmit = (data: any) => {
@@ -110,8 +118,10 @@ const Auth: FC = () => {
   if (step === 1) {
     auth = (
       <StepOne
+        name={name}
         submit={handleSubmit(onStepOneSubmit)}
         setInputValue={register}
+        watch={watch}
       />
     );
   }
@@ -120,6 +130,7 @@ const Auth: FC = () => {
       <StepTow
         submit={handleSubmit(onStepTowSubmit)}
         setInputValue={register}
+        watch={watch}
       />
     );
   }
@@ -128,6 +139,7 @@ const Auth: FC = () => {
       <StepThree
         submit={handleSubmit(onStepThreeSubmit)}
         setInputValue={register}
+        watch={watch}
       />
     );
   }
@@ -137,6 +149,7 @@ const Auth: FC = () => {
         submit={handleSubmit(onStepFourSubmit)}
         setInputValue={register}
         expertises={expertises}
+        watch={watch}
       />
     );
   }
@@ -146,6 +159,7 @@ const Auth: FC = () => {
         submit={handleSubmit(onFinalSubmit)}
         setInputValue={register}
         interests={interests}
+        watch={watch}
       />
     );
   }
