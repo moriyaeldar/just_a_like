@@ -8,7 +8,7 @@ type Inputs = {
   exampleRequired: string;
 };
 
-export const AddTask: FC = () => {
+export const AddTask = ({ addTask }: { addTask: any }) => {
   const {} = useState();
   const {
     register,

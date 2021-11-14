@@ -1,5 +1,6 @@
 .taskstatus {
-  color: red;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
 }
