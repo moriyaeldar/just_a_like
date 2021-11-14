@@ -4,6 +4,7 @@ import { projectService } from '../services/projectService';
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { loadproject } from '../store/project.actions';
+import { getUserById } from '../../users/services/user.service';
 // import Joi from 'joi';
 // Joi.objectId = require('joi-objectid')(Joi);
 
@@ -22,19 +23,27 @@ const OneProject:FC = () => {
 
     useEffect(() => {
         dispatch(loadproject(id));
+        console.log(project.participants);
     },[]);
 
-    return ( 
-        <div className="displayOneProject">
-            <li className="title">One Project</li>
-            <li>Name: {project.name}</li>
-            <li>Project manager: {project.projectManager}</li>
-            <li>Description: {project.description}</li>
-            <li>Tasks: {project.tasks}</li>
-            <li>Status: {project.status}</li>
-            <li>Participants: {project.participants}</li>
-        </div>
-     );
+    if(project.projectManager)
+        return ( 
+            <div className="displayOneProject">
+                <li className="title">One Project</li>
+                <li>Name: {project.name}</li>
+                <li>Project manager: {project.projectManager.username}</li>
+                <li>Description: {project.description}</li>
+                {/* <li>Tasks: {project.tasks}</li> */}
+                {project.tasks.map((task: any) => <li key={task._id}>{task.name}</li>)}
+                <li>Status: {project.status}</li>
+                <h3>participants: </h3>
+                <ul>
+                {project.participants.map((member: any) => <li key={member._id}>{member.username}</li>)}
+                </ul> 
+            </div>
+         );
+    
+    return (<h1>Loading...</h1>);
   }
    
   export default OneProject;

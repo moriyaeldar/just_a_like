@@ -14,10 +14,9 @@ const initialState = {
   projects:Array({}),
   project: Array({}),
   currproject:Object(''),
-  filterBy: {
-   
-  }
+  filterBy: {}
 };
+
 export function projectReducer(state = initialState, action:Action) {
   var newState = state;
   var projects;
