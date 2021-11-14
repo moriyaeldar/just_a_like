@@ -1,25 +1,36 @@
 import { ReactComponent as Arrow } from "../../assets/svg/arrow.svg";
-
+import { ReactComponent as People } from "../../assets/svg/people.svg";
+import { ReactComponent as Round} from "../../assets/svg/round.svg";
 export const HomePage = () => {
   return (
     <div className="home-page">
-      <h2>Home</h2>
+
       <div className="content">
+        <div className="left">
         <section>
+          <div></div>
           <h4>
-            <Arrow /> Tasks Due Soon
+            Tasks Due Soon
           </h4>
         </section>
+       
         <section>
+          <div></div>
           <h4>
-            <Arrow /> Favorits
+             Recent Projects
           </h4>
-        </section>
-        <section>
-          <h4>
-            <Arrow /> Recent Projects
-          </h4>
-        </section>
+        </section></div>
+        <div className="right">
+<div className="card">
+  <div></div>
+<h4> Next appointments</h4>
+</div>
+<div className="card">
+  <div></div>
+<h4>Recent jobs for you</h4> 
+</div>
+
+        </div>
       </div>
     </div>
   );

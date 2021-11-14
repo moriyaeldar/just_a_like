@@ -2,6 +2,7 @@
   color: $txt;
   border-color: $txt;
   background-color: #ffff;
+  transform: translateY(-70px);
   h1 {
     margin: 6px;
   }
@@ -13,7 +14,7 @@
     flex-direction: column;
   }
   input {
-    width: 240px;
+    width: 220px;
     border-radius: 6px;
     padding: 5px;
   }
