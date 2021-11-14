@@ -8,8 +8,8 @@ import Auth from './users/pages/Auth';
 import Layout from "./hoc/Layout/Layout";
 import AllProjects from './projects/pages/AllProjects';
 import ProjectDetails from './projects/pages/ProjectDetails';
-import MyProjects from './projects/pages/MyProjects';
 import OneProject from './projects/pages/OneProject';
+import MyProjects from './projects/pages/MyProjects';
 import "./App.css";
 import { Profile } from "./users/pages/profile";
 
@@ -42,6 +42,8 @@ function App() {
         <Route exact path="/tasks" component={TasksPage} />
         <Route exact path="/projects" component={AllProjects} />
         <Route exact path="/projects/:id" component={ProjectDetails} />
+        <Route exact path="/myprojects" component={MyProjects} />
+        <Route exact path="/myprojects/:id" component={OneProject} />
         <Redirect exact to="/"/>
     </Layout>
     )
