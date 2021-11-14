@@ -1,4 +1,20 @@
-.task {
-  border-radius: 0.75rem;
-  box-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
+.task_container {
+  width: 300px;
+  overflow: hidden;
+  box-shadow: 0px 0px 15 -5px;
+  transition: 0.3s;
+  animation: ease-in;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 1%;
+}
+.task_container:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15 0px;
+}
+.card_title {
+  margin-bottom: 0.5rem;
+}
+.card_content {
+  margin: 1rem;
+  margin-top: 0.5rem;
 }

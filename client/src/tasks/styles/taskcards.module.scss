@@ -1,7 +1,8 @@
-.column {
-  direction: rtl;
-  display: grid;
-  columns: 4 auto;
+.list_tasks {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
 }
 
 .title {

@@ -35,88 +35,114 @@ const Sidebar: FC = () => {
   };
   return (
     <>
-   {isMenuOpen&& (  <div className="sidebar-container">
-      
-
-        <div className="logo-container">
+      {isMenuOpen && (
+        <div className="sidebar-container">
+          <div className="logo-container">
             <a onClick={onCloseMenu}>
-          <Open />
-        </a>
-          <Svg />Kulla_Like
-        </div>
-        <div className="buttons-container">
-        <Link to="/">
-          <button>
-            <Home className="icon"/> Home
-          </button>
-          </Link>
-          <button>
-          <Vi className="icon"/>  Boards
-          </button>
-          <Link to="/projects">
+              <Open />
+            </a>
+            <Svg />
+            Kulla_Like
+          </div>
+          <div className="buttons-container">
+            <Link to="/">
+              <button>
+                <Home className="icon" /> Home
+              </button>
+            </Link>
             <button>
-              <Project className="icon"/> Projects
-          </button>
-          </Link>
-          <button>
-             <Vi2 className="icon"/> My Tasks
-          </button>
-          <button>
-            <Calender className="icon"/> Calender
-          </button>
-        </div>
-        <div className="favorites-container">
-         <button> <Favorites className="icon"/> Favorites</button>
-        </div>
-      
-        <div className="invite-container">
-           <button><Invite className="icon"/> Invite Friends</button>
-          <button><InviteTeam className="icon"/> Invite Teammates</button>         
-        </div>
-        <div className="setting-container">
-          <button><Setting className="icon"/> Setting</button>
-          <button><Logout className="icon"/> Logout</button>
-        </div>
-      </div>)}
-   { !isMenuOpen&&(  <div className="mini-side-bar">
-       
-        <div className="logo-container"> 
-        <a onClick={onOpenMenu}>
-          <Open />
-        </a>
-          <Svg />
-        </div>
-        <div className="buttons-container">
-        <Link to="/">
-          <button>
-            <Home className="icon"/> 
-          </button>
-          </Link>
-          <button>
-          <Vi className="icon"/>  
-          </button>
-          <Link to="/projects">
+              <Vi className="icon" /> Boards
+            </button>
+            <Link to="/projects">
+              <button>
+                <Project className="icon" /> Projects
+              </button>
+            </Link>
             <button>
-              <Project className="icon"/> 
-          </button>
-          </Link>
-          <button>
-             <Vi2 className="icon"/> 
-          </button>
-          <button>
-            <Calender className="icon"/> 
-          </button>
-       
-         <button> <Favorites className="icon"/> </button>
-      
-           <button><Invite className="icon"/> </button>
-          <button><InviteTeam className="icon"/> </button>   
+              <Vi2 className="icon" /> My Tasks
+            </button>
+            <button>
+              <Calender className="icon" /> Calender
+            </button>
+          </div>
+          <div className="favorites-container">
+            <button>
+              {" "}
+              <Favorites className="icon" /> Favorites
+            </button>
+          </div>
+
+          <div className="invite-container">
+            <button>
+              <Invite className="icon" /> Invite Friends
+            </button>
+            <button>
+              <InviteTeam className="icon" /> Invite Teammates
+            </button>
+          </div>
           <div className="setting-container">
-          <button><Setting className="icon"/> </button>
-          <button><Logout className="icon"/> </button>
+            <button>
+              <Setting className="icon" /> Setting
+            </button>
+            <button>
+              <Logout className="icon" /> Logout
+            </button>
           </div>
+        </div>
+      )}
+      {!isMenuOpen && (
+        <div className="mini-side-bar">
+          <div className="logo-container">
+            <a onClick={onOpenMenu}>
+              <Open />
+            </a>
+            <Svg />
           </div>
-      </div>)}
+          <div className="buttons-container">
+            <Link to="/">
+              <button>
+                <Home className="icon" />
+              </button>
+            </Link>
+            <button>
+              <Vi className="icon" />
+            </button>
+            <Link to="/projects">
+              <button>
+                <Project className="icon" />
+              </button>
+            </Link>
+            <button>
+              <Link to="/tasks">
+                <Vi2 className="icon" />
+              </Link>
+            </button>
+            <button>
+              <Calender className="icon" />
+            </button>
+
+            <button>
+              {" "}
+              <Favorites className="icon" />{" "}
+            </button>
+
+            <button>
+              <Invite className="icon" />{" "}
+            </button>
+            <button>
+              <InviteTeam className="icon" />{" "}
+            </button>
+            <div className="setting-container">
+              <button>
+                <Setting className="icon" />{" "}
+              </button>
+              <button>
+                <Logout className="icon" />{" "}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
