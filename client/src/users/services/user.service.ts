@@ -93,5 +93,23 @@ function getLoggedinUser() {
   }
 
 
-  
-  
+
+export const getAllUsers = async () => {
+    try {
+        const resp = await Axios.get('/');
+        return resp.data;
+    } catch (err) {
+        // Handle Error Here
+        console.error(err);
+    }
+};
+
+export const getUserById = async (userId: any) => {
+    try {
+        const resp = await Axios.get(`/${userId}`);
+        return resp.data;
+    } catch (err) {
+        // Handle Error Here
+        console.error(err);
+    }
+};
