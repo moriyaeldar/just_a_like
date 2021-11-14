@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Switch, Route, Redirect } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { authCheckState, authLogout } from './users/store/user.actions';
 import { HomePage } from './general/pages/HomePage';
@@ -15,13 +15,28 @@ import { Profile } from "./users/pages/profile";
 
 function App() {
   const dispatch = useDispatch();
+  const location = useLocation();
   const isAuthenticated = useSelector((state:any) => state.userModule.token ? true : false);
-
-  // const Auth = React.lazy(() => import('./users/pages/Auth'));
+  const [headerModal, setHeaderModal] = useState(false);
+  const [pageName, setPageName] = useState('Home');
 
   useEffect(() => {
     dispatch(authCheckState());
-  },[])
+    if(location.pathname === '/'){
+      setPageName('Home')
+    }
+    if(location.pathname === ('/myprojects' || '/projects')) {
+      setPageName('Projects')
+    }
+    if(location.pathname === '/tasks') {
+      setPageName('My Tasks')
+    }
+    
+  },[location])
+
+  const handleHeaderModal = () => {
+    setHeaderModal(!headerModal);
+  }
 
   const logout = () => {
     dispatch(authLogout());
@@ -36,7 +51,11 @@ function App() {
 
   if(isAuthenticated) {
     routes = (
-      <Layout onLogoutClick={logout}>
+      <Layout 
+      headerModal={headerModal}
+      handleHeaderModal={handleHeaderModal}
+      pageName={pageName}
+      onLogoutClick={logout}>
         <Switch/>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/tasks" component={TasksPage} />

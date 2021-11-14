@@ -6,7 +6,7 @@
           xmlns="http://www.w3.org/2000/svg"
           xlinkHref="http://www.w3.org/1999/xlink"
         >
-          <rect width="900" height="900" fill="url(#pattern0)" />
+          <rect width="300" height="1000" fill="url(#pattern0)" />
           <defs>
             <pattern
               id="pattern0"

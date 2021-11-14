@@ -1,12 +1,7 @@
-.user-modal {
-  z-index: 1;
-  width: 50%;
-  height: 100vh;
-}
-
 .profile-page {
   color: $txt;
   border-color: $txt;
+  background-color: #ffff;
   h1 {
     margin: 6px;
   }
@@ -22,7 +17,7 @@
     border-radius: 6px;
     padding: 5px;
   }
-  .options{
+  .options {
     font-size: 10px;
     margin-top: 5px;
   }
@@ -37,8 +32,8 @@
     border-radius: 50%;
     width: 90px;
     height: 90px;
-    background-image: url('../../assets/svg/avatars/defult.svg');
-    background-repeat:no-repeat;
+    background-image: url("../../assets/svg/avatars/defult.svg");
+    background-repeat: no-repeat;
     background-position: center;
   }
   .left,
@@ -46,7 +41,7 @@
     display: flex;
     flex-direction: column;
   }
-  .form-body{
-      display: flex;
+  .form-body {
+    display: flex;
   }
 }
