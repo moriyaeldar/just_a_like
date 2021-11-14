@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadproject } from './../store/project.actions';
+import '../styles/ProjectDetails.scss';
+import NewProject from "../components/NewProject";
 
 const ProjectDetails = () => {
     const dispatch = useDispatch();
@@ -9,19 +11,28 @@ const ProjectDetails = () => {
     const {id}: {id: any} = useParams();
 
     useEffect(() => {
-        dispatch(loadproject(id));
+        try{
+            if(id === "new") return;
+            dispatch(loadproject(id));
+        }catch(ex) {
+            //Throw new Error("Project not found", 404)
+        }
         // dispatch() --to catch the product manager
     },[]);
 
+    if(id==="new") return <NewProject/>;
+    
     return(
         <>
-            <div className="card-container">
+        <div className="card-navBar">
             <div className="card-title">
                 <h3>{project.name}</h3>
             </div>
+        </div>
+            <div className="card-container">
                 <div className="card-content">
                     <div className="description">
-                        <h5>project.description</h5>
+                        <h5>{project.description}</h5>
                     </div>
                 </div>
                 <div className="card-content">
