@@ -23,7 +23,11 @@ import { ReactComponent as Setting } from "../../assets/svg/setting.svg";
 import { ReactComponent as Vi } from "../../assets/svg/vi.svg";
 import { ReactComponent as Vi2 } from "../../assets/svg/vi2.svg";
 
-const Sidebar: FC = () => {
+interface SidebarProps {
+  onLogoutClick: any;
+}
+
+const Sidebar: FC<SidebarProps> = (props) => {
   const [isMenuOpen, setMenu] = useState(false);
 
   const onOpenMenu = () => {
@@ -36,34 +40,46 @@ const Sidebar: FC = () => {
   return (
     <>
       {isMenuOpen && (
-        <div className="sidebar-container">
+        <div className="expanded-sidebar-container">
           <div className="logo-container">
             <a onClick={onCloseMenu}>
               <Open />
             </a>
             <Svg />
-            Kulla_Like
+            <p>Kulla_Like</p>
           </div>
           <div className="buttons-container">
-            <Link to="/">
+            <div className="button-container">
+              <Link to="/">
+                <button>
+                  <Home className="icon" /> Home
+                </button>
+              </Link>
+            </div>
+            <div className="button-container">
               <button>
-                <Home className="icon" /> Home
+                <Vi className="icon" /> Boards
               </button>
-            </Link>
-            <button>
-              <Vi className="icon" /> Boards
-            </button>
-            <Link to="/projects">
+            </div>
+            <div className="button-container">
+              <Link to="/projects">
+                <button>
+                  <Project className="icon" />
+                  Projects
+                </button>
+              </Link>
+            </div>
+            <div className="button-container">
               <button>
-                <Project className="icon" /> Projects
+                <Vi2 className="icon" />
+                My Tasks
               </button>
-            </Link>
-            <button>
-              <Vi2 className="icon" /> My Tasks
-            </button>
-            <button>
-              <Calender className="icon" /> Calender
-            </button>
+            </div>
+            <div className="button-container">
+              <button>
+                <Calender className="icon" /> Calender
+              </button>
+            </div>
           </div>
           <div className="favorites-container">
             <button>
@@ -84,7 +100,7 @@ const Sidebar: FC = () => {
             <button>
               <Setting className="icon" /> Setting
             </button>
-            <button>
+            <button onClick={props.onLogoutClick}>
               <Logout className="icon" /> Logout
             </button>
           </div>
@@ -99,46 +115,52 @@ const Sidebar: FC = () => {
             <Svg />
           </div>
           <div className="buttons-container">
-            <Link to="/">
-              <button>
-                <Home className="icon" />
-              </button>
-            </Link>
-            <button>
-              <Vi className="icon" />
-            </button>
-            <Link to="/projects">
-              <button>
-                <Project className="icon" />
-              </button>
-            </Link>
-            <button>
-              <Link to="/tasks">
-                <Vi2 className="icon" />
+            <div className="button-container">
+              <Link to="/">
+                <button>
+                  <Home className="icon" />
+                </button>
               </Link>
-            </button>
-            <button>
-              <Calender className="icon" />
-            </button>
-
-            <button>
-              {" "}
-              <Favorites className="icon" />{" "}
-            </button>
-
-            <button>
-              <Invite className="icon" />{" "}
-            </button>
-            <button>
-              <InviteTeam className="icon" />{" "}
-            </button>
-            <div className="setting-container">
+            </div>
+            <div className="button-container">
               <button>
-                <Setting className="icon" />{" "}
+                <Vi className="icon" />
+              </button>
+            </div>
+            <div className="button-container">
+              <Link to="/projects">
+                <button>
+                  <Project className="icon" />
+                </button>
+              </Link>
+              <button>
+                <Link to="/tasks">
+                  <Vi2 className="icon" />
+                </Link>
               </button>
               <button>
-                <Logout className="icon" />{" "}
+                <Calender className="icon" />
               </button>
+
+              <button>
+                {" "}
+                <Favorites className="icon" />{" "}
+              </button>
+
+              <button>
+                <Invite className="icon" />{" "}
+              </button>
+              <button>
+                <InviteTeam className="icon" />{" "}
+              </button>
+              <div className="setting-container">
+                <button>
+                  <Setting className="icon" />{" "}
+                </button>
+                <button>
+                  <Logout className="icon" />{" "}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -146,5 +168,4 @@ const Sidebar: FC = () => {
     </>
   );
 };
-
 export default Sidebar;

@@ -84,4 +84,88 @@
       color: #00000080;
     }
   }
+
+  form {
+    display: flex;
+    flex-flow: column;
+
+    input {
+      width: 233px;
+      height: 27px;
+      padding: 0;
+      font-size: 12px;
+    }
+
+    .select {
+      width: 233px;
+      height: 27px;
+      padding: 0;
+      font-size: 12px;
+    }
+
+    button {
+      margin-top: 70px;
+      height: 29px;
+    }
+
+    .outlined{
+      border: 1px solid #34008E;
+      color: #34008E;
+    }
+
+    .contained {
+      background-color: #34008e;
+    }
+
+    .disabled {
+      color: rgba(52, 0, 142, 0.5);
+      border: 1px solid rgba(52, 0, 142, 0.5);
+    }
+  }
+
+  .checkbox-form {
+    .checkbox {
+      max-width: 233px;
+      max-height: 100%;
+      display: flex;
+      flex-flow: wrap;
+      .box {
+        display: flex;
+        flex-flow: row;
+         flex: 1 0 calc(100% * (1/2) - 10px - 1px);
+       }
+    }
+
+    button {
+      margin-top: 20px;
+    }
+  }
+
+  .step-one-welcome {
+    margin-bottom: 12px;
+    h3{
+      font-family: Assistant-Regular;
+      font-size: 18px;
+      line-height: 24px;
+      color: #34008E;
+
+      span{
+        font-weight: 400;
+      }
+    }
+    p{
+      font-family: Assistant-Regular;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .instruction-header {
+    font-family: Assistant-Regular;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
 }

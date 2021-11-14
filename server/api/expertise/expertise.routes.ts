@@ -3,7 +3,7 @@ const router = Router();
 const expertiseController = require('./expertiseController');
 
 router.get('/', expertiseController.index);
-// router.get('/:id', expertiseController.show);
+router.get('/:uid', expertiseController.getAllAssociatedExpertise);
 router.post('/', expertiseController.create);
 // router.put('/', expertiseController.edit);
 router.delete('/:id', expertiseController.delete);

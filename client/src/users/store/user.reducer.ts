@@ -59,6 +59,4 @@ export function userReducer(state = initialState, action:Action) {
  
     default: return state;
   }
- 
-  return newState;
 }

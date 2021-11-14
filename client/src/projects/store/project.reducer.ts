@@ -1,3 +1,5 @@
+import * as actions from './acrionTypes';
+
 interface Action {
   type:string
   filter:any
@@ -21,20 +23,20 @@ export function projectReducer(state = initialState, action:Action) {
   var projects;
   var project;
   switch (action.type) {
-    case 'SET_projectS':
+    case actions.GET_PROJECTS:
       newState = { ...state, projects: action.projects };
       break;
-    case 'SET_project':
+    case actions.GET_PROJECT:
       newState = {...state, project: action.project}
       break;
-    case 'REMOVE_project':
+    case actions.DEL_PROJECT:
       projects = state.projects.filter((project:any) => project._id !== action.projectId);
       newState = { ...state, projects };
       break;
-    case 'ADD_project':
+    case actions.SET_PROJECT:
       newState = { ...state, projects: [...state.projects, action.project] };
       break;
-    case 'UPDATE_project':
+    case actions.PUT_PROJECT:
       projects = state.projects.map((project:any) => {
         return project._id === action._id ? action : project;
       });

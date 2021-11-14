@@ -1,6 +1,7 @@
 import {Response, Request} from 'express';
 const catchAsync = require('../../utillities/catchAsync');
 const Expertise = require('../../models/expertise.model');
+const User = require('../../models/user.model');
 
 /**
  * Get all expertise:
@@ -15,6 +16,26 @@ module.exports.index = catchAsync(async (req: Request, res: Response) => {
     // Send Expertise to client
     res.send(expertises);
 });
+
+/**
+ * Get expertise:
+ * Any user from level 1-4
+ * can get expertise
+ *  * @param:
+ * id - user id
+ * */
+module.exports.getAllAssociatedExpertise = catchAsync(async (req: Request, res: Response) => {
+    const { uid } = req.params;
+    // Find all expertise id that inside spacific user
+    const usersExpertisesIDs = await User.findById({ _id: uid }, "expertise");
+    // Find all expertise where id is like usersExpertisesIDs
+    const expertise = await Expertise.findById(usersExpertisesIDs.expertise);
+    console.log(`[EXPERTISE-GET] - send expertise`);
+
+    // Send Expertise to client
+    res.send(expertise);
+});
+
 
 /**
  * Create expertise:

@@ -1,11 +1,12 @@
 import { projectService } from '../services/projectService';
+import * as actions from './acrionTypes';
 
 export function loadprojects(filter = {}) {
   return async (dispatch:any) => {
     try {
       const projects = await projectService.getAllProjects();
       dispatch({
-        type: 'SET_projectS',
+        type: actions.GET_PROJECTS,
         projects,
       });
       // dispatch({
@@ -24,13 +25,9 @@ export function loadproject(projectId: string) {
     try {
       const project = await projectService.getProjectById(projectId);
       dispatch({
-        type: 'SET_project',
+        type: actions.GET_PROJECT,
         project,
       });
-      // dispatch({
-      //   type: 'FILTER_projectS',
-      //   filter,
-      // });
       return project;
     } catch (err) {
       console.log('Cannot load projects', err);
@@ -59,7 +56,7 @@ export function onRemoveproject(projectId:string) {
       .then(() => {
         console.log('Deleted Succesfully!');
         dispatch({
-          type: 'REMOVE_project',
+          type: actions.DEL_PROJECT,
           projectId,
         });
       })
@@ -69,7 +66,7 @@ export function onRemoveproject(projectId:string) {
   };
 }
 
-export function onAddproject(project:Object) {
+export function createProject(project:Object) {
   return (dispatch:any) => {
     // const project = projectService.getEmptyproject();
     const addedproject = projectService
@@ -77,7 +74,7 @@ export function onAddproject(project:Object) {
       .then((savedproject) => {
         console.log('Added project', savedproject);
         dispatch({
-          type: 'ADD_project',
+          type: actions.SET_PROJECT,
           project: savedproject,
         });
       })
@@ -92,7 +89,7 @@ export function onUpdateproject(project:Object) {
     try {
       const updatedproject = await projectService.updateProject(project);
       dispatch({
-        type: 'UPDATE_project',
+        type: actions.PUT_PROJECT,
         updatedproject,
       });
       return project;

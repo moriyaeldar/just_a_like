@@ -81,6 +81,20 @@ export const authCheckState = () => {
   }
 }
 
+// export const getUserById(userId) = () => {
+//   return async (dispatch:any) => {
+//     try {
+//       const user = await projectService.getProjectById(projectId);
+//       dispatch({
+//         type: 'SET_project',
+//         project,
+//       });
+//       return project;
+//     } catch (err) {
+//       console.log('Cannot load projects', err);
+//     }
+//   };
+// }
 
 
 

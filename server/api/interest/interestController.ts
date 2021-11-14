@@ -1,6 +1,7 @@
 import {Response, Request} from 'express';
 const catchAsync = require('../../utillities/catchAsync');
 const Interest = require('../../models/interest.model');
+const User = require('../../models/user.model');
 
 /**
  * Get all interests:
@@ -12,6 +13,34 @@ const Interest = require('../../models/interest.model');
     const interests = await Interest.find();
     console.log(`[INTEREST-GET] - send ${interests.length} interests`);
 
+    // Send interests to client
+    res.send(interests);
+});
+
+/**
+ * Get interests:
+ * Any user from level 1-4
+ * can get interests
+ *  * @param:
+ * id - user id
+ * */
+ module.exports.getAllAssociatedInterests = catchAsync(async (req: Request, res: Response) => {
+    const { uid } = req.params;
+    // Find all expertise id that inside spacific user
+    const usersInterestsIDs = await User.findById({ _id: uid }, "interests");
+
+    const interests: any[] = [];
+    
+    // Find all interests where id is like usersInterestssIDs
+    for(let i=0;i < usersInterestsIDs.interests.length;i++){
+        let interest = await Interest.findById({_id: usersInterestsIDs.interests[i]});
+        
+        if(interest) {
+            interests.push(interest);
+        }
+    }
+    console.log(`[INTERESTS-GET] - send user's interests`);
+    
     // Send interests to client
     res.send(interests);
 });
