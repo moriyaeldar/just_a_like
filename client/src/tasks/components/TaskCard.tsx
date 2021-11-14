@@ -5,23 +5,26 @@ import classes from "../styles/taskcard.module.scss";
 import TaskMenu from "./TaskMenu";
 
 const TaskCard = ({ task }: { task: any }) => {
-  const [taskMenu, setTaskMenu] = useState(false);
+  const [taskMenu, setTaskMenu] = useState(null);
 
   const menuTaskHandler = () => {
     setTaskMenu(!taskMenu);
+    console.log(task._id);
   };
 
   return (
-    <div style={{ display: "flex" }}>
-      <div className={classes.task_container}>
-        <h3 className={classes.card_title}>
-          {task.name} <BsThreeDotsVertical onClick={menuTaskHandler} />
-        </h3>
-
-        {taskMenu && <TaskMenu />}
-        <label className={classes.card_content}>{task.description}</label>
+    <>
+      <div className={classes.task_card}>
+        <div className={classes.task_container}>
+          <div className={classes.header}>
+            <h3 className={classes.card_title}>{task.name}</h3>
+            <BsThreeDotsVertical onClick={menuTaskHandler} />
+          </div>
+          <label className={classes.card_content}>{task.description}</label>
+        </div>
+        {taskMenu && <TaskMenu task={task} />}
       </div>
-    </div>
+    </>
   );
 };
 

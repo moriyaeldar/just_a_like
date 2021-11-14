@@ -1,5 +1,8 @@
+.task_card {
+  position: relative;
+  width: 15rem;
+}
 .task_container {
-  width: 300px;
   overflow: hidden;
   box-shadow: 0px 0px 15 -5px;
   transition: 0.3s;
@@ -17,4 +20,9 @@
 .card_content {
   margin: 1rem;
   margin-top: 0.5rem;
+}
+.header {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }

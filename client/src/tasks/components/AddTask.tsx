@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Component, useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { taskService } from "../services/task.service";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
@@ -16,7 +17,7 @@ export const AddTask = ({ addTask }: { addTask: any }) => {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => taskService.save(data);
 
   useEffect(() => {
     console.log(watch("example"));
