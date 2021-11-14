@@ -21,20 +21,18 @@ const ProjectDetails = () => {
     },[]);
 
     if(id==="new") return <NewProject/>;
-    
+
     return(
         <>
-        <div className="card-navBar">
-            <div className="card-title">
+        <div className="card-title">
+            <div className="name">
                 <h3>{project.name}</h3>
+            </div>
+            <div className="description">
+                    <h5>{project.description}</h5>
             </div>
         </div>
             <div className="card-container">
-                <div className="card-content">
-                    <div className="description">
-                        <h5>{project.description}</h5>
-                    </div>
-                </div>
                 <div className="card-content">
                     <div className="product-manager">
                         <h5>project.productManager</h5>
