@@ -4,6 +4,7 @@ import { projectService } from '../services/projectService';
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { loadproject } from '../store/project.actions';
+import { getUserById } from '../../users/services/user.service';
 // import Joi from 'joi';
 // Joi.objectId = require('joi-objectid')(Joi);
 
@@ -11,6 +12,7 @@ const OneProject:FC = () => {
     const dispatch = useDispatch();
     const { project } = useSelector((state: any) => state.projectModule);
     const {id}: {id: string} = useParams(); 
+    const [ projectManager, setProjectManager ]: any = useState();
     //Validate of project:
     // const schema = Joi.object({
     //     name: Joi.string(),
@@ -22,7 +24,15 @@ const OneProject:FC = () => {
 
     useEffect(() => {
         dispatch(loadproject(id));
+        getProjectManager();
     },[]);
+
+    async function getProjectManager(){
+        let pm: string;
+        if(project.projectManager)
+            pm = await getUserById(project.projectManager);
+        setProjectManager(pm);
+    };
 
     return ( 
         <div className="displayOneProject">

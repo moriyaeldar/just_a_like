@@ -106,7 +106,7 @@ export const getAllUsers = async () => {
 
 export const getUserById = async (userId: any) => {
     try {
-        const resp = await Axios.get(`/${userId}`);
+        const resp = await Axios.get(`http://localhost:8000/api/user/${userId}`);
         return resp.data;
     } catch (err) {
         // Handle Error Here
