@@ -1,8 +1,37 @@
-.header{
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $clr11;
+  height: 142px;
+  a {
+    cursor: pointer;
+  }
+
+  .options-side {
     display: flex;
-    justify-content: flex-end;
-    background-color: $clr11;
-    a{
-        cursor: pointer;
+    justify-content: space-between;
+
+    div {
+      margin: 0 15px;
     }
+
+    .search-input {
+      margin: 0px;
+
+      input {
+        height: 24px;
+        width: 148px;
+        padding: 0px;
+      }
+    }
+  }
+}
+
+.user-modal {
+  margin-left: auto;
+  z-index: 1;
+  width: 30%;
+  height: 0vh;
+  background-color: #ffff;
 }

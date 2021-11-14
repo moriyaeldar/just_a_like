@@ -72,11 +72,11 @@ const Sidebar: FC<SidebarProps> = (props) => {
               </Link>
             </div>
             <div className="button-container">
-            <Link to="/tasks">
-              <button>
-                <Vi2 className="icon" />
-                <span> My Tasks</span>
-              </button>
+              <Link to="/tasks">
+                <button>
+                  <Vi2 className="icon" />
+                  My Tasks
+                </button>
               </Link>
             </div>
             <div className="button-container">
