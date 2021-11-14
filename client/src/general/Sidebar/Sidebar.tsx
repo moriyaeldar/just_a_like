@@ -57,15 +57,17 @@ const Sidebar: FC<SidebarProps> = (props) => {
               </Link>
             </div>
             <div className="button-container">
+              <Link to="/projects">
               <button>
                 <Vi className="icon" /> Boards
               </button>
+              </Link>
             </div>
             <div className="button-container">
-              <Link to="/projects">
+              <Link to="/myprojects">
                 <button>
                   <Project className="icon" />
-                  Projects
+                  My projects
                 </button>
               </Link>
             </div>
