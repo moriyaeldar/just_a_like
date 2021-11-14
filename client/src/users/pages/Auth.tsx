@@ -22,8 +22,8 @@ const Auth: FC = () => {
   const [login, setLogin] = useState(true);
   const [step, setStep]: any = useState(0);
   const [name, setName]:any = useState();
-  const [expertises, setExpertises]: any = useState([]);
-  const [interests, setInterests]: any = useState([]);
+  const [expertises, setExpertises]: any = useState(null);
+  const [interests, setInterests]: any = useState(null);
   const {
     register,
     handleSubmit,
@@ -45,7 +45,9 @@ const Auth: FC = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    if(!expertises || !interests){
+      fetchData();
+    }
   }, []);
 
   const authSwitch = () => {

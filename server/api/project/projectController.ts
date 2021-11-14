@@ -16,12 +16,12 @@ const { User } = require('../../models/user.model'); //Must to be ---validateUse
  * can get all projects
  * */
 module.exports.getAllProjects = catchAsync(async (req: Request, res: Response) => {
-    const projects = await Project.find().sort('name');
+    const projects = await Project.find().sort('name').populate('projectManager');
     res.send(projects);
 });
 
 module.exports.getSpecificProject = catchAsync(async (req: Request, res: Response) => {
-    const project = await Project.findById(req.params.id);
+    const project = await Project.findById(req.params.id).populate('participants').populate('projectManager');
 
     if(!project) return res.status(404).json("The project with the given does not exist.");
     
@@ -125,3 +125,5 @@ module.exports.updateProject = catchAsync(
        res.send(project);
   }
 );
+
+
