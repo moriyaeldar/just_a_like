@@ -52,14 +52,14 @@ const Sidebar: FC<SidebarProps> = (props) => {
             <div className="button-container">
               <Link to="/">
                 <button>
-                  <Home className="icon" /> Home
+                  <Home className="icon" /> <span> Home</span>
                 </button>
               </Link>
             </div>
             <div className="button-container">
               <Link to="/projects">
               <button>
-                <Vi className="icon" /> Boards
+                <Vi className="icon" /> <span>Projects</span>
               </button>
               </Link>
             </div>
@@ -67,43 +67,45 @@ const Sidebar: FC<SidebarProps> = (props) => {
               <Link to="/myprojects">
                 <button>
                   <Project className="icon" />
-                  My projects
+                  <span> My projects</span>
                 </button>
               </Link>
             </div>
             <div className="button-container">
+            <Link to="/tasks">
               <button>
                 <Vi2 className="icon" />
-                My Tasks
+                <span> My Tasks</span>
               </button>
+              </Link>
             </div>
             <div className="button-container">
               <button>
-                <Calender className="icon" /> Calender
+                <Calender className="icon" /> <span>Calender</span>
               </button>
             </div>
           </div>
           <div className="favorites-container">
             <button>
               {" "}
-              <Favorites className="icon" /> Favorites
+              <Favorites className="icon" /> <span>Favorites</span>
             </button>
           </div>
 
           <div className="invite-container">
             <button>
-              <Invite className="icon" /> Invite Friends
+              <Invite className="icon" /> <span>Invite Friends</span>
             </button>
             <button>
-              <InviteTeam className="icon" /> Invite Teammates
+              <InviteTeam className="icon" /> <span>Invite Teammates</span>
             </button>
           </div>
           <div className="setting-container">
             <button>
-              <Setting className="icon" /> Setting
+              <Setting className="icon" /> <span>Setting</span>
             </button>
             <button onClick={props.onLogoutClick}>
-              <Logout className="icon" /> Logout
+              <Logout className="icon" /> <span>Logout</span>
             </button>
           </div>
         </div>
@@ -125,12 +127,12 @@ const Sidebar: FC<SidebarProps> = (props) => {
               </Link>
             </div>
             <div className="button-container">
-              <button>
+             <Link to="/projects"> <button>
                 <Vi className="icon" />
-              </button>
+              </button></Link> 
             </div>
             <div className="button-container">
-              <Link to="/projects">
+            <Link to="/myprojects">
                 <button>
                   <Project className="icon" />
                 </button>
@@ -159,7 +161,7 @@ const Sidebar: FC<SidebarProps> = (props) => {
                 <button>
                   <Setting className="icon" />{" "}
                 </button>
-                <button>
+                <button onClick={props.onLogoutClick}>
                   <Logout className="icon" />{" "}
                 </button>
               </div>
