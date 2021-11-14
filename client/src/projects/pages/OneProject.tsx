@@ -12,7 +12,6 @@ const OneProject:FC = () => {
     const dispatch = useDispatch();
     const { project } = useSelector((state: any) => state.projectModule);
     const {id}: {id: string} = useParams(); 
-    const [ projectManager, setProjectManager ]: any = useState();
     //Validate of project:
     // const schema = Joi.object({
     //     name: Joi.string(),
@@ -24,27 +23,27 @@ const OneProject:FC = () => {
 
     useEffect(() => {
         dispatch(loadproject(id));
-        getProjectManager();
+        console.log(project.participants);
     },[]);
 
-    async function getProjectManager(){
-        let pm: string;
-        if(project.projectManager)
-            pm = await getUserById(project.projectManager);
-        setProjectManager(pm);
-    };
-
-    return ( 
-        <div className="displayOneProject">
-            <li className="title">One Project</li>
-            <li>Name: {project.name}</li>
-            <li>Project manager: {project.projectManager}</li>
-            <li>Description: {project.description}</li>
-            <li>Tasks: {project.tasks}</li>
-            <li>Status: {project.status}</li>
-            <li>Participants: {project.participants}</li>
-        </div>
-     );
+    if(project.projectManager)
+        return ( 
+            <div className="displayOneProject">
+                <li className="title">One Project</li>
+                <li>Name: {project.name}</li>
+                <li>Project manager: {project.projectManager.username}</li>
+                <li>Description: {project.description}</li>
+                {/* <li>Tasks: {project.tasks}</li> */}
+                {project.tasks.map((task: any) => <li key={task._id}>{task.name}</li>)}
+                <li>Status: {project.status}</li>
+                <h3>participants: </h3>
+                <ul>
+                {project.participants.map((member: any) => <li key={member._id}>{member.username}</li>)}
+                </ul> 
+            </div>
+         );
+    
+    return (<h1>Loading...</h1>);
   }
    
   export default OneProject;

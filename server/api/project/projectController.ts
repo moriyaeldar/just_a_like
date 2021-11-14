@@ -21,7 +21,7 @@ module.exports.getAllProjects = catchAsync(async (req: Request, res: Response) =
 });
 
 module.exports.getSpecificProject = catchAsync(async (req: Request, res: Response) => {
-    const project = await Project.findById(req.params.id).populate('participants').populate('projectManager');
+    const project = await Project.findById(req.params.id).populate('participants').populate('projectManager').populate('tasks');
 
     if(!project) return res.status(404).json("The project with the given does not exist.");
     

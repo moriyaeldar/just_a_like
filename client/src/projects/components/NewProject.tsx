@@ -24,31 +24,19 @@ const NewProject = () => {
     
     return (
         <>
-            <form>
-                <form>
+            <form className="new-project">
                     <label>Name:            </label>
                     <input type="text" name="name" value={project.name}/>
-                </form>
-                <form>
                     <label>Description:     </label>
                     <input type="text" name="description" value={project.description}/>
-                </form>
-                <form>
                     <label>projectManager:  </label>
                     <input type="text" name="name" value={project.projectManager}/>
-                </form>
-                <form>
                     <label>status:          </label>
                     <input type="text" name="name" value={project.status}/>
-                </form>
-                <form>
                     <label>tasks:           </label>
                     <input type="text" name="name" value={project.tasks}/>
-                </form>
-                <form>
                     <label>participants:    </label>
                     <input type="text" name="name" value={project.participants}/>
-                </form>
                 {/* <button onClick={handleUsers}></button> */}
             </form>
         </>
