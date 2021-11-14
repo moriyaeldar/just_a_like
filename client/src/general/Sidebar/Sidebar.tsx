@@ -39,87 +39,109 @@ const Sidebar: FC<SidebarProps> = (props) => {
   };
   return (
     <>
-   {isMenuOpen&& (  <div className="sidebar-container">
-      
+      {isMenuOpen && (<div className="expanded-sidebar-container">
 
         <div className="logo-container">
-            <a onClick={onCloseMenu}>
-          <Open />
-        </a>
-          <Svg />Kulla_Like
+          <a onClick={onCloseMenu}>
+            <Open />
+          </a>
+          <Svg />
+          <p>Kulla_Like</p>
         </div>
         <div className="buttons-container">
-        <Link to="/">
-          <button>
-            <Home className="icon"/> Home
+          <div className="button-container">
+            <Link to="/">
+              <button>
+                <Home className="icon" /> Home
           </button>
-          </Link>
-          <button>
-          <Vi className="icon"/>  Boards
-          </button>
-          <Link to="/projects">
+            </Link>
+          </div>
+          <div className="button-container">
             <button>
-              <Project className="icon"/> Projects
+              <Vi className="icon" />  Boards
           </button>
-          </Link>
-          <button>
-             <Vi2 className="icon"/> My Tasks
+          </div>
+          <div className="button-container">
+            <Link to="/projects">
+              <button>
+                <Project className="icon" />Projects
+              </button>
+            </Link>
+          </div>
+          <div className="button-container">
+            <button>
+              <Vi2 className="icon" />My Tasks
           </button>
-          <button>
-            <Calender className="icon"/> Calender
+          </div>
+          <div className="button-container">
+            <button>
+              <Calender className="icon" /> Calender
           </button>
+          </div>
         </div>
         <div className="favorites-container">
-         <button> <Favorites className="icon"/> Favorites</button>
+          <button> <Favorites className="icon" /> Favorites</button>
         </div>
-      
+
         <div className="invite-container">
-           <button><Invite className="icon"/> Invite Friends</button>
-          <button><InviteTeam className="icon"/> Invite Teammates</button>         
+          <button><Invite className="icon" /> Invite Friends</button>
+          <button><InviteTeam className="icon" /> Invite Teammates</button>
         </div>
         <div className="setting-container">
-          <button><Setting className="icon"/> Setting</button>
-          <button onClick={props.onLogoutClick} ><Logout className="icon"/> Logout</button>
+          <button><Setting className="icon" /> Setting</button>
+          <button onClick={props.onLogoutClick} ><Logout className="icon" /> Logout</button>
         </div>
       </div>)}
-   { !isMenuOpen&&(  <div className="mini-side-bar">
-       
-        <div className="logo-container"> 
-        <a onClick={onOpenMenu}>
-          <Open />
-        </a>
-          <Svg />
-        </div>
+      { !isMenuOpen && (<div className="mini-side-bar">
+
+          <div className="logo-container">
+            <a onClick={onOpenMenu}>
+              <Open />
+            </a>
+            <Svg />
+          </div>
         <div className="buttons-container">
-        <Link to="/">
-          <button>
-            <Home className="icon"/> 
-          </button>
-          </Link>
-          <button>
-          <Vi className="icon"/>  
-          </button>
-          <Link to="/projects">
+          <div className="button-container">
+            <Link to="/">
+              <button>
+                <Home className="icon" />
+              </button>
+            </Link>
+          </div>
+          <div className="button-container">
             <button>
-              <Project className="icon"/> 
-          </button>
-          </Link>
-          <button>
-             <Vi2 className="icon"/> 
-          </button>
-          <button>
-            <Calender className="icon"/> 
-          </button>
-       
-         <button> <Favorites className="icon"/> </button>
-      
-           <button><Invite className="icon"/> </button>
-          <button><InviteTeam className="icon"/> </button>   
-          <div className="setting-container">
-          <button><Setting className="icon"/> </button>
-          <button><Logout className="icon"/> </button>
+              <Vi className="icon" />
+            </button>
           </div>
+          <div className="button-container">
+            <Link to="/projects">
+              <button>
+                <Project className="icon" />
+              </button>
+            </Link>
           </div>
+          <div className="button-container">
+            <button>
+              <Vi2 className="icon" />
+            </button>
+          </div>
+          <div className="button-container">
+            <button>
+              <Calender className="icon" />
+            </button>
+          </div>
+        </div>
+          <div className="favorites-container">
+            <button><Favorites className="icon" /></button>
+          </div>
+          <div className="invite-container">
+            <button><Invite className="icon" /></button>
+            <button><InviteTeam className="icon" /></button>
+          </div>
+        <div className="setting-container">
+          <button><Setting className="icon" /></button>
+          <button><Logout className="icon" /></button>
+        </div>
       </div>)}
     </>
   );
