@@ -1,7 +1,6 @@
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { remove } from "../services/task.service";
 
-import classes from "../styles/taskmenu.module.scss";
 
 const TaskMenu = ({ task }: { task: any }) => {
   const removeHandler = (id: any) => {
@@ -9,8 +8,8 @@ const TaskMenu = ({ task }: { task: any }) => {
   };
 
   return (
-    <div className={classes.container}>
-      <ul className={classes.ul}>
+    <div className="container">
+      <ul className="ul">
         <li>Edit Task Name</li>
         <li>Duplicate task</li>
         <li style={{ color: "red" }}>

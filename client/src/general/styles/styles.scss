@@ -17,6 +17,12 @@
 @import "../styles/cmps/sidebar.scss";
 @import "../../projects/styles/OneProject.scss";
 @import "../../hoc/Layout/layout.scss";
+@import "../../tasks/styles/navbartasks.module.scss";
+@import "../../tasks/styles/taskcard.module.scss";
+@import "../../tasks/styles/taskcards.module.scss";
+@import "../../tasks/styles/Taskmenu.module.scss";
 
 //views
-@import "../styles/pages/home-page.scss"
+@import "../styles/pages/home-page.scss";
+
+@import "../../tasks/styles/taskspage.module.scss";
