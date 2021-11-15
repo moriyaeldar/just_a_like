@@ -1,14 +1,6 @@
-import { useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
-
 import classes from "../styles/navbartasks.module.scss";
 
 const NavbarTasks = () => {
-  const [tasksPageMenu, setTasksPageMenu] = useState(false);
-
-  const tasksPageMenuHandler = () => {
-    setTasksPageMenu(!tasksPageMenu);
-  };
   return (
     <nav className={classes.container}>
       <div className={classes.header}>

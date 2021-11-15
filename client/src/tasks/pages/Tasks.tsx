@@ -17,7 +17,6 @@ const TasksPage: FC = () => {
 
   return (
     <>
-      <NavbarTasks />
       <TaskCards tasks={tasks} />
     </>
   );
