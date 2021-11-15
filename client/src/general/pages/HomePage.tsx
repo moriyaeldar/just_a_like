@@ -1,7 +1,17 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Arrow } from "../../assets/svg/arrow.svg";
 import { ReactComponent as People } from "../../assets/svg/people.svg";
 import { ReactComponent as Round} from "../../assets/svg/round.svg";
+import { setPageName } from '../store/app.actions';
+
 export const HomePage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setPageName('Home'))
+  }, []);
+  
   return (
     <div className="home-page">
 

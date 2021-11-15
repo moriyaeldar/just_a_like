@@ -44,7 +44,7 @@ interface AuthInitProps {
 }
 
 
-export const AuthInit:FC<AuthInitProps> = (props) => (
+export const AuthFirst:FC<AuthInitProps> = (props) => (
     <AuthCard>
         <GoogleLogin
         clientId={props.googleKey ?? ''}
@@ -75,7 +75,7 @@ export const AuthInit:FC<AuthInitProps> = (props) => (
 
 
 interface StepOneProps {
-    submit: any;
+    stepOneSubmit: any;
     setInputValue: any;
     name: string;
     watch: any;
@@ -87,7 +87,7 @@ export const StepOne:FC<StepOneProps> = (props) => (
             <h3>Welcome <span>{props.name} !</span></h3>
             <p>Want us to use another nickname?</p>
         </div>
-        <form onSubmit={props.submit}>
+        <form onSubmit={props.stepOneSubmit}>
             <TextField
             variant="filled"
             type="text" 
@@ -96,7 +96,7 @@ export const StepOne:FC<StepOneProps> = (props) => (
             <Button
             variant={props.watch('username', false) ? "contained" : "outlined" }
             className={props.watch('username', false) ? "contained" : "outlined"}
-            onClick={props.submit}>
+            onClick={props.stepOneSubmit}>
                 {props.watch('username', false) ? 'Continue' : 'Skip >'}
             </Button>
         </form>
@@ -104,7 +104,7 @@ export const StepOne:FC<StepOneProps> = (props) => (
 )
 
 interface StepTowProps {
-    submit: any;
+    stepTowSubmit: any;
     setInputValue: any;
     watch: any;
 }
@@ -112,7 +112,7 @@ interface StepTowProps {
 export const StepTow:FC<StepTowProps> = (props) => (
     <AuthCard>
         <h3 className='instruction-header'>What is your LinkedIn profile?</h3>
-        <form onSubmit={props.submit}>
+        <form onSubmit={props.stepTowSubmit}>
             <TextField
             variant="filled"
             type="text" 
@@ -122,14 +122,14 @@ export const StepTow:FC<StepTowProps> = (props) => (
             disabled={props.watch('linkedin_url', false) ? false : true}
             variant="contained"
             className={props.watch('linkedin_url', false) ? "contained" : 'disabled'}
-            onClick={props.submit}
+            onClick={props.stepTowSubmit}
             >Continue</Button>
         </form>
     </AuthCard>
 )
 
 interface StepThreeProps {
-    submit: any;
+    stepThreeSubmit: any;
     setInputValue: any;
     watch: any;
 }
@@ -137,7 +137,7 @@ interface StepThreeProps {
 export const StepThree:FC<StepThreeProps> = (props) => (
     <AuthCard>
         <h3 className='instruction-header'>Please enter your phone number</h3>
-        <form onSubmit={props.submit}>
+        <form onSubmit={props.stepThreeSubmit}>
             <TextField
             variant="filled"
             type="text" 
@@ -147,13 +147,13 @@ export const StepThree:FC<StepThreeProps> = (props) => (
             disabled={props.watch('phone_number', false) ? false : true}
             variant="contained"
             className={props.watch('phone_number', false) ? "contained" : 'disabled'}
-            onClick={props.submit}>submit</Button>
+            onClick={props.stepThreeSubmit}>submit</Button>
         </form>
     </AuthCard>
 )
 
 interface StepFourProps {
-    submit: any;
+    stepFourSubmit: any;
     setInputValue: any;
     expertises: Array<object>;
     watch: any;
@@ -162,7 +162,7 @@ interface StepFourProps {
 export const StepFour:FC<StepFourProps> = (props) => (
     <AuthCard>
         <h3 className='instruction-header'>What kind of work do you do?</h3>
-        <form onSubmit={props.submit}>
+        <form onSubmit={props.stepFourSubmit}>
             <Select 
             className="select"
             variant="filled"
@@ -182,13 +182,13 @@ export const StepFour:FC<StepFourProps> = (props) => (
             disabled={props.watch('expertise', false) ? false : true}
             variant="contained"
             className={props.watch('expertise', false) ? "contained" : 'disabled'} 
-            onClick={props.submit}>submit</Button>
+            onClick={props.stepFourSubmit}>submit</Button>
         </form>
     </AuthCard>
 );
 
 interface StepFiveProps {
-    submit: any;
+    stepFiveSubmit: any;
     setInputValue: any;
     interests: Array<object>;
     watch: any;
@@ -197,7 +197,7 @@ interface StepFiveProps {
 export const StepFive:FC<StepFiveProps> = (props) => (
     <AuthCard>
         <h3 className='instruction-header'>Choose your interests:</h3>
-        <form onSubmit={props.submit} className='checkbox-form'>
+        <form onSubmit={props.stepFiveSubmit} className='checkbox-form'>
             <div className="checkbox">
                 {props.interests.map((interest: any) => (
                     <div key={interest._id} className="box">
@@ -218,7 +218,7 @@ export const StepFive:FC<StepFiveProps> = (props) => (
             disabled={props.watch('interests', false) ? false : true}
             variant="contained"
             className={props.watch('interests', false) ? "contained" : 'disabled'}
-            onClick={props.submit}
+            onClick={props.stepFiveSubmit}
             >Finish</Button>
         </form>
     </AuthCard>

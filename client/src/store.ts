@@ -5,12 +5,14 @@ import { taskReducer } from '../src/tasks/store/task.reducer';
 import { teamReducer } from '../src/teams//store/team.reducer';
 import { projectReducer } from '../src/projects/store/project.reducer';
 import { userReducer } from '../src/users/store/user.reducer';
+import { appReducer } from '../src/general/store/app.reducer';
 
 const rootReducer = combineReducers({
   taskModule: taskReducer,
   teamModule: teamReducer,
   projectModule: projectReducer,
   userModule: userReducer,
+  appModule: appReducer
 });
 
 // export const store = createStore(rootReducer, applyMiddleware(thunk))

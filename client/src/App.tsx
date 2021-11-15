@@ -17,22 +17,13 @@ function App() {
   const dispatch = useDispatch();
   const location = useLocation();
   const isAuthenticated = useSelector((state:any) => state.userModule.token ? true : false);
+  const pageName = useSelector((state:any) => state.appModule.page);
   const [headerModal, setHeaderModal] = useState(false);
-  const [pageName, setPageName] = useState('Home');
 
   useEffect(() => {
     dispatch(authCheckState());
-    if(location.pathname === '/'){
-      setPageName('Home')
-    }
-    if(location.pathname === ('/myprojects' || '/projects')) {
-      setPageName('Projects')
-    }
-    if(location.pathname === '/tasks') {
-      setPageName('My Tasks')
-    }
     
-  },[location])
+  },[])
 
   const handleHeaderModal = () => {
     setHeaderModal(!headerModal);

@@ -1,6 +1,17 @@
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+
+import { useDispatch } from 'react-redux';
+import { setPageName } from '../../general/store/app.actions';
+
 
 const MyProjects = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() =>{
+        dispatch(setPageName('My Projects'));
+    }, [])
+
     return (
         <>
             <div>

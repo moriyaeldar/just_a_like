@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { loadTasks } from "../store/task.actions";
+import { setPageName } from '../../general/store/app.actions';
 
 import NavbarTasks from "../components/NavbarTasks";
 import TaskCards from "../components/TaskCards";
@@ -13,6 +14,7 @@ const TasksPage: FC = () => {
 
   useEffect(() => {
     dispatch(loadTasks());
+    dispatch(setPageName('My Tasks'));
   }, []);
 
   return (

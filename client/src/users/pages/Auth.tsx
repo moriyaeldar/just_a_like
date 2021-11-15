@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/auth.scss";
 import {
-  AuthInit,
+  AuthFirst,
   StepOne,
   StepTow,
   StepThree,
@@ -108,7 +108,7 @@ const Auth: FC = () => {
   }
 
   let auth = (
-    <AuthInit
+    <AuthFirst
       googleKey={process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID}
       facebookKey={process.env.REACT_APP_FACEBOOK_AUTH_APP_ID}
       login={login}
@@ -121,7 +121,7 @@ const Auth: FC = () => {
     auth = (
       <StepOne
         name={name}
-        submit={handleSubmit(onStepOneSubmit)}
+        stepOneSubmit={handleSubmit(onStepOneSubmit)}
         setInputValue={register}
         watch={watch}
       />
@@ -130,7 +130,7 @@ const Auth: FC = () => {
   if (step === 2) {
     auth = (
       <StepTow
-        submit={handleSubmit(onStepTowSubmit)}
+        stepTowSubmit={handleSubmit(onStepTowSubmit)}
         setInputValue={register}
         watch={watch}
       />
@@ -139,7 +139,7 @@ const Auth: FC = () => {
   if (step === 3) {
     auth = (
       <StepThree
-        submit={handleSubmit(onStepThreeSubmit)}
+        stepThreeSubmit={handleSubmit(onStepThreeSubmit)}
         setInputValue={register}
         watch={watch}
       />
@@ -148,7 +148,7 @@ const Auth: FC = () => {
   if (step === 4) {
     auth = (
       <StepFour
-        submit={handleSubmit(onStepFourSubmit)}
+        stepFourSubmit={handleSubmit(onStepFourSubmit)}
         setInputValue={register}
         expertises={expertises}
         watch={watch}
@@ -158,7 +158,7 @@ const Auth: FC = () => {
   if (step === 5) {
     auth = (
       <StepFive
-        submit={handleSubmit(onFinalSubmit)}
+        stepFiveSubmit={handleSubmit(onFinalSubmit)}
         setInputValue={register}
         interests={interests}
         watch={watch}
