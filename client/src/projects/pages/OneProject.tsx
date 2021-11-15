@@ -23,17 +23,18 @@ const OneProject:FC = () => {
 
     useEffect(() => {
         dispatch(loadproject(id));
-        console.log(project.participants);
+        console.log(project.tasks);
+        // project.tasks.map((task: any)=> console.log(task));
     },[]);
 
     if(project.projectManager)
         return ( 
             <div className="displayOneProject">
-                <li className="title">One Project</li>
-                <li>Name: {project.name}</li>
-                <li>Project manager: {project.projectManager.username}</li>
-                <li>Description: {project.description}</li>
-                {/* <li>Tasks: {project.tasks}</li> */}
+                <div className="title">
+                    <h1>{project.name}</h1>
+                    <h3>Manager: {project.projectManager.username}</h3>
+                </div>
+                <div>Description: {project.description}</div>
                 {project.tasks.map((task: any) => <li key={task._id}>{task.name}</li>)}
                 <li>Status: {project.status}</li>
                 <h3>participants: </h3>
