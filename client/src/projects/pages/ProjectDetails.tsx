@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadproject } from './../store/project.actions';
+import { setPageName } from '../../general/store/app.actions';
 import '../styles/ProjectDetails.scss';
 import NewProject from "../components/NewProject";
 
@@ -9,6 +10,11 @@ const ProjectDetails = () => {
     const dispatch = useDispatch();
     const { project } = useSelector((state: any) => state.projectModule);
     const {id}: {id: any} = useParams();
+
+    
+    useEffect(() => {
+        dispatch(setPageName('Projects/some project name'))
+    },[]);
 
     useEffect(() => {
         try{

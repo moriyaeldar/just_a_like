@@ -1,24 +1,14 @@
-.navbartasks {
+.container {
+  font-weight: bolder;
   list-style-type: none;
 }
-
-.downarrow :hover {
-  text-shadow: black;
-  cursor: pointer;
-  box-sizing: border-box;
-  flex-direction: row;
-}
-.ul {
+.head_menu {
+  display: flex;
+  width: 30%;
   list-style-type: none;
+  justify-content: space-between;
 }
-li {
-  margin: 5px;
-}
-.list {
-  flex-direction: row;
-}
-p {
-  display: inline;
-  margin: 20px;
-  float: left;
-}
+// .header {
+//   display: flex;
+//   justify-content: none;
+// }

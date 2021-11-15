@@ -19,32 +19,28 @@ export const taskService = {
   remove,
 };
 async function query(filterBy = {}) {
-  const res = await Axios.get("http://localhost:8000/api/task", {
+  const res = await Axios.get(BASE_URL, {
     params: filterBy,
   });
   return res.data;
 }
 
 function getById(taskId: string) {
-  return axios
-    .get(`http://localhost:8000/api/task/${taskId}`)
-    .then((res) => res.data);
+  return axios.get(`${BASE_URL}${taskId}`).then((res) => res.data);
 }
-function remove(taskId: string) {
-  return axios.delete(`http://localhost:8000/api/task/${taskId}`);
+
+export async function remove(taskId: string) {
+  return await Axios.delete(`${BASE_URL}${taskId}`);
 }
+
 async function save(task: any) {
   if (task._id) {
-    return axios
-      .put("http://localhost:8000/api/task", task)
-      .then((res) => res.data);
+    return axios.put(BASE_URL, task).then((res) => res.data);
   } else {
     const user = await userService.getLoggedinUser();
     task.host = { fullname: user.fullname, _id: user._id, imgUrl: user.imgUrl };
 
-    return axios
-      .post("http://localhost:8000/api/task", task)
-      .then((res) => res.data);
+    return axios.post(BASE_URL, task).then((res) => res.data);
   }
 }
 

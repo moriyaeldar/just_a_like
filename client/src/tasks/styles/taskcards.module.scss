@@ -1,12 +1,20 @@
-.list_tasks {
+.container {
   display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  justify-content: center;
 }
+
+// .header {
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin: auto;
+//   justify-content: center;
+//   align-items: center;
+// }
 
 .title {
   color: blue;
   text-align: left;
   direction: ltr;
+}
+.add_task {
+  text-align: center;
 }

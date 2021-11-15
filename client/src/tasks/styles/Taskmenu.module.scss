@@ -1,0 +1,23 @@
+.container {
+  position: absolute;
+  top: 5%;
+  left: 250px;
+  font-size: 14px;
+  width: 200px;
+  z-index: 1;
+  background-color: rgb(207, 209, 207);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
+.ul li:hover {
+  background-color: grayscale($color: #947979);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.MDO {
+  font-size: 15px;
+  margin-left: 35px;
+}
+.ul li {
+  list-style-type: none;
+}

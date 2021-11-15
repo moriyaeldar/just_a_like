@@ -4,6 +4,7 @@ import { FC } from 'react';
 import { projectService } from './../services/projectService';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadprojects } from './../store/project.actions';
+import { setPageName } from '../../general/store/app.actions';
 import ListProjects from '../components/ListProjects';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ const { projects } = useSelector((state: any)=>state.projectModule);
 
   useEffect(() => {
       dispatch(loadprojects());
+      dispatch(setPageName('Projects'));
   },[]);
   
   return(

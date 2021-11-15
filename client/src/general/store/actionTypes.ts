@@ -1,0 +1,1 @@
+export const SET_PAGE_NAME: string = "SET_PAGE_NAME"; 
