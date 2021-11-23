@@ -2,6 +2,7 @@ import { useState }from 'react';
 import { useDispatch } from "react-redux";
 import { createProject } from '../store/project.actions';
 // import { getAllUsers } from '../../users/services/user.service';
+import Input from '../components/Input';
 
 const NewProject = () => {
 
@@ -22,6 +23,21 @@ const NewProject = () => {
     //     console.log(users);
     //   }
     
+    /**const renderInput = (name: string, label: string, type='text') => {
+        // const { data, errors } = this.state;
+        
+        return (
+        <Input 
+        // type={type}
+        name={name}
+        value={project[name]}
+        label={label}
+        onChange={handleChange}
+        // error={errors[name]}
+        />
+        );
+    };*/
+
     return (
         <>
             <form className="new-project">
