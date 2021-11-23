@@ -4,7 +4,7 @@ import {
   notJunior,
   allPermitted,
   requireUser,
-} from "../middleware/permissionMiddleware";
+} from "../../middleware/permissionMiddleware";
 const router = Router();
 const taskController = require("./taskController");
 
