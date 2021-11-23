@@ -2,7 +2,6 @@ import { useState }from 'react';
 import { useDispatch } from "react-redux";
 import { createProject } from '../store/project.actions';
 // import { getAllUsers } from '../../users/services/user.service';
-import Input from '../components/Input';
 
 const NewProject = () => {
 
